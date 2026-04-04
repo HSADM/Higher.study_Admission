@@ -58,6 +58,10 @@
     padding: 28px 24px 24px;
     position: relative;
     z-index: 1;
+    transition: max-width 0.3s ease;
+  }
+  .header.wide .header-inner {
+    max-width: 1280px;
   }
   .brand {
     display: flex;
@@ -104,6 +108,84 @@
     max-width: 720px;
     margin: 0 auto;
     padding: 24px 16px 48px;
+    transition: max-width 0.3s ease;
+  }
+  .main.wide {
+    max-width: 1280px;
+  }
+  .main.entry-mode {
+    max-width: 1180px;
+  }
+
+  /* — Entry Layout (form + sidebar) — */
+  .entry-layout {
+    display: grid;
+    grid-template-columns: 1fr 340px;
+    gap: 24px;
+    align-items: start;
+  }
+  .entry-left { min-width: 0; }
+  .entry-right { position: sticky; top: 24px; }
+  .sidebar-card { padding: 24px 20px !important; }
+  .sidebar-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent);
+  }
+  .sidebar-mgr-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-mgr-card:last-child { border-bottom: none; }
+  .sidebar-mgr-avatar {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 14px; flex-shrink: 0;
+  }
+  .sidebar-mgr-info { flex: 1; min-width: 0; }
+  .sidebar-mgr-name { font-weight: 700; font-size: 14px; color: var(--text); }
+  .sidebar-mgr-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .sidebar-mgr-tag {
+    font-size: 10px; font-weight: 600;
+    padding: 2px 8px; border-radius: 20px;
+    background: #edf2f7; color: var(--primary);
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  .sidebar-mgr-tag strong {
+    background: var(--primary); color: #fff;
+    border-radius: 50%; min-width: 16px; height: 16px;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700;
+  }
+  .sidebar-mgr-count {
+    font-size: 24px; font-weight: 700;
+    color: var(--primary); flex-shrink: 0; line-height: 1;
+  }
+  .sidebar-total {
+    background: var(--primary); color: #fff;
+    border-radius: 8px; padding: 14px 16px;
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px;
+  }
+  .sidebar-total-label { font-size: 13px; font-weight: 600; }
+  .sidebar-total-num { font-size: 26px; font-weight: 700; }
+  .sidebar-empty {
+    text-align: center; padding: 24px 8px;
+    color: var(--text-muted); font-size: 13px;
+  }
+  @media (max-width: 860px) {
+    .entry-layout { grid-template-columns: 1fr; }
+    .entry-right { position: static; }
   }
 
   /* — Card — */
@@ -328,9 +410,316 @@
   /* — Footer — */
   .footer {
     text-align: center;
-    padding: 16px;
+    padding: 16px 16px 90px;
     font-size: 12px;
     color: var(--text-muted);
+  }
+
+  /* — Tab Bar — */
+  .tab-bar {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    background: var(--surface);
+    border-top: 1px solid var(--border);
+    box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+    z-index: 100;
+  }
+  .tab {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    padding: 10px 8px 12px;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: color 0.2s;
+  }
+  .tab.active { color: var(--primary); }
+  .tab:hover { color: var(--primary-light); }
+
+  /* — Dashboard — */
+  .dash-header { margin-bottom: 20px; }
+  .dash-title-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  .dash-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--primary);
+  }
+  .dash-actions {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+  .search-input {
+    padding: 8px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: #faf9f7;
+    outline: none;
+    width: 220px;
+    transition: border-color 0.2s;
+  }
+  .search-input:focus { border-color: var(--primary-light); background: #fff; }
+  .btn-sm { padding: 8px 16px; font-size: 13px; }
+  .dash-stats {
+    display: flex;
+    gap: 16px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+  }
+  .stat-card {
+    background: #faf9f7;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 12px 18px;
+    flex: 1;
+    min-width: 120px;
+    text-align: center;
+  }
+  .stat-num {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .stat-label {
+    font-size: 11px;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    margin-top: 2px;
+  }
+
+  /* — Manager Summary — */
+  .manager-summary {
+    margin-top: 20px;
+  }
+  .mgr-section-title {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--text-muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .mgr-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .mgr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .mgr-card {
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .mgr-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: 0 2px 12px rgba(26,54,93,0.08);
+  }
+  .mgr-avatar {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--primary);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .mgr-info { flex: 1; }
+  .mgr-name {
+    font-weight: 700;
+    font-size: 15px;
+    color: var(--text);
+  }
+  .mgr-processes {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin-top: 6px;
+  }
+  .mgr-tag {
+    font-size: 11px;
+    font-weight: 600;
+    padding: 3px 9px;
+    border-radius: 20px;
+    background: #edf2f7;
+    color: var(--primary);
+  }
+  .mgr-count {
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .mgr-count-num {
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--primary);
+    line-height: 1;
+  }
+  .mgr-count-label {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  /* — Table — */
+  .table-wrap {
+    overflow-x: auto;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .data-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    white-space: nowrap;
+  }
+  .data-table th {
+    background: var(--primary);
+    color: #fff;
+    font-weight: 600;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    position: sticky;
+    top: 0;
+  }
+  .data-table td {
+    padding: 10px 14px;
+    border-bottom: 1px solid var(--border);
+    color: var(--text);
+  }
+  .data-table tbody tr:hover { background: #faf9f7; }
+  .data-table tbody tr:last-child td { border-bottom: none; }
+  .status-badge {
+    display: inline-block;
+    padding: 3px 10px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: 600;
+  }
+  .status-done { background: #f0fff4; color: #276749; }
+  .status-cancelled { background: #fff5f5; color: #c53030; }
+  .status-pending { background: #fffaf0; color: #c05621; }
+
+  .dash-empty {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+  }
+  .dash-loading {
+    text-align: center;
+    padding: 40px 20px;
+    color: var(--text-muted);
+    font-size: 14px;
+  }
+  .spinner.dark {
+    border-color: rgba(26,54,93,0.2);
+    border-top-color: var(--primary);
+  }
+
+  @media (max-width: 560px) {
+    .dash-title-row { flex-direction: column; align-items: flex-start; }
+    .search-input { width: 100%; }
+    .dash-actions { width: 100%; }
+  }
+
+  /* — Password Modal — */
+  .pwd-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+  }
+  .pwd-modal {
+    background: var(--surface);
+    border-radius: 14px;
+    padding: 36px 32px;
+    width: 90%;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+    animation: modalIn 0.3s cubic-bezier(0.16,1,0.3,1);
+  }
+  @keyframes modalIn { from { transform: scale(0.9) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
+  .pwd-icon { font-size: 40px; margin-bottom: 12px; }
+  .pwd-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--primary);
+    margin-bottom: 6px;
+  }
+  .pwd-desc {
+    font-size: 13px;
+    color: var(--text-muted);
+    margin-bottom: 20px;
+  }
+  .pwd-input {
+    width: 100%;
+    padding: 12px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: #faf9f7;
+    outline: none;
+    text-align: center;
+    letter-spacing: 2px;
+    transition: border-color 0.2s;
+  }
+  .pwd-input:focus { border-color: var(--primary-light); background: #fff; }
+  .pwd-input.invalid { border-color: var(--error); }
+  .pwd-error {
+    display: none;
+    color: var(--error);
+    font-size: 12px;
+    margin-top: 8px;
+    font-weight: 600;
+  }
+  .pwd-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    justify-content: center;
   }
 
   /* — Accessibility — */
@@ -354,11 +743,13 @@
 </header>
 
 <main class="main">
-  <div class="card" id="formCard">
-    <form id="admissionForm" novalidate autocomplete="off">
-      <div class="form-grid">
+  <div class="entry-layout" id="entryLayout">
+    <div class="entry-left">
+      <div class="card" id="formCard">
+        <form id="admissionForm" novalidate autocomplete="off">
+          <div class="form-grid">
 
-        <div class="section-title">Admission Details</div>
+            <div class="section-title">Admission Details</div>
 
         <div class="field">
           <label>Process <span class="req">*</span></label>
@@ -367,6 +758,12 @@
             <option>Amity University</option>
             <option>Alliance University</option>
             <option>CV Raman University</option>
+            <option>GLA</option>
+            <option>UPES</option>
+            <option>Pearl University</option>
+            <option>Chandigarh University</option>
+            <option>Presidency University</option>
+            <option>KU</option>
           </select>
           <div class="field-error">Please select a process</div>
         </div>
@@ -459,15 +856,29 @@
         </div>
 
         <div class="field">
-          <label>Counsellor Name <span class="req">*</span></label>
-          <input type="text" name="Counsellor Name" placeholder="Counsellor's name" required>
-          <div class="field-error">Counsellor name is required</div>
+          <label>Counsellor First Name <span class="req">*</span></label>
+          <input type="text" id="counsellorFirst" placeholder="First name" required>
+          <div class="field-error">First name is required</div>
         </div>
 
         <div class="field">
+          <label>Counsellor Last Name <span class="req">*</span></label>
+          <input type="text" id="counsellorLast" placeholder="Last name" required>
+          <div class="field-error">Last name is required</div>
+        </div>
+        <input type="hidden" name="Counsellor Name" id="counsellorFull">
+
+        <div class="field">
           <label>Manager <span class="req">*</span></label>
-          <input type="text" name="Manager" placeholder="Manager's name" required>
-          <div class="field-error">Manager name is required</div>
+          <select name="Manager" required>
+            <option value="">Select manager</option>
+            <option>Deepesh Singh</option>
+            <option>Aasif Shaikh</option>
+            <option>Shipra Tripathi</option>
+            <option>Abhishek Kapoor</option>
+            <option>Manas Nayak</option>
+          </select>
+          <div class="field-error">Please select a manager</div>
         </div>
 
         <div class="field">
@@ -493,17 +904,86 @@
     <div class="details-box" id="summaryBox"></div>
     <button class="btn btn-primary" onclick="resetForm()">Submit Another Entry</button>
   </div>
+
+    </div><!-- end entry-left -->
+
+    <div class="entry-right" id="entryRight">
+      <div class="card sidebar-card">
+        <div class="sidebar-title">Today's Activity</div>
+        <div id="sidebarManagerSummary">
+          <div class="dash-loading" id="sidebarLoading">
+            <span class="spinner dark"></span> Loading…
+          </div>
+        </div>
+      </div>
+    </div>
+  </div><!-- end entry-layout -->
+
+  <!-- Dashboard View -->
+  <div class="card" id="dashboardCard" style="display:none;">
+    <div class="dash-header">
+      <div class="dash-title-row">
+        <h2 class="dash-title">All Admissions</h2>
+        <div class="dash-actions">
+          <input type="text" id="searchBox" class="search-input" placeholder="Search by name, number, campus…">
+          <button class="btn btn-primary btn-sm" onclick="loadDashboard()">⟳ Refresh</button>
+        </div>
+      </div>
+      <div class="dash-stats" id="dashStats"></div>
+      <div class="manager-summary" id="managerSummary"></div>
+    </div>
+    <div class="table-wrap">
+      <table class="data-table" id="dataTable">
+        <thead id="tableHead"></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div class="dash-empty" id="dashEmpty" style="display:none;">
+      <p>No admission entries found.</p>
+    </div>
+    <div class="dash-loading" id="dashLoading" style="display:none;">
+      <span class="spinner dark"></span> Loading entries…
+    </div>
+  </div>
+
 </main>
+
+<!-- Tab Navigation -->
+<nav class="tab-bar">
+  <button class="tab active" id="tabForm" onclick="switchTab('form')">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 113 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+    <span>New Entry</span>
+  </button>
+  <button class="tab" id="tabDash" onclick="switchTab('dashboard')">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+    <span>View All</span>
+  </button>
+</nav>
 
 <footer class="footer">Higher.Study &middot; Data synced to Google Sheets</footer>
 
 <div class="toast-container" id="toasts"></div>
 
+<!-- Password Modal -->
+<div class="pwd-overlay" id="pwdOverlay">
+  <div class="pwd-modal">
+    <div class="pwd-icon">🔒</div>
+    <h3 class="pwd-title">Dashboard Access</h3>
+    <p class="pwd-desc">Enter password to view all admissions</p>
+    <input type="password" id="pwdInput" class="pwd-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPassword()">
+    <div class="pwd-error" id="pwdError">Incorrect password. Try again.</div>
+    <div class="pwd-actions">
+      <button class="btn btn-secondary" onclick="closePasswordModal()">Cancel</button>
+      <button class="btn btn-primary" onclick="checkPassword()">Unlock</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ——————————————————————————————————————
 // ⚠️  PASTE YOUR DEPLOYED APPS SCRIPT URL BELOW
 // ——————————————————————————————————————
-const API_URL = "https://script.google.com/macros/s/AKfycbzkDdB4b-Tl_mPK8BylPkzE8xZJ8Ib3l2znEkBs8dHrtxN93dAES68kPgdYIQqxxvawFA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwHmjCKqaeesmevTG9r6TdlgeIN7mFG6spsmfpFeK5x-zC5C8YH7wrUrkIo6LzYFzzdOw/exec";
 // ——————————————————————————————————————
 
 const form = document.getElementById("admissionForm");
@@ -584,6 +1064,11 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
+  // Combine counsellor first + last name
+  const cFirst = document.getElementById("counsellorFirst").value.trim();
+  const cLast = document.getElementById("counsellorLast").value.trim();
+  document.getElementById("counsellorFull").value = cFirst + " " + cLast;
+
   const data = {};
   new FormData(form).forEach((v, k) => { data[k] = v.trim(); });
 
@@ -651,6 +1136,372 @@ function resetForm() {
   form.reset();
   form.querySelector("input, select").focus();
 }
+
+// ——————————————————————————————————————
+// Dashboard
+// ——————————————————————————————————————
+const dashboardCard = document.getElementById("dashboardCard");
+const tableHead = document.getElementById("tableHead");
+const tableBody = document.getElementById("tableBody");
+const dashStats = document.getElementById("dashStats");
+const dashEmpty = document.getElementById("dashEmpty");
+const dashLoading = document.getElementById("dashLoading");
+const searchBox = document.getElementById("searchBox");
+
+let allEntries = [];
+
+const DASHBOARD_PASSWORD = "admin123";
+let dashboardUnlocked = false;
+
+function switchTab(tab) {
+  if (tab === "dashboard" && !dashboardUnlocked) {
+    showPasswordModal();
+    return;
+  }
+
+  document.getElementById("tabForm").classList.toggle("active", tab === "form");
+  document.getElementById("tabDash").classList.toggle("active", tab === "dashboard");
+
+  const main = document.querySelector(".main");
+  const header = document.querySelector(".header");
+  const entryLayout = document.getElementById("entryLayout");
+  const entryRight = document.getElementById("entryRight");
+
+  if (tab === "form") {
+    main.classList.remove("wide");
+    main.classList.add("entry-mode");
+    header.classList.remove("wide");
+    header.classList.add("wide");
+    entryLayout.style.display = "";
+    entryRight.style.display = "";
+    formCard.style.display = "";
+    dashboardCard.style.display = "none";
+    successScreen.classList.remove("show");
+    successScreen.closest(".card").style.display = "none";
+    loadSidebar();
+  } else {
+    main.classList.remove("entry-mode");
+    main.classList.add("wide");
+    header.classList.add("wide");
+    entryLayout.style.display = "none";
+    dashboardCard.style.display = "";
+    loadDashboard();
+  }
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function showPasswordModal() {
+  document.getElementById("pwdOverlay").style.display = "flex";
+  const input = document.getElementById("pwdInput");
+  input.value = "";
+  input.focus();
+  document.getElementById("pwdError").style.display = "none";
+}
+
+function closePasswordModal() {
+  document.getElementById("pwdOverlay").style.display = "none";
+}
+
+function checkPassword() {
+  const input = document.getElementById("pwdInput");
+  if (input.value === DASHBOARD_PASSWORD) {
+    dashboardUnlocked = true;
+    closePasswordModal();
+    switchTab("dashboard");
+  } else {
+    const err = document.getElementById("pwdError");
+    err.style.display = "block";
+    input.classList.add("invalid");
+    input.value = "";
+    input.focus();
+  }
+}
+
+// Load sidebar manager summary on entry page
+async function loadSidebar() {
+  const container = document.getElementById("sidebarManagerSummary");
+  const sidebarLoading = document.getElementById("sidebarLoading");
+  sidebarLoading.style.display = "";
+
+  try {
+    const res = await fetch(API_URL + "?action=fetch");
+    const json = await res.json();
+    sidebarLoading.style.display = "none";
+
+    if (json.status === "success" && json.data && json.data.length > 0) {
+      renderSidebarManager(json.data, container);
+    } else {
+      container.innerHTML = '<div class="sidebar-empty">No entries yet today.</div>';
+    }
+  } catch (err) {
+    sidebarLoading.style.display = "none";
+    container.innerHTML = '<div class="sidebar-empty">Could not load data.</div>';
+  }
+}
+
+function renderSidebarManager(entries, container) {
+  const today = new Date();
+  const todayStr = today.getFullYear() + "-" +
+    String(today.getMonth() + 1).padStart(2, "0") + "-" +
+    String(today.getDate()).padStart(2, "0");
+
+  const yesterday = new Date(today);
+  yesterday.setDate(yesterday.getDate() - 1);
+  const yStr = yesterday.getFullYear() + "-" +
+    String(yesterday.getMonth() + 1).padStart(2, "0") + "-" +
+    String(yesterday.getDate()).padStart(2, "0");
+
+  // Google Sheets dates with IST offset: date stored as previous day in UTC
+  // So also check the day before yesterday for timezone shift
+  const dayBeforeY = new Date(today);
+  dayBeforeY.setDate(dayBeforeY.getDate() - 2);
+  const dbYStr = dayBeforeY.getFullYear() + "-" +
+    String(dayBeforeY.getMonth() + 1).padStart(2, "0") + "-" +
+    String(dayBeforeY.getDate()).padStart(2, "0");
+
+  const todayEntries = entries.filter(e => {
+    const d = (e["Admission Done date"] || "").toString().substring(0, 10);
+    return d === todayStr || d === yStr;
+  });
+
+  const yesterdayEntries = entries.filter(e => {
+    const d = (e["Admission Done date"] || "").toString().substring(0, 10);
+    return d === yStr || d === dbYStr;
+  });
+
+  // Remove duplicates (entries that appear in both due to timezone)
+  const todayIds = new Set(todayEntries.map(e => e["Application Number"]));
+  const pureYesterday = yesterdayEntries.filter(e => !todayIds.has(e["Application Number"]));
+
+  const colors = ["#1a365d", "#276749", "#c05621", "#9b2c2c", "#553c9a", "#2b6cb0", "#744210"];
+  const getInitials = (name) => name.split(" ").map(w => w[0]).join("").toUpperCase().substring(0, 2);
+
+  function buildManagerCards(list) {
+    const managerMap = {};
+    list.forEach(e => {
+      const mgr = (e["Manager"] || "Unknown").toString().trim();
+      if (!managerMap[mgr]) managerMap[mgr] = { count: 0, processes: {} };
+      managerMap[mgr].count++;
+      const proc = (e["Process"] || "").toString().trim();
+      if (proc) {
+        managerMap[mgr].processes[proc] = (managerMap[mgr].processes[proc] || 0) + 1;
+      }
+    });
+    const sorted = Object.entries(managerMap).sort((a, b) => b[1].count - a[1].count);
+    return sorted.map(([name, data], i) => `
+      <div class="sidebar-mgr-card">
+        <div class="sidebar-mgr-avatar" style="background:${colors[i % colors.length]}">${getInitials(name)}</div>
+        <div class="sidebar-mgr-info">
+          <div class="sidebar-mgr-name">${name}</div>
+          <div class="sidebar-mgr-tags">
+            ${Object.entries(data.processes).map(([p, c]) => `<span class="sidebar-mgr-tag">${p} <strong>${c}</strong></span>`).join("")}
+          </div>
+        </div>
+        <div class="sidebar-mgr-count">${data.count}</div>
+      </div>
+    `).join("");
+  }
+
+  let html = "";
+
+  // Today section
+  html += `<div class="sidebar-total">
+    <span class="sidebar-total-label">Today's Entries</span>
+    <span class="sidebar-total-num">${todayEntries.length}</span>
+  </div>`;
+  if (todayEntries.length > 0) {
+    html += buildManagerCards(todayEntries);
+  } else {
+    html += '<div class="sidebar-empty">No admissions recorded for today yet.</div>';
+  }
+
+  // Yesterday section
+  html += `<div class="sidebar-total" style="background:#4a5568;margin-top:18px;">
+    <span class="sidebar-total-label">Yesterday's Entries</span>
+    <span class="sidebar-total-num">${pureYesterday.length}</span>
+  </div>`;
+  if (pureYesterday.length > 0) {
+    html += buildManagerCards(pureYesterday);
+  } else {
+    html += '<div class="sidebar-empty">No admissions recorded for yesterday.</div>';
+  }
+
+  container.innerHTML = html;
+}
+
+// Auto-load sidebar on page load
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".main").classList.add("entry-mode");
+  document.querySelector(".header").classList.add("wide");
+  loadSidebar();
+});
+
+async function loadDashboard() {
+  dashLoading.style.display = "";
+  dashEmpty.style.display = "none";
+  tableHead.innerHTML = "";
+  tableBody.innerHTML = "";
+  dashStats.innerHTML = "";
+
+  try {
+    const res = await fetch(API_URL + "?action=fetch");
+    const json = await res.json();
+
+    dashLoading.style.display = "none";
+
+    if (json.status === "success" && json.data && json.data.length > 0) {
+      allEntries = json.data;
+      renderStats(allEntries);
+      renderTable(allEntries);
+    } else {
+      dashEmpty.style.display = "";
+    }
+  } catch (err) {
+    dashLoading.style.display = "none";
+    toast("Failed to load dashboard data", "error");
+  }
+}
+
+function renderStats(entries) {
+  const total = entries.length;
+  const done = entries.filter(e => (e["Admission Done/Cancelled"] || "").toString().toLowerCase() === "done").length;
+  const cancelled = entries.filter(e => (e["Admission Done/Cancelled"] || "").toString().toLowerCase() === "cancelled").length;
+  const pending = total - done - cancelled;
+
+  dashStats.innerHTML = `
+    <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#276749">${done}</div><div class="stat-label">Done</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#c53030">${cancelled}</div><div class="stat-label">Cancelled</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#c05621">${pending}</div><div class="stat-label">Pending</div></div>
+  `;
+
+  renderManagerSummary(entries);
+}
+
+function renderManagerSummary(entries) {
+  const managerSummary = document.getElementById("managerSummary");
+
+  // Get today's date string (YYYY-MM-DD)
+  const today = new Date();
+  const todayStr = today.getFullYear() + "-" +
+    String(today.getMonth() + 1).padStart(2, "0") + "-" +
+    String(today.getDate()).padStart(2, "0");
+
+  // Filter today's entries
+  const todayEntries = entries.filter(e => {
+    const dateVal = (e["Admission Done date"] || "").toString();
+    // Handle ISO format (2026-04-03T18:30:00.000Z) or simple date
+    return dateVal.startsWith(todayStr);
+  });
+
+  if (todayEntries.length === 0) {
+    // Also try matching by checking if date falls on today (for timezone offset)
+    const yesterday = new Date(today);
+    yesterday.setDate(yesterday.getDate() - 1);
+    const yStr = yesterday.getFullYear() + "-" +
+      String(yesterday.getMonth() + 1).padStart(2, "0") + "-" +
+      String(yesterday.getDate()).padStart(2, "0");
+
+    // Re-filter including timezone-shifted dates
+    const adjustedEntries = entries.filter(e => {
+      const dateVal = (e["Admission Done date"] || "").toString();
+      const dateOnly = dateVal.substring(0, 10);
+      return dateOnly === todayStr || dateOnly === yStr;
+    });
+
+    if (adjustedEntries.length === 0) {
+      managerSummary.innerHTML = `
+        <div class="mgr-section-title">Today's Manager Activity</div>
+        <p style="color:var(--text-muted);font-size:13px;text-align:center;padding:16px 0;">No admissions recorded for today yet.</p>
+      `;
+      return;
+    }
+    renderManagerCards(adjustedEntries, managerSummary);
+    return;
+  }
+
+  renderManagerCards(todayEntries, managerSummary);
+}
+
+function renderManagerCards(todayEntries, container) {
+  // Group by manager
+  const managerMap = {};
+  todayEntries.forEach(e => {
+    const mgr = (e["Manager"] || "Unknown").toString().trim();
+    if (!managerMap[mgr]) {
+      managerMap[mgr] = { count: 0, processes: new Set() };
+    }
+    managerMap[mgr].count++;
+    const proc = (e["Process"] || "").toString().trim();
+    if (proc) managerMap[mgr].processes.add(proc);
+  });
+
+  // Sort by count descending
+  const sorted = Object.entries(managerMap).sort((a, b) => b[1].count - a[1].count);
+
+  const getInitials = (name) => {
+    return name.split(" ").map(w => w[0]).join("").toUpperCase().substring(0, 2);
+  };
+
+  const colors = ["#1a365d", "#276749", "#c05621", "#9b2c2c", "#553c9a", "#2b6cb0", "#744210"];
+
+  container.innerHTML = `
+    <div class="mgr-section-title">Today's Manager Activity (${todayEntries.length} entries)</div>
+    <div class="mgr-grid">
+      ${sorted.map(([name, data], i) => `
+        <div class="mgr-card">
+          <div class="mgr-avatar" style="background:${colors[i % colors.length]}">${getInitials(name)}</div>
+          <div class="mgr-info">
+            <div class="mgr-name">${name}</div>
+            <div class="mgr-processes">
+              ${[...data.processes].map(p => `<span class="mgr-tag">${p}</span>`).join("")}
+            </div>
+          </div>
+          <div class="mgr-count">
+            <div class="mgr-count-num">${data.count}</div>
+            <div class="mgr-count-label">today</div>
+          </div>
+        </div>
+      `).join("")}
+    </div>
+  `;
+}
+
+function renderTable(entries) {
+  const columns = ["Process", "Admission Done date", "Application Number", "Candidate Name", "Contact Number", "Campus", "Course Selected", "Admission Done/Cancelled", "Counsellor Name", "Manager", "Team Leader"];
+
+  tableHead.innerHTML = "<tr>" + columns.map(c => `<th>${c}</th>`).join("") + "</tr>";
+
+  if (entries.length === 0) {
+    tableBody.innerHTML = `<tr><td colspan="${columns.length}" style="text-align:center;padding:30px;color:var(--text-muted)">No matching entries</td></tr>`;
+    return;
+  }
+
+  tableBody.innerHTML = entries.map(row => {
+    return "<tr>" + columns.map(col => {
+      let val = row[col] || "";
+      if (col === "Admission Done/Cancelled") {
+        const lower = val.toString().toLowerCase();
+        const cls = lower === "done" ? "status-done" : lower === "cancelled" ? "status-cancelled" : "status-pending";
+        return `<td><span class="status-badge ${cls}">${val}</span></td>`;
+      }
+      return `<td>${val}</td>`;
+    }).join("") + "</tr>";
+  }).join("");
+}
+
+// Search / filter
+searchBox.addEventListener("input", () => {
+  const q = searchBox.value.trim().toLowerCase();
+  if (!q) {
+    renderTable(allEntries);
+    return;
+  }
+  const filtered = allEntries.filter(row => {
+    return Object.values(row).some(v => v && v.toString().toLowerCase().includes(q));
+  });
+  renderTable(filtered);
+});
 </script>
 </body>
 </html>
