@@ -1195,10 +1195,15 @@ function getGrade(course) {
 function updateGrade() {
   const proc = processSelect.value;
   let course = "";
+
+  // Only show grade for Alliance University
   if (proc === "Alliance University") {
     course = courseSelect.value;
   } else {
-    course = courseText.value.trim();
+    // For all other processes, hide grade
+    gradeField.style.display = "none";
+    gradeInput.value = "";
+    return;
   }
 
   if (course) {
