@@ -857,10 +857,100 @@
 
         <div class="section-title">Course &amp; Team Info</div>
 
-        <div class="field">
+        <div class="field" id="courseFieldText">
           <label>Course Selected <span class="req">*</span></label>
-          <input type="text" name="Course Selected" placeholder="e.g. BBA, MBA, B.Tech" required>
+          <input type="text" id="courseText" placeholder="e.g. BBA, MBA, B.Tech" required>
           <div class="field-error">Course is required</div>
+        </div>
+
+        <div class="field" id="courseFieldSelect" style="display:none;">
+          <label>Course Selected <span class="req">*</span></label>
+          <select id="courseSelect">
+            <option value="">Select course</option>
+            <optgroup label="Core Programs">
+            <option>B.Tech – Computer Science & Engineering (CSE)</option>
+            <option>B.Tech – Information Technology (IT)</option>
+            <option>B.Tech – Electrical & Electronics Engineering (EEE)</option>
+            <option>B.Tech – Civil Engineering</option>
+            <option>B.Tech – Mechanical Engineering</option>
+            </optgroup>
+            <optgroup label="B.Tech (CSE) Specializations">
+            <option>B.Tech (CSE) – Artificial Intelligence & Machine Learning</option>
+            <option>B.Tech (CSE) – Data Analytics / Data Science</option>
+            <option>B.Tech (CSE) – Cloud Computing & Virtualization</option>
+            <option>B.Tech (CSE) – Cyber Security</option>
+            <option>B.Tech (CSE) – Blockchain Technology</option>
+            <option>B.Tech (CSE) – DevOps</option>
+            <option>B.Tech (CSE) – Full Stack Development</option>
+            <option>B.Tech (CSE) – Internet of Things (IoT)</option>
+            </optgroup>
+            <optgroup label="Lateral Entry">
+            <option>B.Tech (Lateral Entry) – Computer Science & Engineering</option>
+            <option>B.Tech (Lateral Entry) – Information Technology</option>
+            </optgroup>
+            <optgroup label="Bachelor of Liberal Arts (BLA)">
+            <option>BA (Liberal Arts)</option>
+            <option>B.Sc (Liberal Arts)</option>
+            <option>BFA (Painting & Sculpture)</option>
+            <option>BVA (Visual Arts)</option>
+            </optgroup>
+            <optgroup label="B.Sc & BA Programs">
+            <option>B.Sc Economics</option>
+            <option>B.Sc Chemistry</option>
+            <option>B.Sc Applied Mathematics</option>
+            <option>B.Sc Psychology</option>
+            <option>BA Journalism & Mass Communication</option>
+            <option>BA Media Studies</option>
+            <option>B.Sc Film & Media Studies</option>
+            <option>B.Sc Animation, VFX & Gaming</option>
+            </optgroup>
+            <optgroup label="Hotel Management & Culinary">
+            <option>BHM (Bachelor of Hotel Management)</option>
+            <option>B.Sc Culinary Science</option>
+            </optgroup>
+            <optgroup label="M.Tech Programs">
+            <option>M.Tech (CSE)</option>
+            <option>M.Tech (AI & ML)</option>
+            <option>M.Tech (Data Science)</option>
+            <option>M.Sc Data Science</option>
+            <option>MCA (Master of Computer Applications)</option>
+            </optgroup>
+            <optgroup label="MA & M.Sc Programs">
+            <option>MA (Economics)</option>
+            <option>MA (English)</option>
+            <option>MA (Public Policy)</option>
+            <option>M.Sc in Physics</option>
+            <option>M.Sc in Chemistry</option>
+            <option>M.Sc in Mathematics</option>
+            <option>M.Sc Economics</option>
+            <option>M.Com (Master of Commerce)</option>
+            </optgroup>
+            <optgroup label="MBA Programs">
+            <option>MBA (ASOB / Digital Transformation)</option>
+            <option>MBA (AAC)</option>
+            </optgroup>
+            <optgroup label="Other Programs">
+            <option>B.Des</option>
+            <option>BBA (ASOB)</option>
+            <option>BA LL.B</option>
+            <option>BBA LL.B</option>
+            <option>LL.B</option>
+            <option>LL.M</option>
+            <option>B.Com (ASOB)</option>
+            <option>B.Com (AAC)</option>
+            <option>BBA (AAC)</option>
+            <option>BCA (Bachelor of Computer Applications)</option>
+            <option>BA Public Policy</option>
+            </optgroup>
+          </select>
+          <div class="field-error">Please select a course</div>
+        </div>
+
+        <input type="hidden" name="Course Selected" id="courseFinal">
+
+        <div class="field" id="gradeField" style="display:none;">
+          <label>Grade</label>
+          <input type="text" name="Grade" id="gradeInput" value="" readonly style="background:#f0fff4;color:#276749;font-weight:700;font-size:18px;text-align:center;border:2px solid #c6f6d5;letter-spacing:2px;">
         </div>
 
         <div class="field">
@@ -896,6 +986,7 @@
             <option>Shipra Tripathi</option>
             <option>Abhishek Kapoor</option>
             <option>Manas Nayak</option>
+            <option>Aslam Khan</option>
           </select>
           <div class="field-error">Please select a manager</div>
         </div>
@@ -1026,15 +1117,135 @@ const summaryBox = document.getElementById("summaryBox");
 form.querySelectorAll("input, select").forEach(el => {
   el.addEventListener("input", () => {
     el.classList.remove("invalid");
-    el.closest(".field").querySelector(".field-error").classList.remove("show");
+    const errEl = el.closest(".field");
+    if (errEl) { const fe = errEl.querySelector(".field-error"); if (fe) fe.classList.remove("show"); }
   });
 });
+
+// Dynamic Course & Grade based on Process selection
+const processSelect = form.querySelector('[name="Process"]');
+const courseFieldText = document.getElementById("courseFieldText");
+const courseFieldSelect = document.getElementById("courseFieldSelect");
+const courseText = document.getElementById("courseText");
+const courseSelect = document.getElementById("courseSelect");
+const gradeField = document.getElementById("gradeField");
+const gradeInput = document.getElementById("gradeInput");
+
+const allianceCourses = ["B.Des", "BBA (ASOB)", "BA LL.B", "BBA LL.B", "LL.B"];
+
+processSelect.addEventListener("change", () => {
+  if (processSelect.value === "Alliance University") {
+    courseFieldText.style.display = "none";
+    courseText.removeAttribute("required");
+    courseFieldSelect.style.display = "";
+    courseSelect.setAttribute("required", "");
+  } else {
+    courseFieldSelect.style.display = "none";
+    courseSelect.removeAttribute("required");
+    courseSelect.value = "";
+    courseFieldText.style.display = "";
+    courseText.setAttribute("required", "");
+  }
+  updateGrade();
+});
+
+courseSelect.addEventListener("change", updateGrade);
+courseText.addEventListener("input", updateGrade);
+
+// Course-to-grade mapping (default is A+ for all others)
+const courseGrades = {
+  "B.Tech (Lateral Entry) – Computer Science & Engineering": "B+",
+  "B.Tech (Lateral Entry) – Information Technology": "B+",
+  "B.Tech – Electrical & Electronics Engineering (EEE)": "B+",
+  "B.Tech – Civil Engineering": "B+",
+  "B.Tech – Mechanical Engineering": "B+",
+  "MBA (ASOB / Digital Transformation)": "MBA+",
+  "MBA (AAC)": "MBA+",
+  "LL.M": "B+",
+  "B.Com (ASOB)": "B+",
+  "M.Tech (CSE)": "B+",
+  "M.Tech (AI & ML)": "B+",
+  "M.Tech (Data Science)": "B+",
+  "M.Sc Data Science": "B+",
+  "MCA (Master of Computer Applications)": "B+",
+  "MA (Economics)": "B+",
+  "MA (English)": "B+",
+  "MA (Public Policy)": "B+",
+  "M.Sc in Physics": "B+",
+  "M.Sc in Chemistry": "B+",
+  "M.Sc in Mathematics": "B+",
+  "M.Sc Economics": "B+",
+  "B.Com (AAC)": "B+",
+  "BBA (AAC)": "B+",
+  "B.Sc Economics": "A",
+  "B.Sc Chemistry": "A",
+  "B.Sc Applied Mathematics": "A",
+  "B.Sc Psychology": "A",
+  "BA Journalism & Mass Communication": "A",
+  "BA Media Studies": "A",
+  "BCA (Bachelor of Computer Applications)": "B+",
+  "BA Public Policy": "B+",
+  "M.Com (Master of Commerce)": "B+",
+};
+
+function getGrade(course) {
+  return courseGrades[course] || "A+";
+}
+
+function updateGrade() {
+  const proc = processSelect.value;
+  let course = "";
+  if (proc === "Alliance University") {
+    course = courseSelect.value;
+  } else {
+    course = courseText.value.trim();
+  }
+
+  if (course) {
+    const grade = getGrade(course);
+    gradeField.style.display = "";
+    gradeInput.value = grade;
+    // Style based on grade
+    if (grade === "A+") {
+      gradeInput.style.background = "#f0fff4";
+      gradeInput.style.color = "#276749";
+      gradeInput.style.borderColor = "#c6f6d5";
+    } else if (grade === "A") {
+      gradeInput.style.background = "#f0fff4";
+      gradeInput.style.color = "#2f855a";
+      gradeInput.style.borderColor = "#9ae6b4";
+    } else if (grade === "B+") {
+      gradeInput.style.background = "#fffaf0";
+      gradeInput.style.color = "#c05621";
+      gradeInput.style.borderColor = "#feebc8";
+    } else if (grade === "MBA+") {
+      gradeInput.style.background = "#ebf4ff";
+      gradeInput.style.color = "#2b6cb0";
+      gradeInput.style.borderColor = "#bee3f8";
+    } else {
+      gradeInput.style.background = "#faf9f7";
+      gradeInput.style.color = "#1a365d";
+      gradeInput.style.borderColor = "#e2ddd5";
+    }
+  } else {
+    gradeField.style.display = "none";
+    gradeInput.value = "";
+  }
+}
 
 // Reset clears validation states
 form.addEventListener("reset", () => {
   setTimeout(() => {
     form.querySelectorAll(".invalid").forEach(el => el.classList.remove("invalid"));
     form.querySelectorAll(".field-error.show").forEach(el => el.classList.remove("show"));
+    // Reset course/grade back to default
+    courseFieldText.style.display = "";
+    courseText.setAttribute("required", "");
+    courseFieldSelect.style.display = "none";
+    courseSelect.removeAttribute("required");
+    courseSelect.value = "";
+    gradeField.style.display = "none";
+    gradeInput.value = "";
   }, 0);
 });
 
@@ -1099,8 +1310,22 @@ form.addEventListener("submit", async (e) => {
   const cLast = document.getElementById("counsellorLast").value.trim();
   document.getElementById("counsellorFull").value = cFirst + " " + cLast;
 
+  // Sync course value
+  const processVal = form.querySelector('[name="Process"]').value;
+  if (processVal === "Alliance University") {
+    document.getElementById("courseFinal").value = document.getElementById("courseSelect").value;
+  } else {
+    document.getElementById("courseFinal").value = document.getElementById("courseText").value;
+  }
+
+  // Ensure grade is set
+  updateGrade();
+
   const data = {};
   new FormData(form).forEach((v, k) => { data[k] = v.trim(); });
+
+  // Explicitly add grade in case hidden field wasn't captured
+  data["Grade"] = document.getElementById("gradeInput").value || "";
 
   // Frontend duplicate check (within session)
   const appNum = data["Application Number"];
