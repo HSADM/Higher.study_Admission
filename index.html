@@ -764,6 +764,9 @@
             <option>Chandigarh University</option>
             <option>Presidency University</option>
             <option>KU</option>
+            <option>UAI</option>
+            <option>Driems University</option>
+            <option>GIFT University</option>
           </select>
           <div class="field-error">Please select a process</div>
         </div>
@@ -795,7 +798,20 @@
         <div class="field">
           <label>Campus <span class="req">*</span></label>
           <select name="Campus" required>
-            <option value="">Select state</option>
+            <option value="">Select campus</option>
+            <optgroup label="Cities">
+            <option>Mumbai</option>
+            <option>Gurugram</option>
+            <option>Raipur</option>
+            <option>Bengaluru</option>
+            <option>Jaipur</option>
+            <option>Lucknow</option>
+            <option>Gwalior</option>
+            <option>Unnao</option>
+            <option>Mohali</option>
+            <option>UP</option>
+            </optgroup>
+            <optgroup label="States">
             <option>Andhra Pradesh</option>
             <option>Arunachal Pradesh</option>
             <option>Assam</option>
@@ -824,6 +840,8 @@
             <option>Uttar Pradesh</option>
             <option>Uttarakhand</option>
             <option>West Bengal</option>
+            </optgroup>
+            <optgroup label="Union Territories">
             <option>Andaman and Nicobar Islands</option>
             <option>Chandigarh</option>
             <option>Dadra and Nagar Haveli and Daman and Diu</option>
@@ -832,6 +850,7 @@
             <option>Ladakh</option>
             <option>Lakshadweep</option>
             <option>Puducherry</option>
+            </optgroup>
           </select>
           <div class="field-error">Please select a campus</div>
         </div>
@@ -883,8 +902,19 @@
 
         <div class="field">
           <label>Team Leader <span class="req">*</span></label>
-          <input type="text" name="Team Leader" placeholder="Team leader's name" required>
-          <div class="field-error">Team leader name is required</div>
+          <select name="Team Leader" required>
+            <option value="">Select team leader</option>
+            <option>Antaryami Barik</option>
+            <option>Yashwant Kanaki</option>
+            <option>Kajal Sonone</option>
+            <option>Ruthvik Wakode</option>
+            <option>Devashish B</option>
+            <option>Bhakti Sawargaonkar</option>
+            <option>Priyanka Bhoi</option>
+            <option>Akshay Palsande</option>
+            <option>Vaishnavi Bhoyar</option>
+          </select>
+          <div class="field-error">Please select a team leader</div>
         </div>
 
         <div class="btn-row">
