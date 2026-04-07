@@ -946,7 +946,802 @@
           <div class="field-error">Please select a course</div>
         </div>
 
-        <input type="hidden" name="Course Selected" id="courseFinal">
+        <div class="field" id="courseFieldAmity" style="display:none;">
+          <label>Course Selected <span class="req">*</span></label>
+          <select id="courseSelectAmity">
+            <option value="">Select course</option>
+            <optgroup label="MBA Programs">
+            <option>MBA</option>
+            <option>MBA (3C)</option>
+            <option>MBA (International)</option>
+            <option>MBA (Banking & Finance)</option>
+            <option>Executive MBA (Sustainability Management)</option>
+            </optgroup>
+            <optgroup label="BBA Programs">
+            <option>BBA (3C)</option>
+            <option>BBA (International)</option>
+            <option>BBA (Hons. / Hons. with Research)</option>
+            <option>BBA (Business & Finance) (Hons. / Hons. with Research)</option>
+            </optgroup>
+            <optgroup label="B.Com Programs">
+            <option>B.Com (Hons. / Hons. with Research)</option>
+            <option>B.Com (Finance & Accounting) (Hons. / Hons. with Research)</option>
+            </optgroup>
+            <optgroup label="B.Sc Programs">
+            <option>B.Sc Economics (Hons. / Hons. with Research)</option>
+            <option>B.Sc (CP) (Hons. / Hons. with Research)</option>
+            <option>B.Sc Biotechnology (Hons. / Hons. with Research)</option>
+            <option>B.Sc IT (Hons. / Hons. with Research)</option>
+            </optgroup>
+            <optgroup label="Psychology">
+            <option>M.Sc Psychology</option>
+            <option>BA Applied Psychology (Hons. / Hons. with Research)</option>
+            </optgroup>
+            <optgroup label="Biotechnology">
+            <option>Professional Diploma (CP)</option>
+            <option>M.Sc Biotechnology</option>
+            <option>B.Tech Biotechnology</option>
+            <option>M.Tech Biotechnology</option>
+            <option>B.Tech + M.Tech (Biotechnology) Dual</option>
+            </optgroup>
+            <optgroup label="Science & IT">
+            <option>M.Sc (A&SS)</option>
+            <option>MCA</option>
+            <option>BCA (Hons. / Hons. with Research)</option>
+            </optgroup>
+            <optgroup label="Arts & Social Work">
+            <option>BA Economics (Hons. / Hons. with Research)</option>
+            <option>BSW (Hons. / Hons. with Research)</option>
+            <option>BA Liberal Arts (Hons. / Hons. with Research)</option>
+            <option>MSW</option>
+            </optgroup>
+            <optgroup label="Pharmacy">
+            <option>B.Pharm</option>
+            </optgroup>
+            <optgroup label="Engineering">
+            <option>B.Tech (ANE)</option>
+            <option>B.Tech (AME)</option>
+            </optgroup>
+            <optgroup label="Tourism & Travel">
+            <option>BTTM</option>
+            <option>MTTM</option>
+            </optgroup>
+            <optgroup label="Law">
+            <option>LL.M</option>
+            <option>BA LL.B (Hons.)</option>
+            <option>LL.B (Hons.)</option>
+            <option>LL.M (Executive)</option>
+            <option>BBA LL.B (Hons.)</option>
+            </optgroup>
+            <optgroup label="Mathematics & Science">
+            <option>B.Sc Mathematics (Hons. / Hons. with Research)</option>
+            <option>B.Sc Physics (Hons. / Hons. with Research)</option>
+            <option>B.Sc Chemistry (Hons. / Hons. with Research)</option>
+            <option>B.Stat (Hons. / Hons. with Research)</option>
+            <option>M.Sc (AP)</option>
+            <option>M.Sc (AC)</option>
+            <option>M.Sc (AM)</option>
+            </optgroup>
+            <optgroup label="Architecture & Design">
+            <option>B.Arch</option>
+            <option>B.Plan</option>
+            <option>B.I.D</option>
+            </optgroup>
+            <optgroup label="Media & Communication">
+            <option>MA Film & Television</option>
+            <option>BA Journalism & Mass Communication (International)</option>
+            <option>BA Journalism & Mass Communication (Hons. / Hons. with Research)</option>
+            <option>BA Media & Communication (Hons. / Hons. with Research)</option>
+            <option>B.Sc Animation & VFX (Hons. / Hons. with Research)</option>
+            <option>BA Journalism & Mass Communication (3C)</option>
+            <option>MA Journalism & Mass Communication</option>
+            <option>MA Advertising & Public Relations</option>
+            </optgroup>
+            <optgroup label="Engineering (Additional)">
+            <option>M.Tech (CSE)</option>
+            <option>B.Tech (ECE)</option>
+            <option>B.Tech (CSE)</option>
+            <option>B.Tech (AE)</option>
+            <option>B.Tech (ME) (3C)</option>
+            <option>B.Tech (CSE – International)</option>
+            <option>M.Tech (CSE – International)</option>
+            <option>B.Tech (CE)</option>
+            <option>M.Tech Defence Technology</option>
+            <option>M.Tech (ME)</option>
+            <option>B.Tech (CSE) (3C)</option>
+            <option>B.Tech (ECE) (3C)</option>
+            <option>B.Tech (CE) (3C)</option>
+            <option>B.Tech (ME)</option>
+            </optgroup>
+            <optgroup label="Design & Fashion">
+            <option>B.Des (TPD)</option>
+            <option>B.Des (FSID)</option>
+            <option>M.Des (Fashion Technology)</option>
+            <option>MA Fashion Communication & Journalism</option>
+            <option>MA Fashion Retail Management</option>
+            <option>B.Des (Fashion Communication)</option>
+            <option>B.Des (Fashion Design)</option>
+            <option>B.Des (Fashion Design) (3C)</option>
+            <option>MFA</option>
+            <option>BFA</option>
+            </optgroup>
+            <optgroup label="Languages & Arts">
+            <option>BA English (Hons. / Hons. with Research)</option>
+            <option>BA French (Hons. / Hons. with Research)</option>
+            </optgroup>
+            <optgroup label="MBA (Additional)">
+            <option>MBA (Logistics & Supply Chain Management)</option>
+            <option>BBA (Real Estate & Urban Infrastructure) (Hons. / Hons. with Research)</option>
+            <option>MBA (Real Estate & Urban Infrastructure)</option>
+            <option>MBA (Construction Project Management)</option>
+            </optgroup>
+          </select>
+          <div class="field-error">Please select a course</div>
+        </div>
+
+        <div class="field" id="courseFieldAmityLucknow" style="display:none;">
+          <label>Course Selected <span class="req">*</span></label>
+          <select id="courseSelectAmityLucknow">
+            <option value="">Select course</option>
+            <optgroup label="MBA Programs">
+            <option>MBA</option>
+            <option>MBA (3C)</option>
+            <option>MBA (International)</option>
+            <option>MBA (Digital Marketing)</option>
+            <option>MBA (Hospitality Management)</option>
+            </optgroup>
+            <optgroup label="BBA Programs">
+            <option>BBA</option>
+            <option>BBA (3C)</option>
+            <option>BBA (International)</option>
+            <option>BBA (Business Intelligence &amp; Data Analytics)</option>
+            <option>BBA (Tourism Management)</option>
+            </optgroup>
+            <optgroup label="B.Com &amp; M.Com">
+            <option>B.Com (Hons.)</option>
+            <option>M.Com</option>
+            </optgroup>
+            <optgroup label="Psychology">
+            <option>MA (Counselling Psychology)</option>
+            <option>MA (Clinical Psychology)</option>
+            <option>PGDCP (Post Graduate Diploma in Clinical Psychology)</option>
+            <option>BA (Hons.) Applied Psychology</option>
+            <option>B.Sc Clinical Psychology (Hons.)</option>
+            <option>MA (Clinical Psychology) – RCI Regulated</option>
+            </optgroup>
+            <optgroup label="Biotechnology &amp; Microbiology">
+            <option>Professional Diploma (CP)</option>
+            <option>M.Sc Biotechnology</option>
+            <option>B.Tech Biotechnology</option>
+            <option>B.Sc Biotechnology (Hons.)</option>
+            <option>M.Tech Biotechnology</option>
+            <option>B.Sc Microbiology (Hons.)</option>
+            <option>M.Sc Microbiology</option>
+            </optgroup>
+            <optgroup label="Education">
+            <option>B.Ed</option>
+            <option>M.Ed</option>
+            <option>Bachelor of Elementary Education</option>
+            </optgroup>
+            <optgroup label="IT &amp; Computer">
+            <option>BCA</option>
+            <option>B.Sc IT</option>
+            <option>MCA</option>
+            <option>B.Sc IT (AI &amp; Data Science) (Hons. / Hons. with Research)</option>
+            </optgroup>
+            <optgroup label="Social Work &amp; Arts">
+            <option>Bachelor of Social Work</option>
+            <option>MA History</option>
+            <option>MA Political Science</option>
+            <option>Master of Social Work</option>
+            <option>BA (Hons.) History</option>
+            <option>BA (Hons.) Political Science</option>
+            </optgroup>
+            <optgroup label="Pharmacy">
+            <option>B.Pharm</option>
+            <option>Pharm D</option>
+            <option>M.Pharm (Pharmaceutics)</option>
+            <option>M.Pharm (Pharmacology)</option>
+            </optgroup>
+            <optgroup label="Special Education">
+            <option>BA B.Ed Special Education (ID-PS)</option>
+            <option>B.Ed Special Education (LD)</option>
+            <option>Integrated BA B.Ed Special Education</option>
+            <option>Integrated B.Com B.Ed Special Education</option>
+            <option>Integrated B.Sc B.Ed Special Education</option>
+            </optgroup>
+            <optgroup label="Law">
+            <option>LL.M</option>
+            <option>LL.M (Criminal Law)</option>
+            <option>BA LL.B (Hons.)</option>
+            <option>LL.M (Corporate Law &amp; Commercial Studies)</option>
+            <option>Post Graduate Diploma in Medical Law &amp; Ethics</option>
+            <option>BBA LL.B (Hons.)</option>
+            <option>B.Com LL.B (Hons.)</option>
+            <option>LL.B</option>
+            </optgroup>
+            <optgroup label="Science &amp; Mathematics">
+            <option>M.Sc Data Science</option>
+            <option>M.Sc Environmental Science</option>
+            <option>M.Sc (Applied Physics)</option>
+            <option>M.Sc (Applied Chemistry)</option>
+            <option>M.Sc (Applied Mathematics)</option>
+            <option>B.Sc Mathematics (Hons.)</option>
+            <option>B.Sc Physics (Hons.)</option>
+            <option>B.Sc Chemistry (Hons.)</option>
+            <option>B.Stat</option>
+            <option>M.Stat</option>
+            <option>M.Sc Food &amp; Nutrition</option>
+            </optgroup>
+            <optgroup label="Architecture &amp; Design">
+            <option>B.Arch</option>
+            <option>M.I.D</option>
+            <option>B.I.D</option>
+            </optgroup>
+            <optgroup label="Media &amp; Communication">
+            <option>MA Advertising &amp; Marketing Management</option>
+            <option>BA Journalism &amp; Mass Communication (3C)</option>
+            <option>BA Journalism &amp; Mass Communication</option>
+            <option>MA Journalism &amp; Mass Communication</option>
+            </optgroup>
+            <optgroup label="Engineering">
+            <option>B.Tech (ECE)</option>
+            <option>B.Tech (CSE)</option>
+            <option>B.Tech (IT)</option>
+            <option>B.Tech (AE)</option>
+            <option>B.Tech (ME) (3C)</option>
+            <option>B.Tech (CSE – International)</option>
+            <option>B.Tech (IoT)</option>
+            <option>B.Tech (AI)</option>
+            <option>B.Tech (CE)</option>
+            <option>B.Tech CSE (Data Science)</option>
+            <option>B.Tech (EEE)</option>
+            <option>B.Tech (CSE) (3C)</option>
+            <option>B.Tech (ECE) (3C)</option>
+            <option>B.Tech (CE) (3C)</option>
+            <option>B.Tech (ME)</option>
+            </optgroup>
+            <optgroup label="M.Tech Programs">
+            <option>M.Tech (CSE)</option>
+            <option>M.Tech (CSE) Weekend</option>
+            <option>M.Tech (CSE – International)</option>
+            <option>M.Tech (EVT)</option>
+            <option>M.Tech (Electronics &amp; Communication)</option>
+            <option>M.Tech (Automobile Engineering)</option>
+            <option>M.Tech (Mechatronics)</option>
+            <option>M.Tech (Environmental Engineering)</option>
+            <option>M.Tech (Energy Science &amp; Technology)</option>
+            <option>M.Tech (Computer Networks &amp; Information Security)</option>
+            <option>M.Tech (Data Science)</option>
+            </optgroup>
+            <optgroup label="Fashion &amp; Fine Arts">
+            <option>B.Des (Fashion Communication)</option>
+            <option>B.Des (Fashion Design)</option>
+            <option>B.Des (Fashion Design) (3C)</option>
+            <option>M.Des (Fashion Technology)</option>
+            <option>Bachelor of Fine Arts</option>
+            <option>BFA (Animation)</option>
+            <option>MFA (Painting)</option>
+            <option>MFA (Applied Arts)</option>
+            </optgroup>
+            <optgroup label="Hotel &amp; Tourism">
+            <option>Bachelor of Hotel Management</option>
+            <option>Master of Tourism and Travel Management</option>
+            </optgroup>
+            <optgroup label="Languages">
+            <option>BA (Hons.) English</option>
+            <option>MA (English)</option>
+            </optgroup>
+          </select>
+          <div class="field-error">Please select a course</div>
+        </div>
+
+        <div class="field" id="courseFieldAmityBengaluru" style="display:none;">
+          <label>Course Selected <span class="req">*</span></label>
+          <select id="courseSelectAmityBengaluru">
+            <option value="">Select course</option>
+            <optgroup label="Management">
+            <option>MBA – Master of Business Administration</option>
+            <option>BBA – Bachelor of Business Administration</option>
+            <option>B.Com (H) – Bachelor of Commerce (Honours)</option>
+            </optgroup>
+            <optgroup label="Psychology">
+            <option>BA (H) Applied Psychology – Bachelor of Arts (Honours) in Applied Psychology</option>
+            <option>B.Sc (CP) – Bachelor of Science in Clinical Psychology</option>
+            <option>M.Sc (CP) – Master of Science in Clinical Psychology</option>
+            </optgroup>
+            <optgroup label="Biotechnology">
+            <option>M.Sc (BT) – Master of Science in Biotechnology</option>
+            <option>B.Tech (BT) – Bachelor of Technology in Biotechnology</option>
+            <option>B.Sc (H) BT – Bachelor of Science (Honours) in Biotechnology</option>
+            </optgroup>
+            <optgroup label="IT &amp; Computer">
+            <option>BCA – Bachelor of Computer Applications</option>
+            <option>MCA – Master of Computer Applications</option>
+            <option>M.Sc (DS) – Master of Science in Data Science</option>
+            <option>M.Sc (Cyber Security) – Master of Science in Cyber Security</option>
+            </optgroup>
+            <optgroup label="Arts &amp; Social Sciences">
+            <option>BA (PS&amp;E) – Bachelor of Arts in Political Science &amp; Economics</option>
+            <option>BA (EP&amp;PS) – Bachelor of Arts in Economics, Political Science &amp; Sociology</option>
+            </optgroup>
+            <optgroup label="Pharmacy">
+            <option>B.Pharm – Bachelor of Pharmacy</option>
+            </optgroup>
+            <optgroup label="Law">
+            <option>LL.M – Master of Laws</option>
+            <option>BA LL.B (H) – Bachelor of Arts + Bachelor of Laws (Honours)</option>
+            </optgroup>
+            <optgroup label="Science &amp; Mathematics">
+            <option>B.Sc (PC&amp;M) – Bachelor of Science in Physics, Chemistry &amp; Mathematics</option>
+            <option>B.Sc (EM&amp;S) – Bachelor of Science in Economics, Mathematics &amp; Statistics</option>
+            <option>B.Sc (CSM&amp;S) – Bachelor of Science in Computer Science, Mathematics &amp; Statistics</option>
+            <option>M.Sc (AP) – Master of Science in Applied Physics</option>
+            <option>M.Sc (AC) – Master of Science in Applied Chemistry</option>
+            <option>M.Sc (Statistics) – Master of Science in Statistics</option>
+            </optgroup>
+            <optgroup label="Media">
+            <option>BA (J&amp;MC) – Bachelor of Arts in Journalism &amp; Mass Communication</option>
+            </optgroup>
+            <optgroup label="Engineering">
+            <option>B.Tech (ECE) – Bachelor of Technology in Electronics &amp; Communication Engineering</option>
+            <option>B.Tech (CSE) – Bachelor of Technology in Computer Science &amp; Engineering</option>
+            <option>B.Tech (AI &amp; ML) – Bachelor of Technology in Artificial Intelligence &amp; Machine Learning</option>
+            </optgroup>
+          </select>
+          <div class="field-error">Please select a course</div>
+        </div>
+
+        <div class="field" id="courseFieldAmityGurugram" style="display:none;">
+          <label>Course Selected <span class="req">*</span></label>
+          <select id="courseSelectAmityGurugram">
+            <option value="">Select course</option>
+            <optgroup label="MBA Programs">
+            <option>MBA – Master of Business Administration</option>
+            <option>MBA (3C) – Master of Business Administration (Choice Based Credit System – 3C)</option>
+            <option>MBA (International) – Master of Business Administration (International)</option>
+            <option>MBA (BA) – Master of Business Administration (Business Analytics)</option>
+            <option>MBA (A&amp;PR) – Master of Business Administration (Advertising &amp; Public Relations)</option>
+            <option>MBA (Sustainability Management) – Master of Business Administration (Sustainability Management)</option>
+            <option>Executive MBA (Sustainability Management) – Executive Master of Business Administration (Sustainability Management)</option>
+            <option>MBA (Entrepreneurship, Finance &amp; Technology)</option>
+            <option>MBA (Hospitality &amp; Hotel Management)</option>
+            <option>MBA (Banking &amp; Finance)</option>
+            <option>MBA (Executive – for Working Professionals)</option>
+            </optgroup>
+            <optgroup label="BBA Programs">
+            <option>BBA (3C) – Bachelor of Business Administration (3C)</option>
+            <option>BBA (International) – Bachelor of Business Administration (International)</option>
+            <option>BBA (Hons. / Hons. with Research) – Bachelor of Business Administration (Honours / Honours with Research)</option>
+            <option>BBA (Business Analytics) (Hons. / Hons. with Research)</option>
+            <option>BBA (Business &amp; Finance) (Hons. / Hons. with Research)</option>
+            <option>BBA (Digital Marketing) (Hons. / Hons. with Research)</option>
+            <option>BBA (Fashion Business Management) (Hons. / Hons. with Research)</option>
+            </optgroup>
+            <optgroup label="B.Com &amp; M.Com">
+            <option>B.Com (Hons. / Hons. with Research) – Bachelor of Commerce (Honours / Honours with Research)</option>
+            <option>M.Com – Master of Commerce</option>
+            </optgroup>
+            <optgroup label="Nursing">
+            <option>M.Sc Nursing – Master of Science in Nursing</option>
+            <option>B.Sc Nursing – Bachelor of Science in Nursing</option>
+            </optgroup>
+            <optgroup label="Psychology &amp; Social Work">
+            <option>MA (Counselling Psychology)</option>
+            <option>BA Applied Psychology (Hons. / Hons. with Research)</option>
+            <option>MA Applied Psychology</option>
+            <option>B.Sc Clinical Psychology (Hons. / Hons. with Research)</option>
+            <option>MSW – Master of Social Work</option>
+            <option>M.Sc Clinical Psychology</option>
+            <option>MA Clinical Psychology</option>
+            <option>B.Sc Clinical Psychology (Hons.)</option>
+            <option>PGDRP – Post Graduate Diploma in Rehabilitation Psychology</option>
+            <option>Professional Diploma in Clinical Psychology</option>
+            </optgroup>
+            <optgroup label="Biotechnology">
+            <option>M.Sc Biotechnology</option>
+            <option>B.Tech Biotechnology</option>
+            <option>M.Tech Biotechnology</option>
+            <option>B.Sc Biotechnology (Hons. / Hons. with Research)</option>
+            </optgroup>
+            <optgroup label="Defence Technology">
+            <option>M.Tech Defence Technology</option>
+            <option>B.Tech Defence Technology</option>
+            <option>Integrated B.Tech + M.Tech (Defence Technology)</option>
+            </optgroup>
+            <optgroup label="IT &amp; Computer">
+            <option>M.Sc Cyber Security</option>
+            <option>MCA – Master of Computer Applications</option>
+            <option>BCA (Hons. / Hons. with Research)</option>
+            <option>B.Sc IT (Hons. / Hons. with Research)</option>
+            <option>M.Sc Data Science</option>
+            <option>PG Diploma in Data Science</option>
+            </optgroup>
+            <optgroup label="Pharmacy">
+            <option>B.Pharm – Bachelor of Pharmacy</option>
+            <option>M.Pharm (Pharmaceutics)</option>
+            <option>M.Pharm (Pharmaceutical Chemistry)</option>
+            </optgroup>
+            <optgroup label="Law">
+            <option>LL.M – Master of Laws</option>
+            <option>BA LL.B (Hons.)</option>
+            <option>BBA LL.B (Hons.)</option>
+            <option>B.Com LL.B (Hons.)</option>
+            </optgroup>
+            <optgroup label="Health Sciences">
+            <option>B.Optom – Bachelor of Optometry</option>
+            <option>M.Optometry – Master of Optometry</option>
+            <option>M.Optometry (Practitioner)</option>
+            <option>M.Sc Medical Microbiology &amp; Clinical Science Technology</option>
+            <option>M.Sc Speech-Language Pathology</option>
+            <option>B.Sc Dialysis &amp; Anaesthesia Technology (Hons. / Hons. with Research)</option>
+            <option>B.Sc Medical Microbiology &amp; Clinical Science Technology (Hons. / Hons. with Research)</option>
+            <option>MHA – Master of Hospital Administration</option>
+            <option>Bachelor in Audiology &amp; Speech-Language Pathology</option>
+            <option>M.Sc Dialysis &amp; Anaesthesia Technology</option>
+            <option>Master of Public Health</option>
+            <option>M.Sc Clinical Research</option>
+            <option>M.Sc Forensic Science</option>
+            </optgroup>
+            <optgroup label="Science &amp; Mathematics">
+            <option>B.Sc Mathematics (Hons. / Hons. with Research)</option>
+            <option>B.Sc Physics (Hons. / Hons. with Research)</option>
+            <option>B.Sc Chemistry (Hons. / Hons. with Research)</option>
+            <option>B.Sc Forensic Science (Hons. / Hons. with Research)</option>
+            <option>M.Sc Applied Physics</option>
+            <option>M.Sc Applied Chemistry</option>
+            <option>M.Sc Applied Mathematics</option>
+            </optgroup>
+            <optgroup label="Architecture">
+            <option>B.Arch – Bachelor of Architecture</option>
+            <option>M.Tech Urban &amp; Regional Planning</option>
+            </optgroup>
+            <optgroup label="Media &amp; Communication">
+            <option>BA Journalism &amp; Mass Communication (International)</option>
+            <option>BA Journalism &amp; Mass Communication (Hons. / Hons. with Research)</option>
+            <option>B.Sc Animation &amp; Visual Graphics (Hons. / Hons. with Research)</option>
+            <option>BA Film, Television &amp; OTT Production (Hons. / Hons. with Research)</option>
+            <option>PG Diploma in Journalism &amp; Mass Communication</option>
+            <option>BA Journalism &amp; Mass Communication (3C)</option>
+            <option>MA Journalism &amp; Mass Communication</option>
+            </optgroup>
+            <optgroup label="Environmental Science">
+            <option>B.Sc Environmental Science (Hons. / Hons. with Research)</option>
+            <option>M.Sc Environmental Sciences &amp; Management</option>
+            </optgroup>
+            <optgroup label="Economics">
+            <option>BA Economics (Hons. / Hons. with Research)</option>
+            <option>MA Economics</option>
+            </optgroup>
+            <optgroup label="Engineering">
+            <option>M.Tech Computer Science &amp; Engineering</option>
+            <option>B.Tech Electronics &amp; Communication Engineering</option>
+            <option>B.Tech Computer Science &amp; Engineering</option>
+            <option>B.Tech Aerospace Engineering</option>
+            <option>B.Tech Mechanical Engineering (3C)</option>
+            <option>B.Tech Computer Science &amp; Engineering (International)</option>
+            <option>Integrated B.Tech + M.Tech (Data Science)</option>
+            <option>Integrated B.Tech + M.Tech (Network &amp; Cyber Security)</option>
+            <option>M.Tech Network &amp; Cyber Security</option>
+            <option>B.Tech Artificial Intelligence &amp; Machine Learning</option>
+            <option>Integrated B.Tech + M.Tech (AI &amp; ML)</option>
+            <option>M.Tech Artificial Intelligence</option>
+            <option>M.Tech Computer Science &amp; Engineering (International)</option>
+            <option>M.Tech Electronics &amp; Communication</option>
+            <option>B.Tech Civil Engineering</option>
+            <option>M.Tech Structural &amp; Architectural Engineering</option>
+            <option>B.Tech + MBA (Dual Degree)</option>
+            <option>B.Tech Electrical &amp; Electronics Engineering</option>
+            <option>B.Tech Biomedical Engineering</option>
+            <option>M.Tech Civil Engineering</option>
+            <option>M.Tech Mechanical Engineering</option>
+            <option>M.Tech Data Science</option>
+            <option>B.Tech CSE (3C)</option>
+            <option>B.Tech ECE (3C)</option>
+            <option>B.Tech Civil Engineering (3C)</option>
+            <option>B.Tech Mechanical Engineering</option>
+            </optgroup>
+            <optgroup label="Fashion &amp; Fine Arts">
+            <option>B.I.D – Bachelor of Interior Design</option>
+            <option>M.Des Fashion Design &amp; Technology</option>
+            <option>B.Des Fashion Design</option>
+            <option>B.Des Fashion Design (3C)</option>
+            <option>MFA – Master of Fine Arts</option>
+            <option>BFA – Bachelor of Fine Arts</option>
+            </optgroup>
+            <optgroup label="Hotel &amp; Tourism">
+            <option>Bachelor of Hotel Management</option>
+            <option>BTTM – Bachelor of Travel &amp; Tourism Management</option>
+            </optgroup>
+            <optgroup label="Languages &amp; Arts">
+            <option>BA French (Hons. / Hons. with Research)</option>
+            <option>BA German (Hons. / Hons. with Research)</option>
+            <option>BA Spanish (Hons. / Hons. with Research)</option>
+            <option>MA English</option>
+            <option>BA English (Hons. / Hons. with Research)</option>
+            <option>BA Political Science (Hons. / Hons. with Research)</option>
+            <option>BA History (Hons. / Hons. with Research)</option>
+            <option>MA Political Science</option>
+            </optgroup>
+            <optgroup label="Other">
+            <option>M.Sc Renewable Energy</option>
+            <option>M.Sc Renewable Energy (Part-Time)</option>
+            </optgroup>
+          </select>
+          <div class="field-error">Please select a course</div>
+        </div>
+
+                <div class="field" id="courseFieldAmityRaipur" style="display:none;">
+          <label>Course Selected <span class="req">*</span></label>
+          <select id="courseSelectAmityRaipur">
+            <option value="">Select course</option>
+            <optgroup label="MBA Programs">
+            <option>MBA – Master of Business Administration</option>
+            <option>MBA (HHM) – Master of Business Administration (Hospitality &amp; Hotel Management)</option>
+            </optgroup>
+            <optgroup label="BBA &amp; B.Com">
+            <option>BBA (Hons. / Hons. with Research) – Bachelor of Business Administration (Honours / Honours with Research)</option>
+            <option>B.Com (Hons. / Hons. with Research) – Bachelor of Commerce (Honours / Honours with Research)</option>
+            <option>B.Com (CS) (Hons. / Hons. with Research) – Bachelor of Commerce in Computer Science (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Economics">
+            <option>BA Economics (Hons. / Hons. with Research) – Bachelor of Arts in Economics (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Psychology">
+            <option>BA Applied Psychology (Hons. / Hons. with Research) – Bachelor of Arts in Applied Psychology (Honours / Honours with Research)</option>
+            <option>MA Applied Psychology – Master of Arts in Applied Psychology</option>
+            <option>B.Sc Applied Psychology (Hons. / Hons. with Research) – Bachelor of Science in Applied Psychology (Honours / Honours with Research)</option>
+            <option>B.Sc Clinical Psychology (Hons.) – Bachelor of Science in Clinical Psychology (Honours)</option>
+            </optgroup>
+            <optgroup label="Biotechnology &amp; Microbiology">
+            <option>M.Sc Biotechnology – Master of Science in Biotechnology</option>
+            <option>B.Tech Biotechnology – Bachelor of Technology in Biotechnology</option>
+            <option>M.Tech Biotechnology – Master of Technology in Biotechnology</option>
+            <option>B.Sc Microbiology (Hons. / Hons. with Research) – Bachelor of Science in Microbiology (Honours / Honours with Research)</option>
+            <option>B.Sc Biotechnology (Hons. / Hons. with Research) – Bachelor of Science in Biotechnology (Honours / Honours with Research)</option>
+            <option>M.Sc Microbiology – Master of Science in Microbiology</option>
+            </optgroup>
+            <optgroup label="IT &amp; Computer">
+            <option>MCA – Master of Computer Applications</option>
+            <option>BCA (Hons. / Hons. with Research) – Bachelor of Computer Applications (Honours / Honours with Research)</option>
+            <option>B.Sc IT (Hons. / Hons. with Research) – Bachelor of Science in Information Technology (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Pharmacy">
+            <option>B.Pharm – Bachelor of Pharmacy</option>
+            </optgroup>
+            <optgroup label="Law">
+            <option>LL.M – Master of Laws</option>
+            <option>BA LL.B (Hons.) – Bachelor of Arts + Bachelor of Laws (Honours)</option>
+            <option>BBA LL.B (Hons.) – Bachelor of Business Administration + Bachelor of Laws (Honours)</option>
+            </optgroup>
+            <optgroup label="Architecture &amp; Design">
+            <option>B.Arch – Bachelor of Architecture</option>
+            <option>B.I.D – Bachelor of Interior Design</option>
+            </optgroup>
+            <optgroup label="Media &amp; Communication">
+            <option>BA Journalism &amp; Mass Communication (Hons. / Hons. with Research) – Bachelor of Arts in Journalism &amp; Mass Communication (Honours / Honours with Research)</option>
+            <option>MA Journalism &amp; Mass Communication – Master of Arts in Journalism &amp; Mass Communication</option>
+            </optgroup>
+            <optgroup label="Engineering">
+            <option>M.Tech Computer Science &amp; Engineering – Master of Technology in Computer Science &amp; Engineering</option>
+            <option>B.Tech Electronics &amp; Communication Engineering – Bachelor of Technology in Electronics &amp; Communication Engineering</option>
+            <option>B.Tech Computer Science &amp; Engineering – Bachelor of Technology in Computer Science &amp; Engineering</option>
+            <option>B.Tech Information Technology – Bachelor of Technology in Information Technology</option>
+            <option>M.Tech Electronics &amp; Communication – Master of Technology in Electronics &amp; Communication</option>
+            <option>B.Tech Civil Engineering – Bachelor of Technology in Civil Engineering</option>
+            <option>M.Tech Civil Engineering – Master of Technology in Civil Engineering</option>
+            <option>M.Tech Mechanical Engineering – Master of Technology in Mechanical Engineering</option>
+            <option>B.Tech Mechanical Engineering – Bachelor of Technology in Mechanical Engineering</option>
+            </optgroup>
+            <optgroup label="Fashion">
+            <option>B.Des Fashion Design – Bachelor of Design in Fashion Design</option>
+            </optgroup>
+            <optgroup label="Languages">
+            <option>MA English – Master of Arts in English</option>
+            <option>BA English (Hons. / Hons. with Research) – Bachelor of Arts in English (Honours / Honours with Research)</option>
+            </optgroup>
+          </select>
+          <div class="field-error">Please select a course</div>
+        </div>
+
+                <div class="field" id="courseFieldAmityJaipur" style="display:none;">
+          <label>Course Selected <span class="req">*</span></label>
+          <select id="courseSelectAmityJaipur">
+            <option value="">Select course</option>
+            <optgroup label="MBA Programs">
+            <option>MBA – Master of Business Administration</option>
+            <option>MBA (Executive – Working Professionals) – Master of Business Administration (Executive for Working Professionals)</option>
+            </optgroup>
+            <optgroup label="BBA &amp; B.Com">
+            <option>BBA (International) – Bachelor of Business Administration (International)</option>
+            <option>BBA (Hons. / Hons. with Research) – Bachelor of Business Administration (Honours / Honours with Research)</option>
+            <option>B.Com (Hons. / Hons. with Research) – Bachelor of Commerce (Honours / Honours with Research)</option>
+            <option>B.Com LL.B (Hons.) – Bachelor of Commerce + Bachelor of Laws (Honours)</option>
+            <option>BBA Hospitality Services &amp; Event Management (Hons. / Hons. with Research) – Bachelor of Business Administration in Hospitality Services &amp; Event Management (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Psychology">
+            <option>MA Psychology – Master of Arts in Psychology</option>
+            <option>M.Sc Psychology – Master of Science in Psychology</option>
+            <option>BA Applied Psychology (Hons. / Hons. with Research) – Bachelor of Arts in Applied Psychology (Honours / Honours with Research)</option>
+            <option>B.Sc Applied Psychology (Hons. / Hons. with Research) – Bachelor of Science in Applied Psychology (Honours / Honours with Research)</option>
+            <option>MA Clinical Psychology – Master of Arts in Clinical Psychology</option>
+            <option>Psy.D Clinical Psychology – Doctor of Psychology in Clinical Psychology</option>
+            <option>B.Sc Clinical Psychology (Hons.) – Bachelor of Science in Clinical Psychology (Honours)</option>
+            <option>Professional Diploma in Clinical Psychology</option>
+            </optgroup>
+            <optgroup label="Biotechnology &amp; Microbiology">
+            <option>M.Sc Biotechnology – Master of Science in Biotechnology</option>
+            <option>B.Tech Biotechnology – Bachelor of Technology in Biotechnology</option>
+            <option>B.Sc Biotechnology (Hons. / Hons. with Research) – Bachelor of Science in Biotechnology (Honours / Honours with Research)</option>
+            <option>B.Sc Microbiology (Hons. / Hons. with Research) – Bachelor of Science in Microbiology (Honours / Honours with Research)</option>
+            <option>M.Sc Industrial Microbiology – Master of Science in Industrial Microbiology</option>
+            </optgroup>
+            <optgroup label="IT &amp; Computer">
+            <option>M.Sc Data Science – Master of Science in Data Science</option>
+            <option>M.Sc Cyber Security – Master of Science in Cyber Security</option>
+            <option>MCA – Master of Computer Applications</option>
+            <option>BCA (Hons. / Hons. with Research) – Bachelor of Computer Applications (Honours / Honours with Research)</option>
+            <option>B.Sc IT (Hons. / Hons. with Research) – Bachelor of Science in Information Technology (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Pharmacy">
+            <option>B.Pharm – Bachelor of Pharmacy</option>
+            </optgroup>
+            <optgroup label="Law">
+            <option>LL.M – Master of Laws</option>
+            <option>BA LL.B (Hons.) – Bachelor of Arts + Bachelor of Laws (Honours)</option>
+            <option>BBA LL.B (Hons.) – Bachelor of Business Administration + Bachelor of Laws (Honours)</option>
+            </optgroup>
+            <optgroup label="Science &amp; Mathematics">
+            <option>B.Sc Forensic Science (Hons. / Hons. with Research) – Bachelor of Science in Forensic Science (Honours / Honours with Research)</option>
+            <option>M.Sc Applied Physics – Master of Science in Applied Physics</option>
+            <option>M.Sc Applied Chemistry – Master of Science in Applied Chemistry</option>
+            <option>M.Sc Applied Mathematics – Master of Science in Applied Mathematics</option>
+            </optgroup>
+            <optgroup label="Architecture &amp; Design">
+            <option>B.Arch – Bachelor of Architecture</option>
+            <option>B.I.D – Bachelor of Interior Design</option>
+            </optgroup>
+            <optgroup label="Media &amp; Communication">
+            <option>BA Journalism &amp; Mass Communication (Hons. / Hons. with Research) – Bachelor of Arts in Journalism &amp; Mass Communication (Honours / Honours with Research)</option>
+            <option>B.Sc Animation &amp; Visual Graphics – Bachelor of Science in Animation &amp; Visual Graphics</option>
+            <option>M.Sc Graphics &amp; Animation – Master of Science in Graphics &amp; Animation</option>
+            <option>MA Journalism &amp; Mass Communication – Master of Arts in Journalism &amp; Mass Communication</option>
+            </optgroup>
+            <optgroup label="Economics">
+            <option>BA Economics (Hons. / Hons. with Research) – Bachelor of Arts in Economics (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Engineering">
+            <option>B.Tech Bioinformatics – Bachelor of Technology in Bioinformatics</option>
+            <option>B.Tech Food Technology – Bachelor of Technology in Food Technology</option>
+            <option>M.Tech Computer Science &amp; Engineering – Master of Technology in Computer Science &amp; Engineering</option>
+            <option>B.Tech Electronics &amp; Communication Engineering – Bachelor of Technology in Electronics &amp; Communication Engineering</option>
+            <option>B.Tech Computer Science &amp; Engineering – Bachelor of Technology in Computer Science &amp; Engineering</option>
+            <option>B.Tech Information Technology – Bachelor of Technology in Information Technology</option>
+            <option>B.Tech Mechanical &amp; Automation Engineering – Bachelor of Technology in Mechanical &amp; Automation Engineering</option>
+            <option>M.Tech Electronics &amp; Communication – Master of Technology in Electronics &amp; Communication</option>
+            <option>B.Tech Civil Engineering – Bachelor of Technology in Civil Engineering</option>
+            <option>B.Tech Electrical &amp; Electronics Engineering – Bachelor of Technology in Electrical &amp; Electronics Engineering</option>
+            <option>B.Tech Chemical Engineering – Bachelor of Technology in Chemical Engineering</option>
+            </optgroup>
+            <optgroup label="Fashion &amp; Fine Arts">
+            <option>M.Des Design – Master of Design</option>
+            <option>B.Des Fashion Design – Bachelor of Design in Fashion Design</option>
+            <option>MFA – Master of Fine Arts</option>
+            <option>BFA – Bachelor of Fine Arts</option>
+            </optgroup>
+            <optgroup label="Hotel &amp; Tourism">
+            <option>Bachelor of Hotel Management</option>
+            <option>MTTM – Master of Tourism &amp; Travel Management</option>
+            </optgroup>
+            <optgroup label="Languages">
+            <option>MA English – Master of Arts in English</option>
+            <option>BA English (Hons. / Hons. with Research) – Bachelor of Arts in English (Honours / Honours with Research)</option>
+            <option>BA French (Hons. / Hons. with Research) – Bachelor of Arts in French (Honours / Honours with Research)</option>
+            <option>MA French – Master of Arts in French</option>
+            </optgroup>
+            <optgroup label="Other">
+            <option>M.Sc Bioinformatics – Master of Science in Bioinformatics</option>
+            <option>M.Sc Food Technology – Master of Science in Food Technology</option>
+            <option>MPT – Master of Physiotherapy</option>
+            <option>BPT – Bachelor of Physiotherapy</option>
+            <option>M.Sc Forensic Science – Master of Science in Forensic Science</option>
+            <option>BA Liberal Arts – Bachelor of Arts in Liberal Arts</option>
+            </optgroup>
+          </select>
+          <div class="field-error">Please select a course</div>
+        </div>
+
+                <div class="field" id="courseFieldAmityGwalior" style="display:none;">
+          <label>Course Selected <span class="req">*</span></label>
+          <select id="courseSelectAmityGwalior">
+            <option value="">Select course</option>
+            <optgroup label="MBA Programs">
+            <option>MBA – Master of Business Administration</option>
+            </optgroup>
+            <optgroup label="BBA &amp; B.Com">
+            <option>BBA (Hons. / Hons. with Research) – Bachelor of Business Administration (Honours / Honours with Research)</option>
+            <option>B.Com (Hons. / Hons. with Research) – Bachelor of Commerce (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Psychology">
+            <option>MA Clinical Psychology – Master of Arts in Clinical Psychology</option>
+            <option>BA Applied Psychology (Hons. / Hons. with Research) – Bachelor of Arts in Applied Psychology (Honours / Honours with Research)</option>
+            <option>MA Applied Psychology – Master of Arts in Applied Psychology</option>
+            <option>PGD (Guidance &amp; Counselling Psychology) – Post Graduate Diploma in Guidance &amp; Counselling Psychology</option>
+            <option>B.Sc Clinical Psychology (Hons. / Hons. with Research) – Bachelor of Science in Clinical Psychology (Honours / Honours with Research)</option>
+            <option>B.Sc Clinical Psychology (Hons.) – Bachelor of Science in Clinical Psychology (Honours)</option>
+            <option>PGDRP (A) – Post Graduate Diploma in Rehabilitation Psychology (Approved)</option>
+            <option>Professional Diploma in Clinical Psychology</option>
+            </optgroup>
+            <optgroup label="Biotechnology &amp; Microbiology">
+            <option>M.Sc Biotechnology – Master of Science in Biotechnology</option>
+            <option>B.Tech Biotechnology – Bachelor of Technology in Biotechnology</option>
+            <option>M.Tech Biotechnology – Master of Technology in Biotechnology</option>
+            <option>B.Sc Biotechnology (Hons. / Hons. with Research) – Bachelor of Science in Biotechnology (Honours / Honours with Research)</option>
+            <option>B.Sc + M.Sc Biotechnology (Dual Degree) – Integrated Bachelor &amp; Master of Science in Biotechnology</option>
+            </optgroup>
+            <optgroup label="IT &amp; Computer">
+            <option>MCA – Master of Computer Applications</option>
+            <option>BCA (Hons. / Hons. with Research) – Bachelor of Computer Applications (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Social Work &amp; Arts">
+            <option>BA Political Science (Hons. / Hons. with Research) – Bachelor of Arts in Political Science (Honours / Honours with Research)</option>
+            <option>BA History (Hons. / Hons. with Research) – Bachelor of Arts in History (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Pharmacy">
+            <option>B.Pharm – Bachelor of Pharmacy</option>
+            <option>M.Pharm (Pharmaceutics) – Master of Pharmacy in Pharmaceutics</option>
+            <option>M.Pharm (Pharmacology) – Master of Pharmacy in Pharmacology</option>
+            </optgroup>
+            <optgroup label="Law">
+            <option>LL.M – Master of Laws</option>
+            <option>BA LL.B (Hons.) – Bachelor of Arts + Bachelor of Laws (Honours)</option>
+            <option>LL.B (Hons.) – Bachelor of Laws (Honours)</option>
+            <option>BBA LL.B (Hons.) – Bachelor of Business Administration + Bachelor of Laws (Honours)</option>
+            </optgroup>
+            <optgroup label="Architecture &amp; Design">
+            <option>B.Arch – Bachelor of Architecture</option>
+            <option>M.I.D – Master of Interior Design</option>
+            <option>B.I.D – Bachelor of Interior Design</option>
+            </optgroup>
+            <optgroup label="Media &amp; Communication">
+            <option>BA Journalism &amp; Mass Communication (Hons. / Hons. with Research) – Bachelor of Arts in Journalism &amp; Mass Communication (Honours / Honours with Research)</option>
+            <option>B.Sc Animation &amp; Visual Graphics (Hons. / Hons. with Research) – Bachelor of Science in Animation &amp; Visual Graphics (Honours / Honours with Research)</option>
+            <option>MA Journalism &amp; Mass Communication – Master of Arts in Journalism &amp; Mass Communication</option>
+            </optgroup>
+            <optgroup label="Economics">
+            <option>BA Economics (Hons. / Hons. with Research) – Bachelor of Arts in Economics (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Engineering">
+            <option>M.Tech Computer Science &amp; Engineering – Master of Technology in Computer Science &amp; Engineering</option>
+            <option>B.Tech Electronics &amp; Communication Engineering – Bachelor of Technology in Electronics &amp; Communication Engineering</option>
+            <option>B.Tech Computer Science &amp; Engineering – Bachelor of Technology in Computer Science &amp; Engineering</option>
+            <option>B.Tech Information Technology – Bachelor of Technology in Information Technology</option>
+            <option>M.Tech Electronics &amp; Communication – Master of Technology in Electronics &amp; Communication</option>
+            <option>B.Tech Civil Engineering – Bachelor of Technology in Civil Engineering</option>
+            <option>M.Tech Civil Engineering – Master of Technology in Civil Engineering</option>
+            <option>M.Tech Mechanical Engineering – Master of Technology in Mechanical Engineering</option>
+            <option>M.Tech Structural Engineering – Master of Technology in Structural Engineering</option>
+            <option>M.Tech VLSI Design – Master of Technology in VLSI Design</option>
+            <option>B.Tech Mechanical Engineering – Bachelor of Technology in Mechanical Engineering</option>
+            </optgroup>
+            <optgroup label="Fashion &amp; Fine Arts">
+            <option>M.Des Fashion Design – Master of Design in Fashion Design</option>
+            <option>B.Des Fashion Design – Bachelor of Design in Fashion Design</option>
+            </optgroup>
+            <optgroup label="Languages">
+            <option>MA English – Master of Arts in English</option>
+            <option>BA English (Hons. / Hons. with Research) – Bachelor of Arts in English (Honours / Honours with Research)</option>
+            </optgroup>
+            <optgroup label="Other">
+            <option>B.Sc Biology (Hons. / Hons. with Research) – Bachelor of Science in Biology (Honours / Honours with Research)</option>
+            <option>B.Sc Computer Science (Hons. / Hons. with Research) – Bachelor of Science in Computer Science (Honours / Honours with Research)</option>
+            <option>M.Plan (Urban &amp; Regional Planning) – Master of Planning in Urban &amp; Regional Planning</option>
+            </optgroup>
+          </select>
+          <div class="field-error">Please select a course</div>
+        </div>
+
+                <input type="hidden" name="Course Selected" id="courseFinal">
 
         <div class="field" id="gradeField" style="display:none;">
           <label>Grade</label>
@@ -1128,28 +1923,645 @@ const courseFieldText = document.getElementById("courseFieldText");
 const courseFieldSelect = document.getElementById("courseFieldSelect");
 const courseText = document.getElementById("courseText");
 const courseSelect = document.getElementById("courseSelect");
+const courseSelectAmity = document.getElementById("courseSelectAmity");
+const courseFieldAmity = document.getElementById("courseFieldAmity");
+const courseSelectAmityLucknow = document.getElementById("courseSelectAmityLucknow");
+const courseFieldAmityLucknow = document.getElementById("courseFieldAmityLucknow");
+const courseSelectAmityBengaluru = document.getElementById("courseSelectAmityBengaluru");
+const courseSelectAmityGurugram = document.getElementById("courseSelectAmityGurugram");
+const courseFieldAmityGurugram = document.getElementById("courseFieldAmityGurugram");
+const courseSelectAmityRaipur = document.getElementById("courseSelectAmityRaipur");
+const courseFieldAmityRaipur = document.getElementById("courseFieldAmityRaipur");
+const courseSelectAmityJaipur = document.getElementById("courseSelectAmityJaipur");
+const courseFieldAmityJaipur = document.getElementById("courseFieldAmityJaipur");
+const courseSelectAmityGwalior = document.getElementById("courseSelectAmityGwalior");
+const courseFieldAmityGwalior = document.getElementById("courseFieldAmityGwalior");
+const courseFieldAmityBengaluru = document.getElementById("courseFieldAmityBengaluru");
 const gradeField = document.getElementById("gradeField");
 const gradeInput = document.getElementById("gradeInput");
+const campusSelect = form.querySelector('[name="Campus"]');
 
 const allianceCourses = ["B.Des", "BBA (ASOB)", "BA LL.B", "BBA LL.B", "LL.B"];
 
-processSelect.addEventListener("change", () => {
-  if (processSelect.value === "Alliance University") {
-    courseFieldText.style.display = "none";
-    courseText.removeAttribute("required");
+// Amity Mumbai grade mapping
+const amityMumbaiGrades = {
+  "MBA": "MBA+",
+  "MBA (3C)": "MBA+",
+  "BBA (3C)": "A+",
+  "BBA (International)": "A+",
+  "MBA (International)": "MBA+",
+  "BBA (Hons. / Hons. with Research)": "A+",
+  "B.Com (Hons. / Hons. with Research)": "B+",
+  "Executive MBA (Sustainability Management)": "B+",
+  "B.Sc Economics (Hons. / Hons. with Research)": "B+",
+  "BBA (Business & Finance) (Hons. / Hons. with Research)": "A",
+  "B.Com (Finance & Accounting) (Hons. / Hons. with Research)": "B+",
+  "MBA (Banking & Finance)": "MBA+",
+  "M.Sc Psychology": "B+",
+  "BA Applied Psychology (Hons. / Hons. with Research)": "B+",
+  "B.Sc (CP) (Hons. / Hons. with Research)": "B+",
+  "Professional Diploma (CP)": "A+",
+  "M.Sc Biotechnology": "B+",
+  "B.Tech Biotechnology": "A",
+  "M.Tech Biotechnology": "B+",
+  "B.Sc Biotechnology (Hons. / Hons. with Research)": "A",
+  "M.Sc (A&SS)": "B+",
+  "B.Tech + M.Tech (Biotechnology) Dual": "A",
+  "MCA": "A",
+  "BCA (Hons. / Hons. with Research)": "A",
+  "B.Sc IT (Hons. / Hons. with Research)": "B+",
+  "BA Economics (Hons. / Hons. with Research)": "B",
+  "BSW (Hons. / Hons. with Research)": "C",
+  "BA Liberal Arts (Hons. / Hons. with Research)": "B",
+  "MSW": "C",
+  "B.Pharm": "A+",
+  "B.Tech (ANE)": "A+",
+  "B.Tech (AME)": "A+",
+  "BTTM": "B",
+  "MTTM": "B+",
+  "LL.M": "A",
+  "BA LL.B (Hons.)": "A",
+  "LL.B (Hons.)": "B",
+  "LL.M (Executive)": "B",
+  "BBA LL.B (Hons.)": "A",
+  "B.Sc Mathematics (Hons. / Hons. with Research)": "B",
+  "B.Sc Physics (Hons. / Hons. with Research)": "B",
+  "B.Sc Chemistry (Hons. / Hons. with Research)": "B",
+  "B.Stat (Hons. / Hons. with Research)": "B",
+  "M.Sc (AP)": "C",
+  "M.Sc (AC)": "B",
+  "M.Sc (AM)": "B",
+  "B.Arch": "B+",
+  "B.Plan": "B+",
+  "B.I.D": "B+",
+  "MA Film & Television": "A",
+  "BA Journalism & Mass Communication (International)": "A+",
+  "BA Journalism & Mass Communication (Hons. / Hons. with Research)": "A",
+  "BA Media & Communication (Hons. / Hons. with Research)": "B",
+  "B.Sc Animation & VFX (Hons. / Hons. with Research)": "B+",
+  "BA Journalism & Mass Communication (3C)": "A+",
+  "MA Journalism & Mass Communication": "A",
+  "MA Advertising & Public Relations": "A",
+  "M.Tech (CSE)": "B+",
+  "B.Tech (ECE)": "A",
+  "B.Tech (CSE)": "A+",
+  "B.Tech (AE)": "A+",
+  "B.Tech (ME) (3C)": "A+",
+  "B.Tech (CSE – International)": "A+",
+  "M.Tech (CSE – International)": "A",
+  "B.Tech (CE)": "A",
+  "M.Tech Defence Technology": "B+",
+  "M.Tech (ME)": "B+",
+  "B.Tech (CSE) (3C)": "A+",
+  "B.Tech (ECE) (3C)": "A+",
+  "B.Tech (CE) (3C)": "A+",
+  "B.Tech (ME)": "A",
+  "B.Des (TPD)": "B+",
+  "B.Des (FSID)": "B+",
+  "M.Des (Fashion Technology)": "B+",
+  "MA Fashion Communication & Journalism": "B+",
+  "MA Fashion Retail Management": "B+",
+  "B.Des (Fashion Communication)": "B+",
+  "B.Des (Fashion Design)": "B+",
+  "B.Des (Fashion Design) (3C)": "A+",
+  "MFA": "C",
+  "BFA": "B",
+  "BA English (Hons. / Hons. with Research)": "C",
+  "BA French (Hons. / Hons. with Research)": "C",
+  "MBA (Logistics & Supply Chain Management)": "A+",
+  "BBA (Real Estate & Urban Infrastructure) (Hons. / Hons. with Research)": "A+",
+  "MBA (Real Estate & Urban Infrastructure)": "MBA+",
+  "MBA (Construction Project Management)": "MBA+",
+};
+
+// Amity Lucknow grade mapping
+const amityLucknowGrades = {
+  "MBA": "MBA+",
+  "B.Com (Hons.)": "B",
+  "BBA": "B+",
+  "MBA (3C)": "MBA+",
+  "BBA (3C)": "A",
+  "BBA (International)": "A",
+  "MBA (International)": "MBA+",
+  "BBA (Business Intelligence & Data Analytics)": "B+",
+  "MBA (Digital Marketing)": "MBA+",
+  "M.Com": "C",
+  "MA (Counselling Psychology)": "C",
+  "MA (Clinical Psychology)": "C",
+  "PGDCP (Post Graduate Diploma in Clinical Psychology)": "C",
+  "BA (Hons.) Applied Psychology": "C",
+  "B.Sc Clinical Psychology (Hons.)": "B",
+  "MA (Clinical Psychology) – RCI Regulated": "B+",
+  "Professional Diploma (CP)": "B+",
+  "M.Sc Biotechnology": "B",
+  "B.Tech Biotechnology": "B+",
+  "B.Sc Biotechnology (Hons.)": "B",
+  "M.Tech Biotechnology": "C",
+  "B.Sc Microbiology (Hons.)": "C",
+  "M.Sc Microbiology": "B",
+  "B.Ed": "C",
+  "M.Ed": "C",
+  "Bachelor of Elementary Education": "C",
+  "BCA": "B",
+  "B.Sc IT": "C",
+  "MCA": "B",
+  "B.Sc IT (AI & Data Science) (Hons. / Hons. with Research)": "C",
+  "Bachelor of Social Work": "C",
+  "MA History": "C",
+  "MA Political Science": "C",
+  "Master of Social Work": "C",
+  "BA (Hons.) History": "C",
+  "BA (Hons.) Political Science": "C",
+  "B.Pharm": "B",
+  "Pharm D": "B+",
+  "M.Pharm (Pharmaceutics)": "B",
+  "M.Pharm (Pharmacology)": "B",
+  "BA B.Ed Special Education (ID-PS)": "C",
+  "B.Ed Special Education (LD)": "C",
+  "Integrated BA B.Ed Special Education": "C",
+  "Integrated B.Com B.Ed Special Education": "C",
+  "Integrated B.Sc B.Ed Special Education": "C",
+  "LL.M": "C",
+  "LL.M (Criminal Law)": "C",
+  "BA LL.B (Hons.)": "B+",
+  "LL.M (Corporate Law & Commercial Studies)": "C",
+  "Post Graduate Diploma in Medical Law & Ethics": "C",
+  "BBA LL.B (Hons.)": "B+",
+  "B.Com LL.B (Hons.)": "C",
+  "LL.B": "C",
+  "M.Sc Data Science": "C",
+  "M.Sc Environmental Science": "C",
+  "M.Sc (Applied Physics)": "C",
+  "M.Sc (Applied Chemistry)": "C",
+  "M.Sc (Applied Mathematics)": "C",
+  "B.Sc Mathematics (Hons.)": "C",
+  "B.Sc Physics (Hons.)": "C",
+  "B.Sc Chemistry (Hons.)": "C",
+  "B.Stat": "C",
+  "M.Stat": "C",
+  "M.Sc Food & Nutrition": "B",
+  "B.Arch": "B",
+  "M.I.D": "C",
+  "B.I.D": "C",
+  "MA Advertising & Marketing Management": "C",
+  "BA Journalism & Mass Communication (3C)": "A",
+  "BA Journalism & Mass Communication": "B+",
+  "MA Journalism & Mass Communication": "B",
+  "M.Tech (CSE)": "C",
+  "M.Tech (CSE) Weekend": "C",
+  "B.Tech (ECE)": "B",
+  "B.Tech (CSE)": "B+",
+  "B.Tech (IT)": "B",
+  "B.Tech (AE)": "B",
+  "B.Tech (ME) (3C)": "A",
+  "B.Tech (CSE – International)": "A",
+  "B.Tech (IoT)": "B",
+  "B.Tech (AI)": "B",
+  "M.Tech (CSE – International)": "B",
+  "M.Tech (Electronics & Communication)": "C",
+  "M.Tech (EVT)": "B",
+  "B.Tech (CE)": "B",
+  "B.Tech CSE (Data Science)": "B+",
+  "B.Tech (EEE)": "B",
+  "M.Tech (Automobile Engineering)": "C",
+  "M.Tech (Mechatronics)": "C",
+  "M.Tech (Environmental Engineering)": "B",
+  "M.Tech (Energy Science & Technology)": "C",
+  "M.Tech (Computer Networks & Information Security)": "C",
+  "M.Tech (Data Science)": "C",
+  "B.Tech (CSE) (3C)": "A",
+  "B.Tech (ECE) (3C)": "A",
+  "B.Tech (CE) (3C)": "A",
+  "B.Tech (ME)": "B",
+  "B.Des (Fashion Communication)": "C",
+  "B.Des (Fashion Design)": "B",
+  "B.Des (Fashion Design) (3C)": "B+",
+  "M.Des (Fashion Technology)": "C",
+  "Bachelor of Fine Arts": "C",
+  "BFA (Animation)": "C",
+  "MFA (Painting)": "C",
+  "MFA (Applied Arts)": "C",
+  "MBA (Hospitality Management)": "A",
+  "BBA (Tourism Management)": "C",
+  "Bachelor of Hotel Management": "B",
+  "Master of Tourism and Travel Management": "C",
+  "BA (Hons.) English": "C",
+  "MA (English)": "C",
+};
+
+// Amity Bengaluru grade mapping
+const amityBengaluruGrades = {
+  "MBA – Master of Business Administration": "MBA+",
+  "B.Com (H) – Bachelor of Commerce (Honours)": "B+",
+  "BBA – Bachelor of Business Administration": "A+",
+  "BA (H) Applied Psychology – Bachelor of Arts (Honours) in Applied Psychology": "B+",
+  "B.Sc (CP) – Bachelor of Science in Clinical Psychology": "A",
+  "M.Sc (CP) – Master of Science in Clinical Psychology": "B+",
+  "M.Sc (BT) – Master of Science in Biotechnology": "B+",
+  "B.Tech (BT) – Bachelor of Technology in Biotechnology": "A+",
+  "B.Sc (H) BT – Bachelor of Science (Honours) in Biotechnology": "A+",
+  "BCA – Bachelor of Computer Applications": "A",
+  "M.Sc (DS) – Master of Science in Data Science": "B+",
+  "M.Sc (Cyber Security) – Master of Science in Cyber Security": "B+",
+  "MCA – Master of Computer Applications": "A",
+  "BA (PS&E) – Bachelor of Arts in Political Science & Economics": "B+",
+  "BA (EP&PS) – Bachelor of Arts in Economics, Political Science & Sociology": "B",
+  "B.Pharm – Bachelor of Pharmacy": "A+",
+  "LL.M – Master of Laws": "B+",
+  "BA LL.B (H) – Bachelor of Arts + Bachelor of Laws (Honours)": "A",
+  "B.Sc (PC&M) – Bachelor of Science in Physics, Chemistry & Mathematics": "B",
+  "B.Sc (EM&S) – Bachelor of Science in Economics, Mathematics & Statistics": "B",
+  "B.Sc (CSM&S) – Bachelor of Science in Computer Science, Mathematics & Statistics": "B",
+  "M.Sc (AP) – Master of Science in Applied Physics": "B+",
+  "M.Sc (AC) – Master of Science in Applied Chemistry": "B+",
+  "M.Sc (Statistics) – Master of Science in Statistics": "B+",
+  "BA (J&MC) – Bachelor of Arts in Journalism & Mass Communication": "B+",
+  "B.Tech (ECE) – Bachelor of Technology in Electronics & Communication Engineering": "A+",
+  "B.Tech (CSE) – Bachelor of Technology in Computer Science & Engineering": "A+",
+  "B.Tech (AI & ML) – Bachelor of Technology in Artificial Intelligence & Machine Learning": "A+",
+};
+
+
+// Amity Gurugram grade mapping
+const amityGurugramGrades = {
+  "MBA – Master of Business Administration": "MBA+",
+  "MBA (3C) – Master of Business Administration (Choice Based Credit System – 3C)": "MBA+",
+  "BBA (3C) – Bachelor of Business Administration (3C)": "A+",
+  "BBA (International) – Bachelor of Business Administration (International)": "A+",
+  "MBA (International) – Master of Business Administration (International)": "MBA+",
+  "MBA (BA) – Master of Business Administration (Business Analytics)": "MBA+",
+  "MBA (A&PR) – Master of Business Administration (Advertising & Public Relations)": "MBA+",
+  "BBA (Hons. / Hons. with Research) – Bachelor of Business Administration (Honours / Honours with Research)": "A+",
+  "MBA (Sustainability Management) – Master of Business Administration (Sustainability Management)": "MBA+",
+  "Executive MBA (Sustainability Management) – Executive Master of Business Administration (Sustainability Management)": "B+",
+  "BBA (Business Analytics) (Hons. / Hons. with Research)": "A",
+  "BBA (Business & Finance) (Hons. / Hons. with Research)": "A",
+  "BBA (Digital Marketing) (Hons. / Hons. with Research)": "A",
+  "BBA (Fashion Business Management) (Hons. / Hons. with Research)": "A",
+  "MBA (Entrepreneurship, Finance & Technology)": "MBA+",
+  "MBA (Hospitality & Hotel Management)": "MBA+",
+  "MBA (Banking & Finance)": "MBA+",
+  "MBA (Executive – for Working Professionals)": "B+",
+  "B.Com (Hons. / Hons. with Research) – Bachelor of Commerce (Honours / Honours with Research)": "A",
+  "M.Com – Master of Commerce": "B+",
+  "M.Sc Nursing – Master of Science in Nursing": "C",
+  "B.Sc Nursing – Bachelor of Science in Nursing": "B+",
+  "MA (Counselling Psychology)": "B",
+  "BA Applied Psychology (Hons. / Hons. with Research)": "B",
+  "MA Applied Psychology": "B",
+  "B.Sc Clinical Psychology (Hons. / Hons. with Research)": "B+",
+  "MSW – Master of Social Work": "B",
+  "M.Sc Clinical Psychology": "B+",
+  "M.Sc Biotechnology": "B+",
+  "B.Tech Biotechnology": "A+",
+  "M.Tech Biotechnology": "B+",
+  "B.Sc Biotechnology (Hons. / Hons. with Research)": "A",
+  "MA Clinical Psychology": "A+",
+  "B.Sc Clinical Psychology (Hons.)": "A",
+  "PGDRP – Post Graduate Diploma in Rehabilitation Psychology": "A+",
+  "Professional Diploma in Clinical Psychology": "A+",
+  "M.Tech Defence Technology": "B+",
+  "B.Tech Defence Technology": "A",
+  "Integrated B.Tech + M.Tech (Defence Technology)": "A",
+  "B.I.D – Bachelor of Interior Design": "B+",
+  "M.Sc Cyber Security": "B+",
+  "MCA – Master of Computer Applications": "A",
+  "BCA (Hons. / Hons. with Research)": "A",
+  "B.Sc IT (Hons. / Hons. with Research)": "B+",
+  "M.Sc Data Science": "B+",
+  "PG Diploma in Data Science": "B",
+  "B.Pharm – Bachelor of Pharmacy": "A",
+  "M.Pharm (Pharmaceutics)": "B+",
+  "M.Pharm (Pharmaceutical Chemistry)": "B+",
+  "LL.M – Master of Laws": "B+",
+  "BA LL.B (Hons.)": "A",
+  "BBA LL.B (Hons.)": "A",
+  "B.Com LL.B (Hons.)": "B+",
+  "B.Optom – Bachelor of Optometry": "B",
+  "M.Optometry – Master of Optometry": "B+",
+  "M.Optometry (Practitioner)": "B",
+  "M.Sc Medical Microbiology & Clinical Science Technology": "B+",
+  "M.Sc Speech-Language Pathology": "B+",
+  "B.Sc Dialysis & Anaesthesia Technology (Hons. / Hons. with Research)": "B",
+  "B.Sc Medical Microbiology & Clinical Science Technology (Hons. / Hons. with Research)": "B",
+  "MHA – Master of Hospital Administration": "A+",
+  "Bachelor in Audiology & Speech-Language Pathology": "B+",
+  "M.Sc Dialysis & Anaesthesia Technology": "B+",
+  "Master of Public Health": "B+",
+  "M.Sc Clinical Research": "B+",
+  "M.Sc Forensic Science": "B+",
+  "B.Sc Mathematics (Hons. / Hons. with Research)": "B",
+  "B.Sc Physics (Hons. / Hons. with Research)": "B",
+  "B.Sc Chemistry (Hons. / Hons. with Research)": "B",
+  "B.Sc Forensic Science (Hons. / Hons. with Research)": "B+",
+  "M.Sc Applied Physics": "C",
+  "M.Sc Applied Chemistry": "C",
+  "M.Sc Applied Mathematics": "C",
+  "B.Arch – Bachelor of Architecture": "B+",
+  "M.Tech Urban & Regional Planning": "B+",
+  "BA Journalism & Mass Communication (International)": "A+",
+  "BA Journalism & Mass Communication (Hons. / Hons. with Research)": "A",
+  "B.Sc Animation & Visual Graphics (Hons. / Hons. with Research)": "B",
+  "BA Film, Television & OTT Production (Hons. / Hons. with Research)": "B+",
+  "PG Diploma in Journalism & Mass Communication": "B+",
+  "BA Journalism & Mass Communication (3C)": "A+",
+  "MA Journalism & Mass Communication": "A",
+  "B.Sc Environmental Science (Hons. / Hons. with Research)": "B",
+  "M.Sc Environmental Sciences & Management": "B+",
+  "BA Economics (Hons. / Hons. with Research)": "B+",
+  "MA Economics": "B",
+  "M.Tech Computer Science & Engineering": "B+",
+  "B.Tech Electronics & Communication Engineering": "A",
+  "B.Tech Computer Science & Engineering": "A+",
+  "B.Tech Aerospace Engineering": "A",
+  "B.Tech Mechanical Engineering (3C)": "A+",
+  "M.Sc Renewable Energy": "B",
+  "M.Sc Renewable Energy (Part-Time)": "C",
+  "B.Tech Computer Science & Engineering (International)": "A+",
+  "Integrated B.Tech + M.Tech (Data Science)": "A",
+  "Integrated B.Tech + M.Tech (Network & Cyber Security)": "A",
+  "M.Tech Network & Cyber Security": "B+",
+  "B.Tech Artificial Intelligence & Machine Learning": "A+",
+  "Integrated B.Tech + M.Tech (AI & ML)": "A",
+  "M.Tech Artificial Intelligence": "B+",
+  "M.Tech Computer Science & Engineering (International)": "A",
+  "M.Tech Electronics & Communication": "B+",
+  "B.Tech Civil Engineering": "A",
+  "M.Tech Structural & Architectural Engineering": "B+",
+  "B.Tech + MBA (Dual Degree)": "A+",
+  "B.Tech Electrical & Electronics Engineering": "A",
+  "B.Tech Biomedical Engineering": "A",
+  "M.Tech Civil Engineering": "B+",
+  "M.Tech Mechanical Engineering": "B+",
+  "M.Tech Data Science": "B+",
+  "B.Tech CSE (3C)": "A+",
+  "B.Tech ECE (3C)": "A+",
+  "B.Tech Civil Engineering (3C)": "A+",
+  "B.Tech Mechanical Engineering": "A",
+  "M.Des Fashion Design & Technology": "B+",
+  "B.Des Fashion Design": "B+",
+  "B.Des Fashion Design (3C)": "A+",
+  "MFA – Master of Fine Arts": "B",
+  "BFA – Bachelor of Fine Arts": "B",
+  "Bachelor of Hotel Management": "B+",
+  "BTTM – Bachelor of Travel & Tourism Management": "B",
+  "BA French (Hons. / Hons. with Research)": "C",
+  "BA German (Hons. / Hons. with Research)": "C",
+  "BA Spanish (Hons. / Hons. with Research)": "C",
+  "MA English": "B",
+  "BA English (Hons. / Hons. with Research)": "B",
+  "BA Political Science (Hons. / Hons. with Research)": "B",
+  "BA History (Hons. / Hons. with Research)": "C",
+  "MA Political Science": "B",
+};
+
+
+// Amity Raipur grade mapping
+const amityRaipurGrades = {
+  "MBA – Master of Business Administration": "MBA+",
+  "BBA (Hons. / Hons. with Research) – Bachelor of Business Administration (Honours / Honours with Research)": "B+",
+  "BA Economics (Hons. / Hons. with Research) – Bachelor of Arts in Economics (Honours / Honours with Research)": "C",
+  "B.Com (Hons. / Hons. with Research) – Bachelor of Commerce (Honours / Honours with Research)": "B",
+  "B.Com (CS) (Hons. / Hons. with Research) – Bachelor of Commerce in Computer Science (Honours / Honours with Research)": "B",
+  "MBA (HHM) – Master of Business Administration (Hospitality & Hotel Management)": "MBA+",
+  "BA Applied Psychology (Hons. / Hons. with Research) – Bachelor of Arts in Applied Psychology (Honours / Honours with Research)": "C",
+  "MA Applied Psychology – Master of Arts in Applied Psychology": "C",
+  "B.Sc Applied Psychology (Hons. / Hons. with Research) – Bachelor of Science in Applied Psychology (Honours / Honours with Research)": "C",
+  "B.Sc Clinical Psychology (Hons.) – Bachelor of Science in Clinical Psychology (Honours)": "B+",
+  "M.Sc Biotechnology – Master of Science in Biotechnology": "B",
+  "B.Tech Biotechnology – Bachelor of Technology in Biotechnology": "B+",
+  "M.Tech Biotechnology – Master of Technology in Biotechnology": "B",
+  "B.Sc Microbiology (Hons. / Hons. with Research) – Bachelor of Science in Microbiology (Honours / Honours with Research)": "B",
+  "B.Sc Biotechnology (Hons. / Hons. with Research) – Bachelor of Science in Biotechnology (Honours / Honours with Research)": "B",
+  "M.Sc Microbiology – Master of Science in Microbiology": "B",
+  "MCA – Master of Computer Applications": "B",
+  "BCA (Hons. / Hons. with Research) – Bachelor of Computer Applications (Honours / Honours with Research)": "B",
+  "B.Sc IT (Hons. / Hons. with Research) – Bachelor of Science in Information Technology (Honours / Honours with Research)": "C",
+  "B.Pharm – Bachelor of Pharmacy": "B+",
+  "LL.M – Master of Laws": "C",
+  "BA LL.B (Hons.) – Bachelor of Arts + Bachelor of Laws (Honours)": "B+",
+  "BBA LL.B (Hons.) – Bachelor of Business Administration + Bachelor of Laws (Honours)": "B+",
+  "B.Arch – Bachelor of Architecture": "C",
+  "B.I.D – Bachelor of Interior Design": "B",
+  "BA Journalism & Mass Communication (Hons. / Hons. with Research) – Bachelor of Arts in Journalism & Mass Communication (Honours / Honours with Research)": "C",
+  "MA Journalism & Mass Communication – Master of Arts in Journalism & Mass Communication": "B",
+  "M.Tech Computer Science & Engineering – Master of Technology in Computer Science & Engineering": "B",
+  "B.Tech Electronics & Communication Engineering – Bachelor of Technology in Electronics & Communication Engineering": "B",
+  "B.Tech Computer Science & Engineering – Bachelor of Technology in Computer Science & Engineering": "B+",
+  "B.Tech Information Technology – Bachelor of Technology in Information Technology": "B",
+  "M.Tech Electronics & Communication – Master of Technology in Electronics & Communication": "B",
+  "B.Tech Civil Engineering – Bachelor of Technology in Civil Engineering": "B",
+  "M.Tech Civil Engineering – Master of Technology in Civil Engineering": "B",
+  "M.Tech Mechanical Engineering – Master of Technology in Mechanical Engineering": "B",
+  "B.Tech Mechanical Engineering – Bachelor of Technology in Mechanical Engineering": "B",
+  "B.Des Fashion Design – Bachelor of Design in Fashion Design": "C",
+  "MA English – Master of Arts in English": "C",
+  "BA English (Hons. / Hons. with Research) – Bachelor of Arts in English (Honours / Honours with Research)": "C",
+};
+
+
+// Amity Jaipur grade mapping
+const amityJaipurGrades = {
+  "MBA – Master of Business Administration": "MBA+",
+  "BBA (International) – Bachelor of Business Administration (International)": "A+",
+  "BBA (Hons. / Hons. with Research) – Bachelor of Business Administration (Honours / Honours with Research)": "A",
+  "B.Com (Hons. / Hons. with Research) – Bachelor of Commerce (Honours / Honours with Research)": "B+",
+  "MBA (Executive – Working Professionals) – Master of Business Administration (Executive for Working Professionals)": "MBA",
+  "MA Psychology – Master of Arts in Psychology": "B",
+  "M.Sc Psychology – Master of Science in Psychology": "B",
+  "BA Applied Psychology (Hons. / Hons. with Research) – Bachelor of Arts in Applied Psychology (Honours / Honours with Research)": "B",
+  "B.Sc Applied Psychology (Hons. / Hons. with Research) – Bachelor of Science in Applied Psychology (Honours / Honours with Research)": "B",
+  "M.Sc Biotechnology – Master of Science in Biotechnology": "B+",
+  "M.Sc Bioinformatics – Master of Science in Bioinformatics": "B+",
+  "B.Tech Biotechnology – Bachelor of Technology in Biotechnology": "A",
+  "B.Tech Bioinformatics – Bachelor of Technology in Bioinformatics": "B+",
+  "B.Tech Food Technology – Bachelor of Technology in Food Technology": "A",
+  "M.Sc Food Technology – Master of Science in Food Technology": "B+",
+  "B.Sc Biotechnology (Hons. / Hons. with Research) – Bachelor of Science in Biotechnology (Honours / Honours with Research)": "B+",
+  "MA Clinical Psychology – Master of Arts in Clinical Psychology": "A+",
+  "Psy.D Clinical Psychology – Doctor of Psychology in Clinical Psychology": "A+",
+  "B.Sc Clinical Psychology (Hons.) – Bachelor of Science in Clinical Psychology (Honours)": "A",
+  "Professional Diploma in Clinical Psychology": "A+",
+  "M.Sc Data Science – Master of Science in Data Science": "B+",
+  "M.Sc Cyber Security – Master of Science in Cyber Security": "B+",
+  "MCA – Master of Computer Applications": "A",
+  "BCA (Hons. / Hons. with Research) – Bachelor of Computer Applications (Honours / Honours with Research)": "B+",
+  "B.Sc IT (Hons. / Hons. with Research) – Bachelor of Science in Information Technology (Honours / Honours with Research)": "B",
+  "B.Sc Microbiology (Hons. / Hons. with Research) – Bachelor of Science in Microbiology (Honours / Honours with Research)": "B",
+  "M.Sc Industrial Microbiology – Master of Science in Industrial Microbiology": "B+",
+  "B.Pharm – Bachelor of Pharmacy": "B+",
+  "MPT – Master of Physiotherapy": "B",
+  "BPT – Bachelor of Physiotherapy": "B+",
+  "LL.M – Master of Laws": "B+",
+  "BA LL.B (Hons.) – Bachelor of Arts + Bachelor of Laws (Honours)": "A",
+  "BBA LL.B (Hons.) – Bachelor of Business Administration + Bachelor of Laws (Honours)": "A",
+  "B.Com LL.B (Hons.) – Bachelor of Commerce + Bachelor of Laws (Honours)": "B+",
+  "M.Sc Forensic Science – Master of Science in Forensic Science": "B+",
+  "B.Sc Forensic Science (Hons. / Hons. with Research) – Bachelor of Science in Forensic Science (Honours / Honours with Research)": "B+",
+  "M.Sc Applied Physics – Master of Science in Applied Physics": "C",
+  "M.Sc Applied Chemistry – Master of Science in Applied Chemistry": "C",
+  "M.Sc Applied Mathematics – Master of Science in Applied Mathematics": "C",
+  "B.Arch – Bachelor of Architecture": "B+",
+  "B.I.D – Bachelor of Interior Design": "B+",
+  "BA Journalism & Mass Communication (Hons. / Hons. with Research) – Bachelor of Arts in Journalism & Mass Communication (Honours / Honours with Research)": "B+",
+  "B.Sc Animation & Visual Graphics – Bachelor of Science in Animation & Visual Graphics": "B",
+  "M.Sc Graphics & Animation – Master of Science in Graphics & Animation": "B+",
+  "MA Journalism & Mass Communication – Master of Arts in Journalism & Mass Communication": "B+",
+  "M.Tech Computer Science & Engineering – Master of Technology in Computer Science & Engineering": "B+",
+  "B.Tech Electronics & Communication Engineering – Bachelor of Technology in Electronics & Communication Engineering": "B+",
+  "B.Tech Computer Science & Engineering – Bachelor of Technology in Computer Science & Engineering": "A+",
+  "B.Tech Information Technology – Bachelor of Technology in Information Technology": "B+",
+  "B.Tech Mechanical & Automation Engineering – Bachelor of Technology in Mechanical & Automation Engineering": "B+",
+  "M.Tech Electronics & Communication – Master of Technology in Electronics & Communication": "B+",
+  "B.Tech Civil Engineering – Bachelor of Technology in Civil Engineering": "B+",
+  "B.Tech Electrical & Electronics Engineering – Bachelor of Technology in Electrical & Electronics Engineering": "B+",
+  "B.Tech Chemical Engineering – Bachelor of Technology in Chemical Engineering": "B+",
+  "M.Des Design – Master of Design": "B+",
+  "B.Des Fashion Design – Bachelor of Design in Fashion Design": "B+",
+  "MFA – Master of Fine Arts": "C",
+  "BFA – Bachelor of Fine Arts": "C",
+  "BBA Hospitality Services & Event Management (Hons. / Hons. with Research) – Bachelor of Business Administration in Hospitality Services & Event Management (Honours / Honours with Research)": "A",
+  "Bachelor of Hotel Management": "B",
+  "MTTM – Master of Tourism & Travel Management": "B",
+  "MA English – Master of Arts in English": "C",
+  "BA English (Hons. / Hons. with Research) – Bachelor of Arts in English (Honours / Honours with Research)": "C",
+  "BA French (Hons. / Hons. with Research) – Bachelor of Arts in French (Honours / Honours with Research)": "C",
+  "MA French – Master of Arts in French": "C",
+  "BA Economics (Hons. / Hons. with Research) – Bachelor of Arts in Economics (Honours / Honours with Research)": "B",
+  "BA Liberal Arts – Bachelor of Arts in Liberal Arts": "B",
+};
+
+
+// Amity Gwalior grade mapping
+const amityGwaliorGrades = {
+  "MBA – Master of Business Administration": "MBA+",
+  "BBA (Hons. / Hons. with Research) – Bachelor of Business Administration (Honours / Honours with Research)": "B+",
+  "BA Economics (Hons. / Hons. with Research) – Bachelor of Arts in Economics (Honours / Honours with Research)": "B",
+  "B.Com (Hons. / Hons. with Research) – Bachelor of Commerce (Honours / Honours with Research)": "B+",
+  "MA Clinical Psychology – Master of Arts in Clinical Psychology": "B",
+  "BA Applied Psychology (Hons. / Hons. with Research) – Bachelor of Arts in Applied Psychology (Honours / Honours with Research)": "B",
+  "MA Applied Psychology – Master of Arts in Applied Psychology": "C",
+  "PGD (Guidance & Counselling Psychology) – Post Graduate Diploma in Guidance & Counselling Psychology": "C",
+  "B.Sc Clinical Psychology (Hons. / Hons. with Research) – Bachelor of Science in Clinical Psychology (Honours / Honours with Research)": "B",
+  "B.Sc Clinical Psychology (Hons.) – Bachelor of Science in Clinical Psychology (Honours)": "B+",
+  "PGDRP (A) – Post Graduate Diploma in Rehabilitation Psychology (Approved)": "B",
+  "Professional Diploma in Clinical Psychology": "A",
+  "M.Sc Biotechnology – Master of Science in Biotechnology": "B",
+  "B.Tech Biotechnology – Bachelor of Technology in Biotechnology": "A",
+  "M.Tech Biotechnology – Master of Technology in Biotechnology": "B+",
+  "B.Sc Biotechnology (Hons. / Hons. with Research) – Bachelor of Science in Biotechnology (Honours / Honours with Research)": "B",
+  "B.Sc Biology (Hons. / Hons. with Research) – Bachelor of Science in Biology (Honours / Honours with Research)": "C",
+  "B.Sc + M.Sc Biotechnology (Dual Degree) – Integrated Bachelor & Master of Science in Biotechnology": "C",
+  "MCA – Master of Computer Applications": "B+",
+  "BCA (Hons. / Hons. with Research) – Bachelor of Computer Applications (Honours / Honours with Research)": "B+",
+  "B.Sc Computer Science (Hons. / Hons. with Research) – Bachelor of Science in Computer Science (Honours / Honours with Research)": "B",
+  "B.Pharm – Bachelor of Pharmacy": "B+",
+  "M.Pharm (Pharmaceutics) – Master of Pharmacy in Pharmaceutics": "B+",
+  "M.Pharm (Pharmacology) – Master of Pharmacy in Pharmacology": "B+",
+  "BA Political Science (Hons. / Hons. with Research) – Bachelor of Arts in Political Science (Honours / Honours with Research)": "B",
+  "BA History (Hons. / Hons. with Research) – Bachelor of Arts in History (Honours / Honours with Research)": "B",
+  "LL.M – Master of Laws": "B+",
+  "BA LL.B (Hons.) – Bachelor of Arts + Bachelor of Laws (Honours)": "B+",
+  "LL.B (Hons.) – Bachelor of Laws (Honours)": "C",
+  "BBA LL.B (Hons.) – Bachelor of Business Administration + Bachelor of Laws (Honours)": "B+",
+  "B.Arch – Bachelor of Architecture": "B",
+  "M.Plan (Urban & Regional Planning) – Master of Planning in Urban & Regional Planning": "B",
+  "M.I.D – Master of Interior Design": "B",
+  "B.I.D – Bachelor of Interior Design": "B",
+  "BA Journalism & Mass Communication (Hons. / Hons. with Research) – Bachelor of Arts in Journalism & Mass Communication (Honours / Honours with Research)": "B+",
+  "B.Sc Animation & Visual Graphics (Hons. / Hons. with Research) – Bachelor of Science in Animation & Visual Graphics (Honours / Honours with Research)": "B",
+  "MA Journalism & Mass Communication – Master of Arts in Journalism & Mass Communication": "B+",
+  "M.Tech Computer Science & Engineering – Master of Technology in Computer Science & Engineering": "B+",
+  "B.Tech Electronics & Communication Engineering – Bachelor of Technology in Electronics & Communication Engineering": "B+",
+  "B.Tech Computer Science & Engineering – Bachelor of Technology in Computer Science & Engineering": "A",
+  "B.Tech Information Technology – Bachelor of Technology in Information Technology": "B+",
+  "M.Tech Electronics & Communication – Master of Technology in Electronics & Communication": "B+",
+  "B.Tech Civil Engineering – Bachelor of Technology in Civil Engineering": "B+",
+  "M.Tech Civil Engineering – Master of Technology in Civil Engineering": "B+",
+  "M.Tech Mechanical Engineering – Master of Technology in Mechanical Engineering": "B+",
+  "M.Tech Structural Engineering – Master of Technology in Structural Engineering": "B+",
+  "M.Tech VLSI Design – Master of Technology in VLSI Design": "B+",
+  "B.Tech Mechanical Engineering – Bachelor of Technology in Mechanical Engineering": "B+",
+  "M.Des Fashion Design – Master of Design in Fashion Design": "B",
+  "B.Des Fashion Design – Bachelor of Design in Fashion Design": "B",
+  "MA English – Master of Arts in English": "B",
+  "BA English (Hons. / Hons. with Research) – Bachelor of Arts in English (Honours / Honours with Research)": "B",
+};
+
+function switchCourseField() {
+  const proc = processSelect.value;
+  const campus = campusSelect.value;
+
+  // Hide all course dropdowns first
+  courseFieldText.style.display = "none";
+  courseFieldSelect.style.display = "none";
+  courseFieldAmity.style.display = "none";
+  courseFieldAmityLucknow.style.display = "none";
+  courseFieldAmityBengaluru.style.display = "none";
+  courseFieldAmityGurugram.style.display = "none";
+  courseFieldAmityRaipur.style.display = "none";
+  courseFieldAmityJaipur.style.display = "none";
+  courseFieldAmityGwalior.style.display = "none";
+  courseText.removeAttribute("required");
+  courseSelect.removeAttribute("required");
+  courseSelectAmity.removeAttribute("required");
+  courseSelectAmityLucknow.removeAttribute("required");
+  courseSelectAmityBengaluru.removeAttribute("required");
+  courseSelectAmityGurugram.removeAttribute("required");
+  courseSelectAmityRaipur.removeAttribute("required");
+  courseSelectAmityJaipur.removeAttribute("required");
+  courseSelectAmityGwalior.removeAttribute("required");
+  courseSelect.value = "";
+  courseSelectAmity.value = "";
+  courseSelectAmityLucknow.value = "";
+  courseSelectAmityBengaluru.value = "";
+  courseSelectAmityGurugram.value = "";
+  courseSelectAmityRaipur.value = "";
+  courseSelectAmityJaipur.value = "";
+  courseSelectAmityGwalior.value = "";
+
+  if (proc === "Alliance University") {
     courseFieldSelect.style.display = "";
     courseSelect.setAttribute("required", "");
+  } else if (proc === "Amity University" && campus === "Mumbai") {
+    courseFieldAmity.style.display = "";
+    courseSelectAmity.setAttribute("required", "");
+  } else if (proc === "Amity University" && campus === "Lucknow") {
+    courseFieldAmityLucknow.style.display = "";
+    courseSelectAmityLucknow.setAttribute("required", "");
+  } else if (proc === "Amity University" && campus === "Bengaluru") {
+    courseFieldAmityBengaluru.style.display = "";
+    courseSelectAmityBengaluru.setAttribute("required", "");
+  } else if (proc === "Amity University" && campus === "Gurugram") {
+    courseFieldAmityGurugram.style.display = "";
+    courseSelectAmityGurugram.setAttribute("required", "");
+  } else if (proc === "Amity University" && campus === "Raipur") {
+    courseFieldAmityRaipur.style.display = "";
+    courseSelectAmityRaipur.setAttribute("required", "");
+  } else if (proc === "Amity University" && campus === "Jaipur") {
+    courseFieldAmityJaipur.style.display = "";
+    courseSelectAmityJaipur.setAttribute("required", "");
+  } else if (proc === "Amity University" && campus === "Gwalior") {
+    courseFieldAmityGwalior.style.display = "";
+    courseSelectAmityGwalior.setAttribute("required", "");
   } else {
-    courseFieldSelect.style.display = "none";
-    courseSelect.removeAttribute("required");
-    courseSelect.value = "";
     courseFieldText.style.display = "";
     courseText.setAttribute("required", "");
   }
   updateGrade();
-});
+}
+
+processSelect.addEventListener("change", switchCourseField);
+campusSelect.addEventListener("change", switchCourseField);
 
 courseSelect.addEventListener("change", updateGrade);
+courseSelectAmity.addEventListener("change", updateGrade);
+courseSelectAmityLucknow.addEventListener("change", updateGrade);
+courseSelectAmityBengaluru.addEventListener("change", updateGrade);
+courseSelectAmityGurugram.addEventListener("change", updateGrade);
+courseSelectAmityRaipur.addEventListener("change", updateGrade);
+courseSelectAmityJaipur.addEventListener("change", updateGrade);
+courseSelectAmityGwalior.addEventListener("change", updateGrade);
 courseText.addEventListener("input", updateGrade);
 
 // Course-to-grade mapping (default is A+ for all others)
@@ -1194,11 +2606,34 @@ function getGrade(course) {
 
 function updateGrade() {
   const proc = processSelect.value;
+  const campus = campusSelect.value;
   let course = "";
+  let grade = "";
 
-  // Only show grade for Alliance University
   if (proc === "Alliance University") {
     course = courseSelect.value;
+    if (course) grade = getGrade(course);
+  } else if (proc === "Amity University" && campus === "Mumbai") {
+    course = courseSelectAmity.value;
+    if (course) grade = amityMumbaiGrades[course] || "";
+  } else if (proc === "Amity University" && campus === "Lucknow") {
+    course = courseSelectAmityLucknow.value;
+    if (course) grade = amityLucknowGrades[course] || "";
+  } else if (proc === "Amity University" && campus === "Bengaluru") {
+    course = courseSelectAmityBengaluru.value;
+    if (course) grade = amityBengaluruGrades[course] || "";
+  } else if (proc === "Amity University" && campus === "Gurugram") {
+    course = courseSelectAmityGurugram.value;
+    if (course) grade = amityGurugramGrades[course] || "";
+  } else if (proc === "Amity University" && campus === "Raipur") {
+    course = courseSelectAmityRaipur.value;
+    if (course) grade = amityRaipurGrades[course] || "";
+  } else if (proc === "Amity University" && campus === "Jaipur") {
+    course = courseSelectAmityJaipur.value;
+    if (course) grade = amityJaipurGrades[course] || "";
+  } else if (proc === "Amity University" && campus === "Gwalior") {
+    course = courseSelectAmityGwalior.value;
+    if (course) grade = amityGwaliorGrades[course] || "";
   } else {
     // For all other processes, hide grade
     gradeField.style.display = "none";
@@ -1206,8 +2641,7 @@ function updateGrade() {
     return;
   }
 
-  if (course) {
-    const grade = getGrade(course);
+  if (course && grade) {
     gradeField.style.display = "";
     gradeInput.value = grade;
     // Style based on grade
@@ -1227,6 +2661,14 @@ function updateGrade() {
       gradeInput.style.background = "#ebf4ff";
       gradeInput.style.color = "#2b6cb0";
       gradeInput.style.borderColor = "#bee3f8";
+    } else if (grade === "B") {
+      gradeInput.style.background = "#fffaf0";
+      gradeInput.style.color = "#975a16";
+      gradeInput.style.borderColor = "#feebc8";
+    } else if (grade === "C") {
+      gradeInput.style.background = "#fff5f5";
+      gradeInput.style.color = "#c53030";
+      gradeInput.style.borderColor = "#fed7d7";
     } else {
       gradeInput.style.background = "#faf9f7";
       gradeInput.style.color = "#1a365d";
@@ -1249,6 +2691,27 @@ form.addEventListener("reset", () => {
     courseFieldSelect.style.display = "none";
     courseSelect.removeAttribute("required");
     courseSelect.value = "";
+    courseFieldAmity.style.display = "none";
+    courseSelectAmity.removeAttribute("required");
+    courseSelectAmity.value = "";
+    courseFieldAmityLucknow.style.display = "none";
+    courseSelectAmityLucknow.removeAttribute("required");
+    courseSelectAmityLucknow.value = "";
+    courseFieldAmityBengaluru.style.display = "none";
+    courseSelectAmityBengaluru.removeAttribute("required");
+    courseSelectAmityBengaluru.value = "";
+    courseFieldAmityGurugram.style.display = "none";
+    courseSelectAmityGurugram.removeAttribute("required");
+    courseSelectAmityGurugram.value = "";
+    courseFieldAmityRaipur.style.display = "none";
+    courseSelectAmityRaipur.removeAttribute("required");
+    courseSelectAmityRaipur.value = "";
+    courseFieldAmityJaipur.style.display = "none";
+    courseSelectAmityJaipur.removeAttribute("required");
+    courseSelectAmityJaipur.value = "";
+    courseFieldAmityGwalior.style.display = "none";
+    courseSelectAmityGwalior.removeAttribute("required");
+    courseSelectAmityGwalior.value = "";
     gradeField.style.display = "none";
     gradeInput.value = "";
   }, 0);
@@ -1317,8 +2780,23 @@ form.addEventListener("submit", async (e) => {
 
   // Sync course value
   const processVal = form.querySelector('[name="Process"]').value;
+  const campusVal = form.querySelector('[name="Campus"]').value;
   if (processVal === "Alliance University") {
     document.getElementById("courseFinal").value = document.getElementById("courseSelect").value;
+  } else if (processVal === "Amity University" && campusVal === "Mumbai") {
+    document.getElementById("courseFinal").value = document.getElementById("courseSelectAmity").value;
+  } else if (processVal === "Amity University" && campusVal === "Lucknow") {
+    document.getElementById("courseFinal").value = document.getElementById("courseSelectAmityLucknow").value;
+  } else if (processVal === "Amity University" && campusVal === "Bengaluru") {
+    document.getElementById("courseFinal").value = document.getElementById("courseSelectAmityBengaluru").value;
+  } else if (processVal === "Amity University" && campusVal === "Gurugram") {
+    document.getElementById("courseFinal").value = document.getElementById("courseSelectAmityGurugram").value;
+  } else if (processVal === "Amity University" && campusVal === "Raipur") {
+    document.getElementById("courseFinal").value = document.getElementById("courseSelectAmityRaipur").value;
+  } else if (processVal === "Amity University" && campusVal === "Jaipur") {
+    document.getElementById("courseFinal").value = document.getElementById("courseSelectAmityJaipur").value;
+  } else if (processVal === "Amity University" && campusVal === "Gwalior") {
+    document.getElementById("courseFinal").value = document.getElementById("courseSelectAmityGwalior").value;
   } else {
     document.getElementById("courseFinal").value = document.getElementById("courseText").value;
   }
