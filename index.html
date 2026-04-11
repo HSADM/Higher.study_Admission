@@ -722,6 +722,164 @@
     justify-content: center;
   }
 
+  /* — Searchable Dropdown — */
+  .search-select-wrap {
+    position: relative;
+  }
+  .search-select-wrap input.ss-search {
+    width: 100%;
+    padding: 10px 36px 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: #faf9f7;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    text-overflow: ellipsis;
+  }
+  .search-select-wrap input.ss-search:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(26,54,93,0.1);
+    background: #fff;
+    cursor: text;
+  }
+  .search-select-wrap input.ss-search.invalid {
+    border-color: var(--error);
+    box-shadow: 0 0 0 3px rgba(197,48,48,0.08);
+  }
+  .search-select-wrap .ss-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-muted);
+    font-size: 10px;
+  }
+  .ss-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 260px;
+    overflow-y: auto;
+    background: #fff;
+    border: 1.5px solid var(--primary-light);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    z-index: 50;
+  }
+  .ss-dropdown.open { display: block; }
+  .ss-group-label {
+    padding: 8px 14px 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    background: #f7f6f3;
+    border-top: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+  }
+  .ss-option {
+    padding: 9px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+    white-space: normal;
+    word-wrap: break-word;
+    line-height: 1.4;
+  }
+  .ss-option:hover, .ss-option.highlighted {
+    background: #edf2f7;
+    color: var(--primary);
+  }
+  .ss-no-results {
+    padding: 16px 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
+  /* — Searchable Dropdown — */
+  .search-select-wrap {
+    position: relative;
+  }
+  .search-select-wrap input.ss-search {
+    width: 100%;
+    padding: 10px 36px 10px 14px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 14px;
+    border: 1.5px solid var(--border);
+    border-radius: 8px;
+    background: #faf9f7;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .search-select-wrap input.ss-search:focus {
+    border-color: var(--primary-light);
+    box-shadow: 0 0 0 3px rgba(26,54,93,0.1);
+    background: #fff;
+  }
+  .search-select-wrap .ss-arrow {
+    position: absolute;
+    right: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+    color: var(--text-muted);
+    font-size: 10px;
+  }
+  .ss-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0; right: 0;
+    background: #fff;
+    border: 1.5px solid var(--border);
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 50;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+  }
+  .ss-dropdown.open { display: block; }
+  .ss-group-label {
+    padding: 8px 14px 4px;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    background: #faf9f7;
+    position: sticky;
+    top: 0;
+  }
+  .ss-option {
+    padding: 8px 14px;
+    font-size: 13px;
+    cursor: pointer;
+    color: var(--text);
+    transition: background 0.15s;
+  }
+  .ss-option:hover, .ss-option.highlighted { background: #edf2f7; }
+  .ss-option.selected { background: #ebf4ff; font-weight: 600; }
+  .ss-no-match {
+    padding: 16px 14px;
+    font-size: 13px;
+    color: var(--text-muted);
+    text-align: center;
+  }
+
   /* — Accessibility — */
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
@@ -2248,7 +2406,7 @@ const amityMumbaiGrades = {
   "BFA": "B",
   "BA English (Hons. / Hons. with Research)": "C",
   "BA French (Hons. / Hons. with Research)": "C",
-  "MBA (Logistics & Supply Chain Management)": "A+",
+  "MBA (Logistics & Supply Chain Management)": "MBA+",
   "BBA (Real Estate & Urban Infrastructure) (Hons. / Hons. with Research)": "A+",
   "MBA (Real Estate & Urban Infrastructure)": "MBA+",
   "MBA (Construction Project Management)": "MBA+",
@@ -2943,7 +3101,33 @@ function switchCourseField() {
   updateGrade();
 }
 
-processSelect.addEventListener("change", switchCourseField);
+// Process-specific campus restrictions
+const processCampusMap = {
+  "Chandigarh University": ["Mohali", "Unnao"],
+};
+
+// Store all original campus options
+const allCampusOptions = campusSelect.innerHTML;
+
+function filterCampus() {
+  const proc = processSelect.value;
+  if (processCampusMap[proc]) {
+    const allowed = processCampusMap[proc];
+    campusSelect.innerHTML = '<option value="">Select campus</option>';
+    allowed.forEach(c => {
+      const opt = document.createElement("option");
+      opt.value = c;
+      opt.textContent = c;
+      campusSelect.appendChild(opt);
+    });
+  } else {
+    campusSelect.innerHTML = allCampusOptions;
+  }
+  campusSelect.value = "";
+  switchCourseField();
+}
+
+processSelect.addEventListener("change", filterCampus);
 campusSelect.addEventListener("change", switchCourseField);
 
 courseSelect.addEventListener("change", updateGrade);
@@ -3034,6 +3218,12 @@ function updateGrade() {
   } else if (proc === "Chandigarh University" && campus === "Mohali") {
     course = courseSelectCUMohali.value;
     if (course) grade = cuMohaliGrades[course] || "";
+  } else if (proc === "Presidency University") {
+    course = courseText.value.trim();
+    if (course) grade = "A+";
+  } else if (proc === "Pearl University") {
+    course = courseText.value.trim();
+    if (course) grade = "A";
   } else {
     // For all other processes, hide grade
     gradeField.style.display = "none";
@@ -3477,13 +3667,168 @@ function renderSidebarManager(entries, container) {
   container.innerHTML = html;
 }
 
-// Auto-load sidebar on page load
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".main").classList.add("entry-mode");
-  document.querySelector(".header").classList.add("wide");
-  loadSidebar();
+// ——————————————————————————————————————
+// Searchable Dropdown for Course Selects
+// ——————————————————————————————————————
+function makeSearchable(selectEl) {
+  if (!selectEl || selectEl.dataset.searchified) return;
+  selectEl.dataset.searchified = "1";
+  selectEl.style.display = "none";
+
+  const wrap = document.createElement("div");
+  wrap.className = "search-select-wrap";
+  selectEl.parentNode.insertBefore(wrap, selectEl);
+  wrap.appendChild(selectEl);
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.className = "ss-search";
+  input.placeholder = "Type to search courses...";
+  input.autocomplete = "off";
+  wrap.appendChild(input);
+
+  const arrow = document.createElement("span");
+  arrow.className = "ss-arrow";
+  arrow.textContent = "▼";
+  wrap.appendChild(arrow);
+
+  const dd = document.createElement("div");
+  dd.className = "ss-dropdown";
+  wrap.appendChild(dd);
+
+  // Build options from select
+  function buildOptions(filter) {
+    dd.innerHTML = "";
+    const q = (filter || "").toLowerCase();
+    let hasResults = false;
+    const groups = selectEl.querySelectorAll("optgroup");
+    if (groups.length > 0) {
+      groups.forEach(g => {
+        const opts = Array.from(g.querySelectorAll("option")).filter(o =>
+          o.value && o.textContent.toLowerCase().includes(q)
+        );
+        if (opts.length > 0) {
+          hasResults = true;
+          const lbl = document.createElement("div");
+          lbl.className = "ss-group-label";
+          lbl.textContent = g.label;
+          dd.appendChild(lbl);
+          opts.forEach(o => {
+            const div = document.createElement("div");
+            div.className = "ss-option";
+            div.textContent = o.textContent;
+            div.dataset.value = o.value;
+            div.addEventListener("mousedown", (e) => {
+              e.preventDefault();
+              selectOption(o.value, o.textContent);
+            });
+            dd.appendChild(div);
+          });
+        }
+      });
+    } else {
+      Array.from(selectEl.options).filter(o =>
+        o.value && o.textContent.toLowerCase().includes(q)
+      ).forEach(o => {
+        hasResults = true;
+        const div = document.createElement("div");
+        div.className = "ss-option";
+        div.textContent = o.textContent;
+        div.dataset.value = o.value;
+        div.addEventListener("mousedown", (e) => {
+          e.preventDefault();
+          selectOption(o.value, o.textContent);
+        });
+        dd.appendChild(div);
+      });
+    }
+    if (!hasResults) {
+      const nr = document.createElement("div");
+      nr.className = "ss-no-results";
+      nr.textContent = "No courses found";
+      dd.appendChild(nr);
+    }
+  }
+
+  function selectOption(val, text) {
+    selectEl.value = val;
+    input.value = text;
+    dd.classList.remove("open");
+    selectEl.dispatchEvent(new Event("change"));
+  }
+
+  input.addEventListener("focus", () => {
+    buildOptions(input.value === selectEl.options[selectEl.selectedIndex]?.text ? "" : input.value);
+    dd.classList.add("open");
+    if (selectEl.value) input.select();
+  });
+
+  input.addEventListener("input", () => {
+    buildOptions(input.value);
+    dd.classList.add("open");
+  });
+
+  input.addEventListener("blur", () => {
+    setTimeout(() => dd.classList.remove("open"), 150);
+  });
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") {
+      dd.classList.remove("open");
+      input.blur();
+    }
+  });
+
+  // Sync input display when select value changes externally
+  const origVal = Object.getOwnPropertyDescriptor(HTMLSelectElement.prototype, 'value');
+  selectEl._ssInput = input;
+
+  // Observer for visibility changes
+  const observer = new MutationObserver(() => {
+    if (selectEl.value) {
+      const opt = selectEl.options[selectEl.selectedIndex];
+      if (opt) input.value = opt.textContent;
+    } else {
+      input.value = "";
+    }
+  });
+  observer.observe(selectEl, { attributes: true, childList: true });
+
+  // Reset sync
+  selectEl.addEventListener("change", () => {
+    if (selectEl.value) {
+      const opt = selectEl.options[selectEl.selectedIndex];
+      if (opt) input.value = opt.textContent;
+    } else {
+      input.value = "";
+    }
+  });
+}
+
+// Apply searchable to all course dropdowns
+function initSearchableDropdowns() {
+  const ids = [
+    "courseSelect", "courseSelectAmity", "courseSelectAmityLucknow",
+    "courseSelectAmityBengaluru", "courseSelectAmityGurugram",
+    "courseSelectAmityRaipur", "courseSelectAmityJaipur",
+    "courseSelectAmityGwalior", "courseSelectCUUnnao", "courseSelectCUMohali"
+  ];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) makeSearchable(el);
+  });
+}
+
+// Reset searchable inputs on form reset
+form.addEventListener("reset", () => {
+  setTimeout(() => {
+    document.querySelectorAll(".ss-search").forEach(inp => inp.value = "");
+  }, 10);
 });
 
+initSearchableDropdowns();
+
+// Auto-load sidebar on page load
 async function loadDashboard() {
   dashLoading.style.display = "";
   dashEmpty.style.display = "none";
@@ -3649,6 +3994,148 @@ searchBox.addEventListener("input", () => {
     return Object.values(row).some(v => v && v.toString().toLowerCase().includes(q));
   });
   renderTable(filtered);
+});
+
+// ——————————————————————————————————————
+// Searchable Dropdown Enhancement
+// ——————————————————————————————————————
+function makeSearchable(selectEl) {
+  if (!selectEl || selectEl.dataset.searchable) return;
+  selectEl.dataset.searchable = "true";
+  selectEl.style.display = "none";
+
+  const wrap = document.createElement("div");
+  wrap.className = "search-select-wrap";
+  selectEl.parentNode.insertBefore(wrap, selectEl);
+  wrap.appendChild(selectEl);
+
+  const input = document.createElement("input");
+  input.type = "text";
+  input.className = "ss-search";
+  input.placeholder = "Type to search courses...";
+  input.autocomplete = "off";
+  wrap.appendChild(input);
+
+  const arrow = document.createElement("span");
+  arrow.className = "ss-arrow";
+  arrow.innerHTML = "▼";
+  wrap.appendChild(arrow);
+
+  const dropdown = document.createElement("div");
+  dropdown.className = "ss-dropdown";
+  wrap.appendChild(dropdown);
+
+  // Parse options from select
+  function getOptions() {
+    const opts = [];
+    for (const child of selectEl.children) {
+      if (child.tagName === "OPTGROUP") {
+        const group = child.label;
+        for (const opt of child.children) {
+          if (opt.value) opts.push({ value: opt.value, text: opt.textContent, group });
+        }
+      } else if (child.tagName === "OPTION" && child.value) {
+        opts.push({ value: child.value, text: child.textContent, group: null });
+      }
+    }
+    return opts;
+  }
+
+  function render(filter) {
+    const options = getOptions();
+    const q = (filter || "").toLowerCase();
+    dropdown.innerHTML = "";
+    let lastGroup = null;
+    let count = 0;
+
+    for (const opt of options) {
+      if (q && !opt.text.toLowerCase().includes(q)) continue;
+      if (opt.group && opt.group !== lastGroup) {
+        const gl = document.createElement("div");
+        gl.className = "ss-group-label";
+        gl.textContent = opt.group;
+        dropdown.appendChild(gl);
+        lastGroup = opt.group;
+      }
+      const div = document.createElement("div");
+      div.className = "ss-option" + (selectEl.value === opt.value ? " selected" : "");
+      div.textContent = opt.text;
+      div.addEventListener("mousedown", (e) => {
+        e.preventDefault();
+        selectEl.value = opt.value;
+        input.value = opt.text;
+        dropdown.classList.remove("open");
+        selectEl.dispatchEvent(new Event("change"));
+      });
+      dropdown.appendChild(div);
+      count++;
+    }
+
+    if (count === 0) {
+      const noMatch = document.createElement("div");
+      noMatch.className = "ss-no-match";
+      noMatch.textContent = "No matching courses";
+      dropdown.appendChild(noMatch);
+    }
+  }
+
+  input.addEventListener("focus", () => {
+    render(input.value);
+    dropdown.classList.add("open");
+    input.select();
+  });
+
+  input.addEventListener("input", () => {
+    render(input.value);
+    dropdown.classList.add("open");
+  });
+
+  input.addEventListener("blur", () => {
+    setTimeout(() => dropdown.classList.remove("open"), 200);
+  });
+
+  // Set display value if select already has a value
+  if (selectEl.value) {
+    const sel = selectEl.options[selectEl.selectedIndex];
+    if (sel) input.value = sel.textContent;
+  }
+
+  // Observe select changes (from reset etc)
+  const observer = new MutationObserver(() => {
+    if (!selectEl.value) input.value = "";
+  });
+  observer.observe(selectEl, { attributes: true, childList: true });
+
+  // Reset support
+  selectEl.addEventListener("change", () => {
+    if (selectEl.value) {
+      const sel = selectEl.options[selectEl.selectedIndex];
+      if (sel) input.value = sel.textContent;
+    } else {
+      input.value = "";
+    }
+  });
+}
+
+// Apply searchable to all course dropdowns
+function initSearchableDropdowns() {
+  const ids = [
+    "courseSelect", "courseSelectAmity", "courseSelectAmityLucknow",
+    "courseSelectAmityBengaluru", "courseSelectAmityGurugram",
+    "courseSelectAmityRaipur", "courseSelectAmityJaipur",
+    "courseSelectAmityGwalior", "courseSelectCUUnnao", "courseSelectCUMohali"
+  ];
+  ids.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) makeSearchable(el);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".main").classList.add("entry-mode");
+  document.querySelector(".header").classList.add("wide");
+  loadSidebar();
+  initSearchableDropdowns();
 });
 </script>
 </body>
