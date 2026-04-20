@@ -595,37 +595,136 @@
     margin-top: 2px;
   }
 
-  /* — Table — */
+  /* — Filter Bar — */
+  .filter-bar {
+    display: flex;
+    gap: 8px;
+    margin-top: 14px;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+  .filter-input {
+    padding: 7px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: #faf9f7;
+    outline: none;
+    width: 160px;
+    transition: border-color 0.2s;
+  }
+  .filter-input:focus { border-color: var(--primary-light); background: #fff; }
+  .filter-select {
+    padding: 7px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 12px;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: #faf9f7;
+    color: var(--text);
+    outline: none;
+    cursor: pointer;
+    min-width: 130px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' fill='none' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 8px center;
+    padding-right: 24px;
+  }
+  .filter-select:focus { border-color: var(--primary-light); background: #fff; }
+  .btn-clear-filters {
+    padding: 7px 12px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 11px;
+    font-weight: 600;
+    border: 1.5px solid var(--border);
+    border-radius: 6px;
+    background: none;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-clear-filters:hover { border-color: var(--error); color: var(--error); }
+
+  /* — Table (compact) — */
   .table-wrap {
     overflow-x: auto;
     border-radius: 8px;
     border: 1px solid var(--border);
   }
   .data-table {
-    width: 100%;
+    width: auto;
+    min-width: 100%;
     border-collapse: collapse;
-    font-size: 13px;
+    font-size: 11px;
     white-space: nowrap;
+    table-layout: auto;
   }
   .data-table th {
     background: var(--primary);
     color: #fff;
     font-weight: 600;
-    padding: 10px 14px;
+    padding: 7px 10px;
     text-align: left;
-    font-size: 11px;
+    font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.6px;
+    letter-spacing: 0.5px;
     position: sticky;
     top: 0;
+    white-space: nowrap;
   }
   .data-table td {
-    padding: 10px 14px;
+    padding: 6px 10px;
     border-bottom: 1px solid var(--border);
     color: var(--text);
+    max-width: 180px;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
   .data-table tbody tr:hover { background: #faf9f7; }
   .data-table tbody tr:last-child td { border-bottom: none; }
+  .data-table tbody tr.row-cancelled { background: #fff5f5 !important; }
+  .data-table tbody tr.row-cancelled td { color: #c53030; }
+  .btn-cancel-admission {
+    padding: 4px 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 10px;
+    font-weight: 600;
+    border: 1.5px solid #c53030;
+    border-radius: 5px;
+    background: none;
+    color: #c53030;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .btn-cancel-admission:hover { background: #c53030; color: #fff; }
+  .btn-cancel-admission:disabled { opacity: 0.4; cursor: not-allowed; }
+  .btn-cancel-admission:disabled:hover { background: none; color: #c53030; }
+  .cancelled-label {
+    font-size: 10px;
+    font-weight: 700;
+    color: #c53030;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  .btn-reactivate {
+    padding: 3px 8px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    border: 1.5px solid #276749;
+    border-radius: 5px;
+    background: none;
+    color: #276749;
+    cursor: pointer;
+    transition: all 0.2s;
+    white-space: nowrap;
+    margin-left: 6px;
+  }
+  .btn-reactivate:hover { background: #276749; color: #fff; }
   .status-badge {
     display: inline-block;
     padding: 3px 10px;
@@ -720,6 +819,41 @@
     gap: 10px;
     margin-top: 20px;
     justify-content: center;
+  }
+  .login-tabs {
+    display: flex;
+    gap: 0;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1.5px solid var(--border);
+  }
+  .login-tab {
+    flex: 1;
+    padding: 9px 16px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    border: none;
+    background: #faf9f7;
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .login-tab.active {
+    background: var(--primary);
+    color: #fff;
+  }
+  .mgr-badge {
+    display: inline-block;
+    background: var(--accent);
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-left: 8px;
+    letter-spacing: 0.5px;
   }
 
   /* — Searchable Dropdown — */
@@ -1031,6 +1165,7 @@
             <option>B.Tech – Electrical & Electronics Engineering (EEE)</option>
             <option>B.Tech – Civil Engineering</option>
             <option>B.Tech – Mechanical Engineering</option>
+            <option>B.Tech – Biotechnology</option>
             </optgroup>
             <optgroup label="B.Tech (CSE) Specializations">
             <option>B.Tech (CSE) – Artificial Intelligence & Machine Learning</option>
@@ -2215,9 +2350,18 @@
       <div class="dash-title-row">
         <h2 class="dash-title">All Admissions</h2>
         <div class="dash-actions">
-          <input type="text" id="searchBox" class="search-input" placeholder="Search by name, number, campus…">
           <button class="btn btn-primary btn-sm" onclick="loadDashboard()">⟳ Refresh</button>
         </div>
+      </div>
+      <div class="filter-bar">
+        <input type="text" id="searchBox" class="filter-input" placeholder="🔍 Search…">
+        <select id="filterProcess" class="filter-select"><option value="">All Processes</option></select>
+        <select id="filterCampus" class="filter-select"><option value="">All Campuses</option></select>
+        <select id="filterManager" class="filter-select"><option value="">All Managers</option></select>
+        <select id="filterStatus" class="filter-select"><option value="">All Status</option></select>
+        <select id="filterTeamLeader" class="filter-select"><option value="">All Team Leaders</option></select>
+        <select id="filterCounsellor" class="filter-select"><option value="">All Counsellors</option></select>
+        <button class="btn-clear-filters" onclick="clearFilters()">✕ Clear</button>
       </div>
       <div class="dash-stats" id="dashStats"></div>
       <div class="manager-summary" id="managerSummary"></div>
@@ -2259,12 +2403,31 @@
   <div class="pwd-modal">
     <div class="pwd-icon">🔒</div>
     <h3 class="pwd-title">Dashboard Access</h3>
-    <p class="pwd-desc">Enter password to view all admissions</p>
-    <input type="password" id="pwdInput" class="pwd-input" placeholder="Enter password" onkeydown="if(event.key==='Enter')checkPassword()">
-    <div class="pwd-error" id="pwdError">Incorrect password. Try again.</div>
+    <p class="pwd-desc">Select your role to continue</p>
+    <div class="login-tabs">
+      <button class="login-tab active" id="loginTabAdmin" onclick="switchLoginTab('admin')">Admin</button>
+      <button class="login-tab" id="loginTabManager" onclick="switchLoginTab('manager')">Manager</button>
+    </div>
+    <div id="loginAdminPanel">
+      <input type="password" id="pwdInput" class="pwd-input" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')checkPassword()">
+      <div class="pwd-error" id="pwdError">Incorrect password. Try again.</div>
+    </div>
+    <div id="loginManagerPanel" style="display:none;">
+      <select id="managerLogin" class="pwd-input" style="text-align:left;letter-spacing:0;">
+        <option value="">Select your name</option>
+        <option>Deepesh Singh</option>
+        <option>Aasif Shaikh</option>
+        <option>Shipra Tripathi</option>
+        <option>Abhishek Kapoor</option>
+        <option>Manas Nayak</option>
+        <option>Aslam Khan</option>
+      </select>
+      <input type="password" id="mgrPwdInput" class="pwd-input" style="margin-top:10px;" placeholder="Enter your password" onkeydown="if(event.key==='Enter')checkManagerLogin()">
+      <div class="pwd-error" id="mgrPwdError">Incorrect password. Try again.</div>
+    </div>
     <div class="pwd-actions">
       <button class="btn btn-secondary" onclick="closePasswordModal()">Cancel</button>
-      <button class="btn btn-primary" onclick="checkPassword()">Unlock</button>
+      <button class="btn btn-primary" id="loginBtn" onclick="checkPassword()">Unlock</button>
     </div>
   </div>
 </div>
@@ -2273,7 +2436,7 @@
 // ——————————————————————————————————————
 // ⚠️  PASTE YOUR DEPLOYED APPS SCRIPT URL BELOW
 // ——————————————————————————————————————
-const API_URL = "https://script.google.com/macros/s/AKfycbwHmjCKqaeesmevTG9r6TdlgeIN7mFG6spsmfpFeK5x-zC5C8YH7wrUrkIo6LzYFzzdOw/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbz1AtbFDHOLsBDsh_yRRcOCiqkElbDYQfDW5b1PYga5e78GoXkcIMI3iNbPCWEfloogsA/exec";
 // ——————————————————————————————————————
 
 const form = document.getElementById("admissionForm");
@@ -3488,8 +3651,32 @@ const searchBox = document.getElementById("searchBox");
 
 let allEntries = [];
 
-const DASHBOARD_PASSWORD = "admin123";
+const DASHBOARD_PASSWORD = "Hs@2026Admin";
+// Manager passwords - change these as needed
+const MANAGER_PASSWORDS = {
+  "Deepesh Singh": "Ds@9271",
+  "Aasif Shaikh": "As@4836",
+  "Shipra Tripathi": "St@7512",
+  "Abhishek Kapoor": "Ak@3694",
+  "Manas Nayak": "Mn@8427",
+  "Aslam Khan": "Al@5903",
+};
+
 let dashboardUnlocked = false;
+let loggedInRole = ""; // "admin" or manager name
+let loginMode = "admin";
+
+function switchLoginTab(mode) {
+  loginMode = mode;
+  document.getElementById("loginTabAdmin").classList.toggle("active", mode === "admin");
+  document.getElementById("loginTabManager").classList.toggle("active", mode === "manager");
+  document.getElementById("loginAdminPanel").style.display = mode === "admin" ? "" : "none";
+  document.getElementById("loginManagerPanel").style.display = mode === "manager" ? "" : "none";
+  document.getElementById("loginBtn").onclick = mode === "admin" ? checkPassword : checkManagerLogin;
+  // Clear errors
+  document.getElementById("pwdError").style.display = "none";
+  document.getElementById("mgrPwdError").style.display = "none";
+}
 
 function switchTab(tab) {
   if (tab === "dashboard" && !dashboardUnlocked) {
@@ -3530,10 +3717,13 @@ function switchTab(tab) {
 
 function showPasswordModal() {
   document.getElementById("pwdOverlay").style.display = "flex";
-  const input = document.getElementById("pwdInput");
-  input.value = "";
-  input.focus();
+  switchLoginTab("admin");
+  document.getElementById("pwdInput").value = "";
+  document.getElementById("pwdInput").focus();
   document.getElementById("pwdError").style.display = "none";
+  document.getElementById("mgrPwdError").style.display = "none";
+  document.getElementById("managerLogin").value = "";
+  document.getElementById("mgrPwdInput").value = "";
 }
 
 function closePasswordModal() {
@@ -3544,6 +3734,7 @@ function checkPassword() {
   const input = document.getElementById("pwdInput");
   if (input.value === DASHBOARD_PASSWORD) {
     dashboardUnlocked = true;
+    loggedInRole = "admin";
     closePasswordModal();
     switchTab("dashboard");
   } else {
@@ -3552,6 +3743,32 @@ function checkPassword() {
     input.classList.add("invalid");
     input.value = "";
     input.focus();
+  }
+}
+
+function checkManagerLogin() {
+  const mgrSelect = document.getElementById("managerLogin");
+  const mgrPwd = document.getElementById("mgrPwdInput");
+  const mgrName = mgrSelect.value;
+  const pwd = mgrPwd.value;
+
+  if (!mgrName) {
+    document.getElementById("mgrPwdError").textContent = "Please select your name.";
+    document.getElementById("mgrPwdError").style.display = "block";
+    return;
+  }
+
+  if (MANAGER_PASSWORDS[mgrName] && pwd === MANAGER_PASSWORDS[mgrName]) {
+    dashboardUnlocked = true;
+    loggedInRole = mgrName;
+    closePasswordModal();
+    switchTab("dashboard");
+  } else {
+    document.getElementById("mgrPwdError").textContent = "Incorrect password. Try again.";
+    document.getElementById("mgrPwdError").style.display = "block";
+    mgrPwd.classList.add("invalid");
+    mgrPwd.value = "";
+    mgrPwd.focus();
   }
 }
 
@@ -3836,6 +4053,14 @@ async function loadDashboard() {
   tableBody.innerHTML = "";
   dashStats.innerHTML = "";
 
+  // Show logged-in role badge
+  const titleEl = document.querySelector(".dash-title");
+  if (loggedInRole === "admin") {
+    titleEl.innerHTML = 'All Admissions <span class="mgr-badge">ADMIN</span>';
+  } else {
+    titleEl.innerHTML = 'My Admissions <span class="mgr-badge">' + loggedInRole + '</span>';
+  }
+
   try {
     const res = await fetch(API_URL + "?action=fetch");
     const json = await res.json();
@@ -3843,9 +4068,21 @@ async function loadDashboard() {
     dashLoading.style.display = "none";
 
     if (json.status === "success" && json.data && json.data.length > 0) {
-      allEntries = json.data;
+      let data = json.data;
+
+      // If manager login, filter to only their entries
+      if (loggedInRole && loggedInRole !== "admin") {
+        data = data.filter(e => (e["Manager"] || "").toString().trim() === loggedInRole);
+      }
+
+      allEntries = data;
+      populateFilters(allEntries);
       renderStats(allEntries);
       renderTable(allEntries);
+
+      if (data.length === 0) {
+        dashEmpty.style.display = "";
+      }
     } else {
       dashEmpty.style.display = "";
     }
@@ -3858,14 +4095,13 @@ async function loadDashboard() {
 function renderStats(entries) {
   const total = entries.length;
   const done = entries.filter(e => (e["Admission Done/Cancelled"] || "").toString().toLowerCase() === "done").length;
-  const cancelled = entries.filter(e => (e["Admission Done/Cancelled"] || "").toString().toLowerCase() === "cancelled").length;
+  const cancelled = entries.filter(e => (e["Admission Status"] || "").toString().toLowerCase() === "cancelled").length;
   const pending = total - done - cancelled;
 
   dashStats.innerHTML = `
     <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total</div></div>
     <div class="stat-card"><div class="stat-num" style="color:#276749">${done}</div><div class="stat-label">Done</div></div>
     <div class="stat-card"><div class="stat-num" style="color:#c53030">${cancelled}</div><div class="stat-label">Cancelled</div></div>
-    <div class="stat-card"><div class="stat-num" style="color:#c05621">${pending}</div><div class="stat-label">Pending</div></div>
   `;
 
   renderManagerSummary(entries);
@@ -3961,40 +4197,183 @@ function renderManagerCards(todayEntries, container) {
 }
 
 function renderTable(entries) {
-  const columns = ["Process", "Admission Done date", "Application Number", "Candidate Name", "Contact Number", "Campus", "Course Selected", "Admission Done/Cancelled", "Counsellor Name", "Manager", "Team Leader"];
+  const columns = ["Process", "Admission Done date", "Application Number", "Candidate Name", "Contact Number", "Campus", "Course Selected", "Admission Done/Cancelled", "Counsellor Name", "Manager", "Team Leader", "Admission Status"];
 
-  tableHead.innerHTML = "<tr>" + columns.map(c => `<th>${c}</th>`).join("") + "</tr>";
+  const isManager = loggedInRole && loggedInRole !== "admin";
+  const showAction = isManager || loggedInRole === "admin";
+
+  const headerCols = [...columns];
+  if (showAction) headerCols.push("Action");
+
+  tableHead.innerHTML = "<tr>" + headerCols.map(c => `<th>${c}</th>`).join("") + "</tr>";
 
   if (entries.length === 0) {
-    tableBody.innerHTML = `<tr><td colspan="${columns.length}" style="text-align:center;padding:30px;color:var(--text-muted)">No matching entries</td></tr>`;
+    tableBody.innerHTML = `<tr><td colspan="${headerCols.length}" style="text-align:center;padding:30px;color:var(--text-muted)">No matching entries</td></tr>`;
     return;
   }
 
   tableBody.innerHTML = entries.map(row => {
-    return "<tr>" + columns.map(col => {
+    const statusVal = (row["Admission Status"] || "").toString().toLowerCase();
+    const isCancelled = statusVal === "cancelled";
+    const appNum = (row["Application Number"] || "").toString();
+    const rowClass = isCancelled ? ' class="row-cancelled"' : '';
+
+    let cells = columns.map(col => {
       let val = row[col] || "";
       if (col === "Admission Done/Cancelled") {
         const lower = val.toString().toLowerCase();
         const cls = lower === "done" ? "status-done" : lower === "cancelled" ? "status-cancelled" : "status-pending";
         return `<td><span class="status-badge ${cls}">${val}</span></td>`;
       }
+      if (col === "Admission Status") {
+        const lower = val.toString().toLowerCase();
+        if (lower === "cancelled") {
+          return `<td><span class="status-badge status-cancelled">${val}</span></td>`;
+        }
+        return `<td>${val}</td>`;
+      }
+      if (col === "Admission Done date") {
+        const d = new Date(val);
+        if (!isNaN(d)) {
+          const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+          val = String(d.getDate()).padStart(2, "0") + "-" + months[d.getMonth()] + "-" + d.getFullYear();
+        }
+      }
       return `<td>${val}</td>`;
-    }).join("") + "</tr>";
+    }).join("");
+
+    if (showAction) {
+      if (isCancelled) {
+        cells += `<td><span class="cancelled-label">Cancelled</span> <button class="btn-reactivate" onclick="reactivateAdmission('${appNum.replace(/'/g, "\\'")}')">Reactivate</button></td>`;
+      } else {
+        cells += `<td><button class="btn-cancel-admission" onclick="cancelAdmission('${appNum.replace(/'/g, "\\'")}')">Cancel</button></td>`;
+      }
+    }
+
+    return `<tr${rowClass}>${cells}</tr>`;
   }).join("");
 }
 
-// Search / filter
-searchBox.addEventListener("input", () => {
-  const q = searchBox.value.trim().toLowerCase();
-  if (!q) {
-    renderTable(allEntries);
-    return;
+// Cancel admission function
+async function cancelAdmission(appNum) {
+  if (!confirm(`Are you sure you want to cancel admission for Application Number: ${appNum}?`)) return;
+
+  try {
+    toast("Cancelling admission...", "success");
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        action: "cancelAdmission",
+        applicationNumber: appNum,
+        cancelledBy: loggedInRole
+      }),
+    });
+    const json = await res.json();
+
+    if (json.status === "success") {
+      toast("Admission cancelled successfully!", "success");
+      loadDashboard();
+    } else {
+      toast(json.message || "Failed to cancel", "error");
+    }
+  } catch (err) {
+    toast("Network error — please try again", "error");
   }
+}
+
+// Reactivate cancelled admission
+async function reactivateAdmission(appNum) {
+  if (!confirm(`Are you sure you want to reactivate admission for Application Number: ${appNum}?\n\nThis will remove the cancellation status.`)) return;
+
+  try {
+    toast("Reactivating admission...", "success");
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({
+        action: "reactivateAdmission",
+        applicationNumber: appNum,
+        reactivatedBy: loggedInRole
+      }),
+    });
+    const json = await res.json();
+
+    if (json.status === "success") {
+      toast("Admission reactivated successfully!", "success");
+      loadDashboard();
+    } else {
+      toast(json.message || "Failed to reactivate", "error");
+    }
+  } catch (err) {
+    toast("Network error — please try again", "error");
+  }
+}
+
+// Search / filter
+const dashFilterProcess = document.getElementById("filterProcess");
+const dashFilterCampus = document.getElementById("filterCampus");
+const dashFilterManager = document.getElementById("filterManager");
+const dashFilterStatus = document.getElementById("filterStatus");
+const dashFilterTeamLeader = document.getElementById("filterTeamLeader");
+const dashFilterCounsellor = document.getElementById("filterCounsellor");
+
+function populateFilters(entries) {
+  const processes = [...new Set(entries.map(e => (e["Process"] || "").toString()).filter(Boolean))].sort();
+  const campuses = [...new Set(entries.map(e => (e["Campus"] || "").toString()).filter(Boolean))].sort();
+  const managers = [...new Set(entries.map(e => (e["Manager"] || "").toString()).filter(Boolean))].sort();
+  const statuses = [...new Set(entries.map(e => (e["Admission Done/Cancelled"] || "").toString()).filter(Boolean))].sort();
+  const teamLeaders = [...new Set(entries.map(e => (e["Team Leader"] || "").toString()).filter(Boolean))].sort();
+  const counsellors = [...new Set(entries.map(e => (e["Counsellor Name"] || "").toString()).filter(Boolean))].sort();
+
+  dashFilterProcess.innerHTML = '<option value="">All Processes</option>' + processes.map(p => `<option>${p}</option>`).join("");
+  dashFilterCampus.innerHTML = '<option value="">All Campuses</option>' + campuses.map(c => `<option>${c}</option>`).join("");
+  dashFilterManager.innerHTML = '<option value="">All Managers</option>' + managers.map(m => `<option>${m}</option>`).join("");
+  dashFilterStatus.innerHTML = '<option value="">All Status</option>' + statuses.map(s => `<option>${s}</option>`).join("");
+  dashFilterTeamLeader.innerHTML = '<option value="">All Team Leaders</option>' + teamLeaders.map(t => `<option>${t}</option>`).join("");
+  dashFilterCounsellor.innerHTML = '<option value="">All Counsellors</option>' + counsellors.map(c => `<option>${c}</option>`).join("");
+}
+
+function applyFilters() {
+  const q = searchBox.value.trim().toLowerCase();
+  const proc = dashFilterProcess.value;
+  const campus = dashFilterCampus.value;
+  const mgr = dashFilterManager.value;
+  const status = dashFilterStatus.value;
+  const tl = dashFilterTeamLeader.value;
+  const counsellor = dashFilterCounsellor.value;
+
   const filtered = allEntries.filter(row => {
-    return Object.values(row).some(v => v && v.toString().toLowerCase().includes(q));
+    if (proc && (row["Process"] || "").toString() !== proc) return false;
+    if (campus && (row["Campus"] || "").toString() !== campus) return false;
+    if (mgr && (row["Manager"] || "").toString() !== mgr) return false;
+    if (status && (row["Admission Done/Cancelled"] || "").toString() !== status) return false;
+    if (tl && (row["Team Leader"] || "").toString() !== tl) return false;
+    if (counsellor && (row["Counsellor Name"] || "").toString() !== counsellor) return false;
+    if (q && !Object.values(row).some(v => v && v.toString().toLowerCase().includes(q))) return false;
+    return true;
   });
   renderTable(filtered);
-});
+}
+
+function clearFilters() {
+  searchBox.value = "";
+  dashFilterProcess.value = "";
+  dashFilterCampus.value = "";
+  dashFilterManager.value = "";
+  dashFilterStatus.value = "";
+  dashFilterTeamLeader.value = "";
+  dashFilterCounsellor.value = "";
+  renderTable(allEntries);
+}
+
+searchBox.addEventListener("input", applyFilters);
+dashFilterProcess.addEventListener("change", applyFilters);
+dashFilterCampus.addEventListener("change", applyFilters);
+dashFilterManager.addEventListener("change", applyFilters);
+dashFilterStatus.addEventListener("change", applyFilters);
+dashFilterTeamLeader.addEventListener("change", applyFilters);
+dashFilterCounsellor.addEventListener("change", applyFilters);
 
 // ——————————————————————————————————————
 // Searchable Dropdown Enhancement
