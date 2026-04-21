@@ -4094,13 +4094,12 @@ async function loadDashboard() {
 
 function renderStats(entries) {
   const total = entries.length;
-  const done = entries.filter(e => (e["Admission Done/Cancelled"] || "").toString().toLowerCase() === "done").length;
   const cancelled = entries.filter(e => (e["Admission Status"] || "").toString().toLowerCase() === "cancelled").length;
-  const pending = total - done - cancelled;
+  const netAdmissions = total - cancelled;
 
   dashStats.innerHTML = `
     <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total</div></div>
-    <div class="stat-card"><div class="stat-num" style="color:#276749">${done}</div><div class="stat-label">Done</div></div>
+    <div class="stat-card"><div class="stat-num" style="color:#276749">${netAdmissions}</div><div class="stat-label">Net Admissions</div></div>
     <div class="stat-card"><div class="stat-num" style="color:#c53030">${cancelled}</div><div class="stat-label">Cancelled</div></div>
   `;
 
