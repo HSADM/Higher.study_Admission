@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Admission Entry Portal</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://script.google.com" crossorigin>
+<link rel="dns-prefetch" href="https://script.googleusercontent.com">
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -651,6 +653,8 @@
   /* — Table (compact) — */
   .table-wrap {
     overflow-x: auto;
+    overflow-y: auto;
+    max-height: 70vh;
     border-radius: 8px;
     border: 1px solid var(--border);
   }
@@ -2273,17 +2277,101 @@
         </div>
 
         <div class="field">
-          <label>Counsellor First Name <span class="req">*</span></label>
-          <input type="text" id="counsellorFirst" placeholder="First name" required>
-          <div class="field-error">First name is required</div>
+          <label>Counsellor Name <span class="req">*</span></label>
+          <select name="Counsellor Name" id="counsellorFull" required>
+            <option value="">Select counsellor</option>
+            <option>Ranjita Behura</option>
+            <option>Sugyani Naik</option>
+            <option>Abhishek Das</option>
+            <option>Sonalika Pal</option>
+            <option>Dharmananda Sahu</option>
+            <option>Lipsa Priyadarshini Swain</option>
+            <option>Shreya</option>
+            <option>Rohini Ladage</option>
+            <option>Bhumika Bansode</option>
+            <option>Zayed Quadri</option>
+            <option>Deepak Gupta</option>
+            <option>Samiksha Aswar</option>
+            <option>Trupti Mankar</option>
+            <option>Srushti</option>
+            <option>Lokesh Gugale</option>
+            <option>Shreyash Bankar</option>
+            <option>Vaibhavi Raval</option>
+            <option>Samarth Kokate</option>
+            <option>Rutuja Chunarkar</option>
+            <option>Reshma vhatkar</option>
+            <option>Meenakshi Manwadi</option>
+            <option>Priya jaiswal</option>
+            <option>Nikita patidar</option>
+            <option>Sameer Abbas</option>
+            <option>Prasad thorat</option>
+            <option>Aditi Bhosale</option>
+            <option>Pratiksha Jagtap</option>
+            <option>Faisal Shaikh</option>
+            <option>Dhanashri Adhav</option>
+            <option>Abhay dimble</option>
+            <option>Moin pathan</option>
+            <option>Khushi Oswal</option>
+            <option>Tejaswini bhalke</option>
+            <option>Aditya hiwale</option>
+            <option>Aditi dhariwal</option>
+            <option>Pooja Navale</option>
+            <option>Nirupama Singh</option>
+            <option>Yuvraj Pandhare</option>
+            <option>Srinidhi Galande</option>
+            <option>Ashwini Kadve</option>
+            <option>Farheen Afshan</option>
+            <option>Dipika Mahajan</option>
+            <option>Bilal Ayaz Shaikh</option>
+            <option>Nutan Malwade</option>
+            <option>Kishore Metkari</option>
+            <option>Manoj Sahu</option>
+            <option>Priyanka Kasare</option>
+            <option>Pranita Chaudhary</option>
+            <option>Atharva gaikwad</option>
+            <option>Anjana Mohanty</option>
+            <option>Priyanka Khude</option>
+            <option>Atharva Jadhav</option>
+            <option>Sharayu Nimbalkar</option>
+            <option>Sneha Shilvanth</option>
+            <option>Priya Jadhav</option>
+            <option>Laxmi Biradar</option>
+            <option>Shruti Girigosavi</option>
+            <option>Nausheen Afshan</option>
+            <option>Sanskruti Kurale</option>
+            <option>Sohail Sayyed</option>
+            <option>Vaishnavi Mane</option>
+            <option>Viraj Nikam</option>
+            <option>Manisha Shinde</option>
+            <option>Pranav Gopale</option>
+            <option>Umair Pirjade</option>
+            <option>Ritusmita Choudhury</option>
+            <option>Subhashree Dash</option>
+            <option>Nihal Pal</option>
+            <option>Iqra shaikh</option>
+            <option>sayyad mafis mahemud</option>
+            <option>Pavan Waghmare</option>
+            <option>Pooja Kore</option>
+            <option>Sapna Chavhan</option>
+            <option>Sonali Sul</option>
+            <option>Simra limboowale</option>
+            <option>Tanvi Dhokne</option>
+            <option>Sohail Shaikh</option>
+            <option>Sangita Das</option>
+            <option>Meenal solanki</option>
+            <option>Nikita Jannu</option>
+            <option>Sachin Paliwal</option>
+            <option>Manisha Kumari</option>
+            <option>Sazreen Ansari</option>
+            <option>Nupoor Vartak</option>
+            <option>Omkar Ghadge</option>
+            <option>Samiya Ansari</option>
+            <option>Aafiya Shaikh</option>
+            <option>Shayan Raza</option>
+            <option>Aarya Pore</option>
+          </select>
+          <div class="field-error">Please select a counsellor</div>
         </div>
-
-        <div class="field">
-          <label>Counsellor Last Name <span class="req">*</span></label>
-          <input type="text" id="counsellorLast" placeholder="Last name" required>
-          <div class="field-error">Last name is required</div>
-        </div>
-        <input type="hidden" name="Counsellor Name" id="counsellorFull">
 
         <div class="field">
           <label>Manager <span class="req">*</span></label>
@@ -2356,7 +2444,7 @@
       <div class="dash-title-row">
         <h2 class="dash-title">All Admissions</h2>
         <div class="dash-actions">
-          <button class="btn btn-primary btn-sm" onclick="loadDashboard()">⟳ Refresh</button>
+          <button class="btn btn-primary btn-sm" onclick="loadDashboard(true)">⟳ Refresh</button>
         </div>
       </div>
       <div class="filter-bar">
@@ -3538,10 +3626,7 @@ form.addEventListener("submit", async (e) => {
     return;
   }
 
-  // Combine counsellor first + last name
-  const cFirst = document.getElementById("counsellorFirst").value.trim();
-  const cLast = document.getElementById("counsellorLast").value.trim();
-  document.getElementById("counsellorFull").value = cFirst + " " + cLast;
+  // Counsellor Name is now a dropdown, value set directly
 
   // Sync course value
   const processVal = form.querySelector('[name="Process"]').value;
@@ -3593,34 +3678,44 @@ form.addEventListener("submit", async (e) => {
 
   setLoading(true);
 
-  try {
-    const res = await fetch(API_URL, {
-      method: "POST",
-      headers: { "Content-Type": "text/plain;charset=utf-8" },
-      body: JSON.stringify(data),
-    });
-    const json = await res.json();
+  // ⚡ OPTIMISTIC UI: show success instantly, confirm in background
+  submittedAppNumbers.add(appNum);
+  const capturedData = { ...data };
+  showSuccess(capturedData);
+  setLoading(false);
+  toast("Entry submitted! Saving to server…");
 
-    if (json.status === "success") {
-      submittedAppNumbers.add(appNum);
-      toast(json.message);
-      showSuccess(data);
-    } else {
-      // Show duplicate error on the field itself
-      if (json.message && json.message.toLowerCase().includes("duplicate")) {
-        const appField = form.querySelector('[name="Application Number"]');
-        appField.classList.add("invalid");
-        appField.closest(".field").querySelector(".field-error").textContent = json.message;
-        appField.closest(".field").querySelector(".field-error").classList.add("show");
-        appField.scrollIntoView({ behavior: "smooth", block: "center" });
+  // Fire-and-forget background save with retry
+  (async () => {
+    let lastErr = null;
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try {
+        const res = await fetch(API_URL, {
+          method: "POST",
+          headers: { "Content-Type": "text/plain;charset=utf-8" },
+          body: JSON.stringify(capturedData),
+          // No timeout needed — background
+        });
+        const json = await res.json();
+        if (json.status === "success") {
+          toast("✓ Saved to Google Sheets!", "success");
+          // Refresh cache silently
+          _fetchAndCache();
+          return;
+        } else {
+          if (json.message && json.message.toLowerCase().includes("duplicate")) {
+            toast("Duplicate Application Number — already exists in sheet", "error");
+            return;
+          }
+          lastErr = json.message || "Server error";
+        }
+      } catch (e) {
+        lastErr = "Network error";
+        await new Promise(r => setTimeout(r, 1000 * (attempt + 1)));
       }
-      toast(json.message || "Submission failed", "error");
     }
-  } catch (err) {
-    toast("Network error — please try again", "error");
-  } finally {
-    setLoading(false);
-  }
+    toast("⚠ Could not confirm save: " + lastErr + " — please check your sheet", "error");
+  })();
 });
 
 function showSuccess(data) {
@@ -3778,25 +3873,179 @@ function checkManagerLogin() {
   }
 }
 
-// Load sidebar manager summary on entry page
+// ⚡ PERFORMANCE: In-memory cache with stale-while-revalidate
+let _cache = null;
+let _cacheTime = 0;
+const CACHE_TTL = 30000; // 30 seconds
+
+async function _fetchAndCache() {
+  try {
+    const res = await fetch(API_URL + "?action=fetch&t=" + Date.now());
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const json = await res.json();
+    if (json.status === "success" && json.data) {
+      _cache = json.data;
+      _cacheTime = Date.now();
+    }
+    return json;
+  } catch (e) {
+    console.error("Fetch error:", e);
+    return null;
+  }
+}
+
+async function _getData() {
+  const now = Date.now();
+  // Return cache immediately if fresh enough
+  if (_cache && (now - _cacheTime) < CACHE_TTL) {
+    // Revalidate in background if > 10s old
+    if ((now - _cacheTime) > 10000) _fetchAndCache();
+    return { status: "success", data: _cache };
+  }
+  // Not cached — fetch now
+  const result = await _fetchAndCache();
+  return result || { status: "error", data: [] };
+}
+
+// ⚡ Chunked table render — avoids long paint frames
+function renderTableFast(entries) {
+  const columns = ["Process", "Admission Done date", "Application Number", "Candidate Name", "Contact Number", "Campus", "Course Selected", "Admission Done/Cancelled", "Counsellor Name", "Manager", "Team Leader", "Admission Status"];
+  const showAction = loggedInRole === "admin";
+  const headerCols = showAction ? [...columns, "Action"] : [...columns];
+
+  tableHead.innerHTML = "<tr>" + headerCols.map(c => `<th>${c}</th>`).join("") + "</tr>";
+  tableBody.innerHTML = "";
+
+  if (entries.length === 0) {
+    tableBody.innerHTML = `<tr><td colspan="${headerCols.length}" style="text-align:center;padding:30px;color:var(--text-muted)">No matching entries</td></tr>`;
+    return;
+  }
+
+  const CHUNK = 80;
+  let idx = 0;
+
+  function renderChunk() {
+    const frag = document.createDocumentFragment();
+    const end = Math.min(idx + CHUNK, entries.length);
+    for (; idx < end; idx++) {
+      const row = entries[idx];
+      const tr = document.createElement("tr");
+      const statusVal = (row["Admission Status"] || "").toString().toLowerCase();
+      if (statusVal === "cancelled") tr.className = "row-cancelled";
+      const appNum = (row["Application Number"] || "").toString();
+
+      let cells = columns.map(col => {
+        const td = document.createElement("td");
+        let val = row[col] || "";
+        if (col === "Admission Done/Cancelled") {
+          const lower = val.toString().toLowerCase();
+          const cls = lower === "done" ? "status-done" : lower === "cancelled" ? "status-cancelled" : "status-pending";
+          td.innerHTML = `<span class="status-badge ${cls}">${val}</span>`;
+        } else if (col === "Admission Status") {
+          const lower = val.toString().toLowerCase();
+          if (lower === "cancelled") td.innerHTML = `<span class="status-badge status-cancelled">${val}</span>`;
+          else td.textContent = val;
+        } else if (col === "Admission Done date") {
+          const d = new Date(val);
+          if (!isNaN(d)) {
+            const months = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+            td.textContent = String(d.getDate()).padStart(2,"0") + "-" + months[d.getMonth()] + "-" + d.getFullYear();
+          } else td.textContent = val;
+        } else {
+          td.textContent = val;
+        }
+        return td;
+      });
+
+      cells.forEach(td => tr.appendChild(td));
+
+      if (showAction) {
+        const atd = document.createElement("td");
+        if (statusVal === "cancelled") {
+          atd.innerHTML = `<span class="cancelled-label">Cancelled</span> <button class="btn-reactivate" onclick="reactivateAdmission('${appNum.replace(/'/g,"\\'")}')">Reactivate</button>`;
+        } else {
+          atd.innerHTML = `<button class="btn-cancel-admission" onclick="cancelAdmission('${appNum.replace(/'/g,"\\'")}')">Cancel</button>`;
+        }
+        tr.appendChild(atd);
+      }
+      frag.appendChild(tr);
+    }
+    tableBody.appendChild(frag);
+    if (idx < entries.length) requestAnimationFrame(renderChunk);
+  }
+  requestAnimationFrame(renderChunk);
+}
+
+// ⚡ Load sidebar with cache
 async function loadSidebar() {
   const container = document.getElementById("sidebarManagerSummary");
   const sidebarLoading = document.getElementById("sidebarLoading");
-  sidebarLoading.style.display = "";
+
+  // Show stale data instantly if available
+  if (_cache && _cache.length > 0) {
+    sidebarLoading.style.display = "none";
+    renderSidebarManager(_cache, container);
+  } else {
+    sidebarLoading.style.display = "";
+  }
+
+  const json = await _getData();
+  sidebarLoading.style.display = "none";
+
+  if (json && json.status === "success" && json.data && json.data.length > 0) {
+    renderSidebarManager(json.data, container);
+  } else if (!_cache) {
+    container.innerHTML = '<div class="sidebar-empty">No entries yet today.</div>';
+  }
+}
+
+async function loadDashboard(forceRefresh = false) {
+  // Show loading spinner, clear old table
+  dashLoading.style.display = "";
+  dashEmpty.style.display = "none";
+  tableHead.innerHTML = "";
+  tableBody.innerHTML = "";
+  dashStats.innerHTML = "";
+
+  const titleEl = document.querySelector(".dash-title");
+  if (loggedInRole === "admin") {
+    titleEl.innerHTML = 'All Admissions <span class="mgr-badge">ADMIN</span>';
+  } else {
+    titleEl.innerHTML = 'My Admissions <span class="mgr-badge">' + loggedInRole + '</span>';
+  }
+
+  // If force refresh, bust the cache
+  if (forceRefresh) {
+    _cache = null;
+    _cacheTime = 0;
+    toast("Refreshing data…");
+  }
 
   try {
-    const res = await fetch(API_URL + "?action=fetch");
-    const json = await res.json();
-    sidebarLoading.style.display = "none";
+    // Always fetch fresh on forceRefresh, else use cache
+    const json = forceRefresh ? await _fetchAndCache().then(j => j || { status: "error" }) : await _getData();
 
-    if (json.status === "success" && json.data && json.data.length > 0) {
-      renderSidebarManager(json.data, container);
+    dashLoading.style.display = "none";
+
+    if (json && json.status === "success" && json.data && json.data.length > 0) {
+      let data = json.data;
+      if (loggedInRole && loggedInRole !== "admin") {
+        data = data.filter(e => (e["Manager"] || "").toString().trim() === loggedInRole);
+      }
+      allEntries = data;
+      populateFilters(allEntries);
+      renderStats(allEntries);
+      renderTableFast(allEntries);
+      if (data.length === 0) dashEmpty.style.display = "";
     } else {
-      container.innerHTML = '<div class="sidebar-empty">No entries yet today.</div>';
+      dashLoading.style.display = "none";
+      dashEmpty.style.display = "";
+      if (forceRefresh) toast("No data returned — check your Google Sheet", "error");
     }
   } catch (err) {
-    sidebarLoading.style.display = "none";
-    container.innerHTML = '<div class="sidebar-empty">Could not load data.</div>';
+    dashLoading.style.display = "none";
+    dashEmpty.style.display = "";
+    toast("Failed to load data — please try again", "error");
   }
 }
 
@@ -4052,52 +4301,6 @@ form.addEventListener("reset", () => {
 initSearchableDropdowns();
 
 // Auto-load sidebar on page load
-async function loadDashboard() {
-  dashLoading.style.display = "";
-  dashEmpty.style.display = "none";
-  tableHead.innerHTML = "";
-  tableBody.innerHTML = "";
-  dashStats.innerHTML = "";
-
-  // Show logged-in role badge
-  const titleEl = document.querySelector(".dash-title");
-  if (loggedInRole === "admin") {
-    titleEl.innerHTML = 'All Admissions <span class="mgr-badge">ADMIN</span>';
-  } else {
-    titleEl.innerHTML = 'My Admissions <span class="mgr-badge">' + loggedInRole + '</span>';
-  }
-
-  try {
-    const res = await fetch(API_URL + "?action=fetch");
-    const json = await res.json();
-
-    dashLoading.style.display = "none";
-
-    if (json.status === "success" && json.data && json.data.length > 0) {
-      let data = json.data;
-
-      // If manager login, filter to only their entries
-      if (loggedInRole && loggedInRole !== "admin") {
-        data = data.filter(e => (e["Manager"] || "").toString().trim() === loggedInRole);
-      }
-
-      allEntries = data;
-      populateFilters(allEntries);
-      renderStats(allEntries);
-      renderTable(allEntries);
-
-      if (data.length === 0) {
-        dashEmpty.style.display = "";
-      }
-    } else {
-      dashEmpty.style.display = "";
-    }
-  } catch (err) {
-    dashLoading.style.display = "none";
-    toast("Failed to load dashboard data", "error");
-  }
-}
-
 function renderStats(entries) {
   const total = entries.length;
   const cancelled = entries.filter(e => (e["Admission Status"] || "").toString().toLowerCase() === "cancelled").length;
@@ -4358,7 +4561,7 @@ function applyFilters() {
     if (q && !Object.values(row).some(v => v && v.toString().toLowerCase().includes(q))) return false;
     return true;
   });
-  renderTable(filtered);
+  renderTableFast(filtered);
 }
 
 function clearFilters() {
@@ -4369,10 +4572,14 @@ function clearFilters() {
   dashFilterStatus.value = "";
   dashFilterTeamLeader.value = "";
   dashFilterCounsellor.value = "";
-  renderTable(allEntries);
+  renderTableFast(allEntries);
 }
 
-searchBox.addEventListener("input", applyFilters);
+let _searchDebounce = null;
+searchBox.addEventListener("input", () => {
+  clearTimeout(_searchDebounce);
+  _searchDebounce = setTimeout(applyFilters, 180);
+});
 dashFilterProcess.addEventListener("change", applyFilters);
 dashFilterCampus.addEventListener("change", applyFilters);
 dashFilterManager.addEventListener("change", applyFilters);
