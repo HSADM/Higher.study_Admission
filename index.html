@@ -1435,6 +1435,7 @@
             <option>Bachelor of Social Work</option>
             <option>MA History</option>
             <option>MA Political Science</option>
+            <option>M.A. (International Relations)</option>
             <option>Master of Social Work</option>
             <option>BA (Hons.) History</option>
             <option>BA (Hons.) Political Science</option>
@@ -1764,9 +1765,9 @@
             <option>BA Political Science (Hons. / Hons. with Research)</option>
             <option>BA History (Hons. / Hons. with Research)</option>
             <option>MA Political Science</option>
+            <option>M.A. (International Relations)</option>
             </optgroup>
             <optgroup label="Other">
-            <option>M.Sc Renewable Energy</option>
             <option>M.Sc Renewable Energy (Part-Time)</option>
             </optgroup>
           </select>
@@ -2950,6 +2951,7 @@ const amityGurugramGrades = {
   "BA Political Science (Hons. / Hons. with Research)": "B",
   "BA History (Hons. / Hons. with Research)": "C",
   "MA Political Science": "B",
+  "M.A. (International Relations)": "B",
 };
 
 
@@ -4179,7 +4181,7 @@ function makeSearchable(selectEl) {
     if (groups.length > 0) {
       groups.forEach(g => {
         const opts = Array.from(g.querySelectorAll("option")).filter(o =>
-          o.value && o.textContent.toLowerCase().includes(q)
+          (o.value || o.textContent.trim()) && o.textContent.toLowerCase().includes(q)
         );
         if (opts.length > 0) {
           hasResults = true;
@@ -4188,13 +4190,14 @@ function makeSearchable(selectEl) {
           lbl.textContent = g.label;
           dd.appendChild(lbl);
           opts.forEach(o => {
+            const val = o.value || o.textContent.trim();
             const div = document.createElement("div");
             div.className = "ss-option";
-            div.textContent = o.textContent;
-            div.dataset.value = o.value;
+            div.textContent = o.textContent.trim();
+            div.dataset.value = val;
             div.addEventListener("mousedown", (e) => {
               e.preventDefault();
-              selectOption(o.value, o.textContent);
+              selectOption(val, o.textContent.trim());
             });
             dd.appendChild(div);
           });
@@ -4202,8 +4205,9 @@ function makeSearchable(selectEl) {
       });
     } else {
       Array.from(selectEl.options).filter(o =>
-        o.value && o.textContent.toLowerCase().includes(q)
+        (o.value || o.textContent.trim()) && o.textContent.toLowerCase().includes(q)
       ).forEach(o => {
+        const val = o.value || o.textContent.trim();
         hasResults = true;
         const div = document.createElement("div");
         div.className = "ss-option";
@@ -4625,10 +4629,12 @@ function makeSearchable(selectEl) {
       if (child.tagName === "OPTGROUP") {
         const group = child.label;
         for (const opt of child.children) {
-          if (opt.value) opts.push({ value: opt.value, text: opt.textContent, group });
+          const val = opt.value || opt.textContent.trim();
+          if (val) opts.push({ value: val, text: opt.textContent.trim(), group });
         }
-      } else if (child.tagName === "OPTION" && child.value) {
-        opts.push({ value: child.value, text: child.textContent, group: null });
+      } else if (child.tagName === "OPTION") {
+        const val = child.value || child.textContent.trim();
+        if (val) opts.push({ value: val, text: child.textContent.trim(), group: null });
       }
     }
     return opts;
