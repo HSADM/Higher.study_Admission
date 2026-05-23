@@ -12,23 +12,40 @@
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
   :root {
-    --bg: #f4f1ec;
+    --bg: #f0f2f8;
+    --bg2: #e8eaf2;
     --surface: #ffffff;
-    --primary: #1a365d;
-    --primary-light: #2c5282;
-    --accent: #c4a35a;
-    --accent-glow: #d4b76a;
-    --text: #1a202c;
-    --text-muted: #64748b;
-    --border: #e2ddd5;
-    --error: #c53030;
-    --error-bg: #fff5f5;
-    --success: #276749;
-    --success-bg: #f0fff4;
-    --radius: 10px;
-    --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
-    --shadow-md: 0 4px 20px rgba(0,0,0,0.08);
-    --shadow-lg: 0 12px 40px rgba(0,0,0,0.12);
+    --surface2: #f8f9fc;
+    --primary: #1e3a6e;
+    --primary-light: #2d55a0;
+    --primary-glow: rgba(30,58,110,0.12);
+    --accent: #e8a020;
+    --accent-light: #f5c060;
+    --accent-glow: rgba(232,160,32,0.2);
+    --teal: #0e9f8e;
+    --teal-light: #d0f4f0;
+    --ruby: #d63b3b;
+    --ruby-light: #fde8e8;
+    --emerald: #1a8c5e;
+    --emerald-light: #d4f5e7;
+    --text: #1a2035;
+    --text-muted: #6b7a9a;
+    --text-light: #9aa3be;
+    --border: #e2e6f0;
+    --border-focus: #2d55a0;
+    --error: #d63b3b;
+    --error-bg: #fde8e8;
+    --success: #1a8c5e;
+    --success-bg: #d4f5e7;
+    --radius: 14px;
+    --radius-sm: 8px;
+    --radius-lg: 20px;
+    --shadow-xs: 0 1px 3px rgba(0,0,0,0.05);
+    --shadow-sm: 0 2px 8px rgba(30,58,110,0.07);
+    --shadow-md: 0 6px 24px rgba(30,58,110,0.1);
+    --shadow-lg: 0 16px 48px rgba(30,58,110,0.14);
+    --shadow-glow: 0 0 0 3px rgba(30,58,110,0.12);
+    --transition: 0.22s cubic-bezier(0.4,0,0.2,1);
   }
 
   body {
@@ -38,88 +55,85 @@
     min-height: 100vh;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* — Header — */
+  /* ── Scrollbar ─────────────────────────────────────────── */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 99px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text-light); }
+
+  /* ── Header ─────────────────────────────────────────────── */
   .header {
-    background: var(--primary);
+    background: linear-gradient(135deg, #1e3a6e 0%, #162d58 60%, #1a2f5c 100%);
     padding: 0;
     position: relative;
     overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse 80% 80% at 90% 40%, rgba(232,160,32,0.12) 0%, transparent 70%),
+                radial-gradient(ellipse 50% 100% at -10% 50%, rgba(45,85,160,0.3) 0%, transparent 60%);
+    pointer-events: none;
   }
   .header::after {
     content: '';
     position: absolute;
     bottom: 0; left: 0; right: 0;
-    height: 4px;
-    background: linear-gradient(90deg, var(--accent), var(--accent-glow), var(--accent));
+    height: 3px;
+    background: linear-gradient(90deg, transparent, var(--accent), var(--accent-light), var(--accent), transparent);
   }
   .header-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    padding: 28px 24px 24px;
-    position: relative;
-    z-index: 1;
-    transition: max-width 0.3s ease;
+    max-width: 720px; margin: 0 auto;
+    padding: 24px 24px 20px;
+    position: relative; z-index: 1;
+    transition: max-width 0.35s cubic-bezier(0.4,0,0.2,1);
   }
-  .header.wide .header-inner {
-    max-width: 1280px;
-  }
-  .brand {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    margin-bottom: 20px;
-  }
+  .header.wide .header-inner { max-width: 1320px; }
+  .brand { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
   .brand-logo {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    object-fit: contain;
-    border: 2px solid rgba(255,255,255,0.2);
-    box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 4px 16px rgba(0,0,0,0.3);
-    background: #1e2a3a;
+    width: 50px; height: 50px;
+    border-radius: 14px; object-fit: contain;
+    border: 1.5px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.07), 0 6px 20px rgba(0,0,0,0.35);
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(4px);
   }
   .brand-name {
     font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    font-weight: 700;
-    letter-spacing: 3px;
-    color: var(--accent);
+    font-size: 13px; font-weight: 800;
+    letter-spacing: 4px; color: var(--accent);
     text-transform: uppercase;
+  }
+  .brand-tagline {
+    font-size: 10px; color: rgba(255,255,255,0.4);
+    letter-spacing: 0.5px; margin-top: 1px;
   }
   .header h1 {
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 700;
-    color: #fff;
-    letter-spacing: -0.3px;
+    font-size: 24px; font-weight: 700;
+    color: #fff; letter-spacing: -0.3px;
   }
   .header p {
-    color: rgba(255,255,255,0.92);
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    font-weight: 600;
-    margin-top: 6px;
-    letter-spacing: 0.2px;
-    text-shadow: 0 1px 4px rgba(0,0,0,0.2);
+    color: rgba(255,255,255,0.7);
+    font-size: 13px; font-weight: 500;
+    margin-top: 4px; letter-spacing: 0.3px;
   }
 
   /* — Main — */
   .main {
     max-width: 720px;
     margin: 0 auto;
-    padding: 24px 16px 48px;
-    transition: max-width 0.3s ease;
+    padding: 28px 16px 96px;
+    transition: max-width 0.35s cubic-bezier(0.4,0,0.2,1);
   }
-  .main.wide {
-    max-width: 1280px;
-  }
-  .main.entry-mode {
-    max-width: 1180px;
-  }
+  .main.wide { max-width: 1320px; }
+  .main.entry-mode { max-width: 1200px; }
 
-  /* — Entry Layout (form + sidebar) — */
+  /* ── Entry Layout ───────────────────────────────────────── */
   .entry-layout {
     display: grid;
     grid-template-columns: 1fr 340px;
@@ -127,40 +141,36 @@
     align-items: start;
   }
   .entry-left { min-width: 0; }
-  .entry-right { position: sticky; top: 24px; }
-  .sidebar-card { padding: 24px 20px !important; }
+  .sidebar-card { padding: 22px 18px !important; }
   .sidebar-title {
     font-family: 'Playfair Display', serif;
-    font-size: 18px;
-    font-weight: 700;
+    font-size: 17px; font-weight: 700;
     color: var(--primary);
-    margin-bottom: 16px;
-    padding-bottom: 10px;
+    margin-bottom: 16px; padding-bottom: 12px;
     border-bottom: 2px solid var(--accent);
+    letter-spacing: -0.2px;
   }
   .sidebar-mgr-card {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 0;
-    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; gap: 12px;
+    padding: 12px 0; border-bottom: 1px solid var(--border);
+    transition: all var(--transition);
   }
   .sidebar-mgr-card:last-child { border-bottom: none; }
   .sidebar-mgr-avatar {
     width: 38px; height: 38px;
-    border-radius: 50%;
-    background: var(--primary);
+    border-radius: 10px;
     color: #fff;
     display: flex; align-items: center; justify-content: center;
-    font-weight: 700; font-size: 14px; flex-shrink: 0;
+    font-weight: 800; font-size: 13px; flex-shrink: 0;
+    box-shadow: 0 3px 8px rgba(30,58,110,0.2);
   }
   .sidebar-mgr-info { flex: 1; min-width: 0; }
-  .sidebar-mgr-name { font-weight: 700; font-size: 14px; color: var(--text); }
-  .sidebar-mgr-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+  .sidebar-mgr-name { font-weight: 700; font-size: 13px; color: var(--text); }
+  .sidebar-mgr-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
   .sidebar-mgr-tag {
     font-size: 10px; font-weight: 600;
     padding: 2px 8px; border-radius: 20px;
-    background: #edf2f7; color: var(--primary);
+    background: #eef2fb; color: var(--primary);
     display: inline-flex; align-items: center; gap: 4px;
   }
   .sidebar-mgr-tag strong {
@@ -170,20 +180,23 @@
     font-size: 9px; font-weight: 700;
   }
   .sidebar-mgr-count {
-    font-size: 24px; font-weight: 700;
+    font-size: 22px; font-weight: 800;
     color: var(--primary); flex-shrink: 0; line-height: 1;
   }
   .sidebar-total {
-    background: var(--primary); color: #fff;
-    border-radius: 8px; padding: 14px 16px;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    color: #fff; border-radius: 12px;
+    padding: 14px 16px;
     display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 14px;
+    box-shadow: 0 4px 14px rgba(30,58,110,0.25);
   }
-  .sidebar-total-label { font-size: 13px; font-weight: 600; }
-  .sidebar-total-num { font-size: 26px; font-weight: 700; }
+  .sidebar-total-label { font-size: 12px; font-weight: 600; opacity: 0.85; }
+  .sidebar-total-num { font-size: 26px; font-weight: 800; }
   .sidebar-empty {
-    text-align: center; padding: 24px 8px;
+    text-align: center; padding: 28px 8px;
     color: var(--text-muted); font-size: 13px;
+    line-height: 1.6;
   }
   @media (max-width: 860px) {
     .entry-layout { grid-template-columns: 1fr; }
@@ -198,34 +211,28 @@
     padding: 32px 28px;
     border: 1px solid var(--border);
   }
-  @media (max-width: 520px) {
-    .card { padding: 24px 18px; }
-  }
+  @media (max-width: 520px) { .card { padding: 20px 16px; } }
 
-  /* — Grid — */
+  /* ── Form Grid ───────────────────────────────────────────── */
   .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 20px 24px;
   }
   .form-grid .full { grid-column: 1 / -1; }
-  @media (max-width: 560px) {
-    .form-grid { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 560px) { .form-grid { grid-template-columns: 1fr; } }
 
-  /* — Field — */
+  /* ── Fields ─────────────────────────────────────────────── */
   .field label {
     display: block;
-    font-size: 13px;
-    font-weight: 600;
-    color: var(--text);
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-muted);
     margin-bottom: 6px;
-    letter-spacing: 0.2px;
+    letter-spacing: 0.4px;
+    text-transform: uppercase;
   }
-  .field label .req {
-    color: var(--error);
-    margin-left: 2px;
-  }
+  .field label .req { color: var(--ruby); margin-left: 2px; }
   .field input,
   .field select {
     width: 100%;
@@ -233,16 +240,16 @@
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
     border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: #faf9f7;
+    border-radius: 10px;
+    background: var(--surface2);
     color: var(--text);
-    transition: border-color 0.2s, box-shadow 0.2s;
+    transition: all var(--transition);
     outline: none;
     appearance: none;
     -webkit-appearance: none;
   }
   .field select {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' fill='none' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' fill='none' stroke='%236b7a9a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 14px center;
     padding-right: 36px;
@@ -250,36 +257,37 @@
   .field input:focus,
   .field select:focus {
     border-color: var(--primary-light);
-    box-shadow: 0 0 0 3px rgba(26,54,93,0.1);
+    box-shadow: var(--shadow-glow);
     background: #fff;
   }
   .field input.invalid,
   .field select.invalid {
-    border-color: var(--error);
-    box-shadow: 0 0 0 3px rgba(197,48,48,0.08);
+    border-color: var(--ruby);
+    box-shadow: 0 0 0 3px rgba(214,59,59,0.1);
   }
   .field .field-error {
-    font-size: 12px;
-    color: var(--error);
+    font-size: 11px;
+    color: var(--ruby);
     margin-top: 4px;
     display: none;
+    font-weight: 600;
   }
   .field .field-error.show { display: block; }
 
-  /* — Section divider — */
+  /* ── Section Divider ────────────────────────────────────── */
   .section-title {
-    font-size: 11px;
-    font-weight: 700;
+    font-size: 10px;
+    font-weight: 800;
     text-transform: uppercase;
-    letter-spacing: 1.4px;
-    color: var(--text-muted);
+    letter-spacing: 1.8px;
+    color: var(--text-light);
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1.5px solid var(--border);
     margin-bottom: 0;
     grid-column: 1 / -1;
   }
 
-  /* — Button — */
+  /* ── Buttons ────────────────────────────────────────────── */
   .btn-row {
     grid-column: 1 / -1;
     display: flex;
@@ -289,111 +297,132 @@
   .btn {
     font-family: 'DM Sans', sans-serif;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     padding: 12px 32px;
-    border-radius: 8px;
+    border-radius: 10px;
     border: none;
     cursor: pointer;
-    transition: all 0.2s;
-    letter-spacing: 0.3px;
+    transition: all var(--transition);
+    letter-spacing: 0.2px;
+    position: relative;
+    overflow: hidden;
   }
+  .btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: white;
+    opacity: 0;
+    transition: opacity 0.15s;
+  }
+  .btn:active::after { opacity: 0.15; }
   .btn-primary {
-    background: var(--primary);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary) 100%);
     color: #fff;
+    box-shadow: 0 4px 14px rgba(30,58,110,0.3);
   }
-  .btn-primary:hover { background: var(--primary-light); transform: translateY(-1px); box-shadow: var(--shadow-sm); }
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(30,58,110,0.35);
+  }
   .btn-primary:active { transform: translateY(0); }
-  .btn-primary:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    transform: none;
-  }
+  .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; transform: none; box-shadow: none; }
   .btn-secondary {
     background: transparent;
     color: var(--text-muted);
     border: 1.5px solid var(--border);
   }
-  .btn-secondary:hover { border-color: var(--text-muted); color: var(--text); }
+  .btn-secondary:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: #f0f4fc;
+  }
 
-  /* — Toast — */
+  /* ── Toast ──────────────────────────────────────────────── */
   .toast-container {
     position: fixed;
-    top: 20px;
-    right: 20px;
+    top: 20px; right: 20px;
     z-index: 9999;
     display: flex;
     flex-direction: column;
     gap: 10px;
+    pointer-events: none;
   }
   .toast {
     padding: 14px 20px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 500;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
     box-shadow: var(--shadow-lg);
-    animation: slideIn 0.35s cubic-bezier(0.16,1,0.3,1);
-    max-width: 380px;
+    animation: slideIn 0.4s cubic-bezier(0.16,1,0.3,1);
+    max-width: 360px;
     display: flex;
     align-items: center;
     gap: 10px;
+    pointer-events: all;
+    backdrop-filter: blur(8px);
+    border: 1px solid transparent;
   }
-  .toast.success { background: var(--success-bg); color: var(--success); border: 1px solid #c6f6d5; }
-  .toast.error   { background: var(--error-bg);   color: var(--error);   border: 1px solid #fed7d7; }
+  .toast.success {
+    background: rgba(212,245,231,0.97);
+    color: var(--emerald);
+    border-color: #a7e8cc;
+  }
+  .toast.error {
+    background: rgba(253,232,232,0.97);
+    color: var(--ruby);
+    border-color: #f5b8b8;
+  }
+  .toast:not(.success):not(.error) {
+    background: rgba(238,242,251,0.97);
+    color: var(--primary);
+    border-color: var(--border);
+  }
   .toast .icon { font-size: 18px; flex-shrink: 0; }
   .toast.hide { animation: slideOut 0.3s ease forwards; }
-  @keyframes slideIn { from { transform: translateX(100%); opacity: 0; } to { transform: translateX(0); opacity: 1; } }
-  @keyframes slideOut { to { transform: translateX(120%); opacity: 0; } }
+  @keyframes slideIn {
+    from { transform: translateX(calc(100% + 20px)); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+  }
+  @keyframes slideOut {
+    to { transform: translateX(calc(100% + 20px)); opacity: 0; }
+  }
 
-  /* — Spinner — */
+  /* ── Spinner ─────────────────────────────────────────────── */
   .spinner {
     width: 18px; height: 18px;
     border: 2.5px solid rgba(255,255,255,0.3);
     border-top-color: #fff;
     border-radius: 50%;
-    animation: spin 0.6s linear infinite;
+    animation: spin 0.7s linear infinite;
     display: inline-block;
     vertical-align: middle;
     margin-right: 8px;
   }
   @keyframes spin { to { transform: rotate(360deg); } }
 
-  /* — Success screen — */
+  /* ── Success Screen ─────────────────────────────────────── */
   .success-screen {
-    text-align: center;
-    padding: 48px 24px;
-    display: none;
+    text-align: center; padding: 48px 24px; display: none;
   }
-  .success-screen.show { display: block; }
+  .success-screen.show { display: block; animation: fadeSlideUp 0.5s ease; }
   .success-screen .check-circle {
-    width: 72px; height: 72px;
-    border-radius: 50%;
-    background: var(--success-bg);
-    border: 2px solid #c6f6d5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0 auto 20px;
-    font-size: 32px;
-    color: var(--success);
+    width: 72px; height: 72px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--emerald-light), #b2f5d8);
+    border: 2px solid #a7e8cc;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 20px; font-size: 32px; color: var(--emerald);
+    box-shadow: 0 8px 24px rgba(26,140,94,0.2);
   }
   .success-screen h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 22px;
-    color: var(--primary);
-    margin-bottom: 8px;
+    font-size: 22px; color: var(--primary); margin-bottom: 8px;
   }
-  .success-screen p {
-    color: var(--text-muted);
-    font-size: 14px;
-    margin-bottom: 24px;
-  }
+  .success-screen p { color: var(--text-muted); font-size: 14px; margin-bottom: 24px; }
   .success-screen .detail-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 13px;
-    text-align: left;
+    display: flex; justify-content: space-between;
+    padding: 10px 0; border-bottom: 1px solid var(--border);
+    font-size: 13px; text-align: left;
   }
   .success-screen .detail-row:last-of-type { border-bottom: none; }
   .success-screen .detail-label { color: var(--text-muted); }
@@ -412,19 +441,22 @@
   /* — Footer — */
   .footer {
     text-align: center;
-    padding: 16px 16px 90px;
-    font-size: 12px;
-    color: var(--text-muted);
+    padding: 16px 16px 96px;
+    font-size: 11px;
+    color: var(--text-light);
+    letter-spacing: 0.3px;
   }
 
-  /* — Tab Bar — */
+  /* ── Tab Bar ────────────────────────────────────────────── */
   .tab-bar {
     position: fixed;
     bottom: 0; left: 0; right: 0;
     display: flex;
-    background: var(--surface);
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-top: 1px solid var(--border);
-    box-shadow: 0 -2px 12px rgba(0,0,0,0.06);
+    box-shadow: 0 -4px 20px rgba(30,58,110,0.08);
     z-index: 100;
   }
   .tab {
@@ -433,7 +465,7 @@
     flex-direction: column;
     align-items: center;
     gap: 4px;
-    padding: 10px 8px 12px;
+    padding: 10px 8px 14px;
     border: none;
     background: none;
     color: var(--text-muted);
@@ -441,13 +473,40 @@
     font-size: 11px;
     font-weight: 600;
     cursor: pointer;
-    transition: color 0.2s;
+    transition: color var(--transition);
+    position: relative;
+  }
+  .tab::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 20%; right: 20%;
+    height: 2px;
+    background: var(--primary);
+    border-radius: 0 0 4px 4px;
+    transform: scaleX(0);
+    transition: transform var(--transition);
   }
   .tab.active { color: var(--primary); }
+  .tab.active::before { transform: scaleX(1); }
   .tab:hover { color: var(--primary-light); }
 
-  /* — Dashboard — */
-  .dash-header { margin-bottom: 20px; }
+  /* ── Dashboard Layout ───────────────────────────────────── */
+  .dash-header {
+    margin-bottom: 24px;
+    animation: fadeSlideDown 0.4s ease both;
+  }
+  @keyframes fadeSlideDown {
+    from { opacity: 0; transform: translateY(-12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
   .dash-title-row {
     display: flex;
     align-items: center;
@@ -457,288 +516,369 @@
   }
   .dash-title {
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-size: 22px;
     color: var(--primary);
+    font-weight: 700;
+    letter-spacing: -0.3px;
   }
-  .dash-actions {
-    display: flex;
-    gap: 8px;
-    align-items: center;
-  }
+  .dash-actions { display: flex; gap: 8px; align-items: center; }
   .search-input {
-    padding: 8px 14px;
+    padding: 9px 14px;
     font-family: 'DM Sans', sans-serif;
     font-size: 13px;
     border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: #faf9f7;
+    border-radius: 10px;
+    background: var(--surface);
     outline: none;
     width: 220px;
-    transition: border-color 0.2s;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-xs);
   }
-  .search-input:focus { border-color: var(--primary-light); background: #fff; }
-  .btn-sm { padding: 8px 16px; font-size: 13px; }
+  .search-input:focus {
+    border-color: var(--border-focus);
+    box-shadow: var(--shadow-glow);
+    background: #fff;
+  }
+  .btn-sm { padding: 9px 18px; font-size: 13px; border-radius: 10px; }
+
+  /* ── Stat Cards ─────────────────────────────────────────── */
   .dash-stats {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 16px;
-    margin-top: 14px;
-    flex-wrap: wrap;
+    margin-top: 18px;
+    animation: fadeSlideUp 0.4s 0.1s ease both;
   }
   .stat-card {
-    background: #faf9f7;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    padding: 12px 18px;
-    flex: 1;
-    min-width: 120px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 20px 24px;
     text-align: center;
+    cursor: pointer;
+    transition: all var(--transition);
+    user-select: none;
+    box-shadow: var(--shadow-sm);
+    position: relative;
+    overflow: hidden;
   }
-  .stat-num {
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--primary);
+  .stat-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: var(--primary);
+    transform: scaleX(0);
+    transition: transform var(--transition);
+    border-radius: 99px;
   }
-  .stat-label {
-    font-size: 11px;
-    color: var(--text-muted);
+  .stat-card.stat-green::before { background: var(--emerald); }
+  .stat-card.stat-red::before   { background: var(--ruby); }
+  .stat-card:hover {
+    border-color: var(--primary);
+    background: #f5f8ff;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+  }
+  .stat-card:hover::before { transform: scaleX(1); }
+  .stat-card.stat-green:hover { border-color: var(--emerald); background: var(--emerald-light); }
+  .stat-card.stat-red:hover   { border-color: var(--ruby); background: var(--ruby-light); }
+  .stat-card.stat-active-filter {
+    border-color: var(--primary);
+    background: #eef2fb;
+    box-shadow: 0 0 0 3px rgba(30,58,110,0.12), var(--shadow-md);
+  }
+  .stat-card.stat-active-filter::before { transform: scaleX(1); }
+  .stat-card.stat-active-filter.stat-green {
+    border-color: var(--emerald);
+    background: var(--emerald-light);
+    box-shadow: 0 0 0 3px rgba(26,140,94,0.15), var(--shadow-sm);
+  }
+  .stat-card.stat-active-filter.stat-red {
+    border-color: var(--ruby);
+    background: var(--ruby-light);
+    box-shadow: 0 0 0 3px rgba(214,59,59,0.15), var(--shadow-sm);
+  }
+  .stat-card.stat-is-filtered::after {
+    content: "● filtered";
+    display: block;
+    font-size: 9px;
     text-transform: uppercase;
     letter-spacing: 0.8px;
-    margin-top: 2px;
+    color: var(--text-light);
+    margin-top: 4px;
   }
-
-  /* — Manager Summary — */
-  .manager-summary {
-    margin-top: 20px;
+  .stat-filter-hint {
+    font-size: 10px;
+    color: var(--text-light);
+    margin-top: 4px;
+    opacity: 0;
+    transition: opacity 0.15s;
   }
-  .mgr-section-title {
-    font-size: 12px;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
-    color: var(--text-muted);
-    margin-bottom: 12px;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-  }
-  .mgr-section-title::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background: var(--border);
-  }
-  .mgr-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 12px;
-  }
-  .mgr-card {
-    background: #fff;
-    border: 1.5px solid var(--border);
-    border-radius: 10px;
-    padding: 16px 18px;
-    display: flex;
-    align-items: center;
-    gap: 14px;
-    transition: border-color 0.2s, box-shadow 0.2s;
-  }
-  .mgr-card:hover {
-    border-color: var(--primary-light);
-    box-shadow: 0 2px 12px rgba(26,54,93,0.08);
-  }
-  .mgr-avatar {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--primary);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 16px;
-    flex-shrink: 0;
-  }
-  .mgr-info { flex: 1; }
-  .mgr-name {
-    font-weight: 700;
-    font-size: 15px;
-    color: var(--text);
-  }
-  .mgr-processes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 5px;
-    margin-top: 6px;
-  }
-  .mgr-tag {
-    font-size: 11px;
-    font-weight: 600;
-    padding: 3px 9px;
-    border-radius: 20px;
-    background: #edf2f7;
+  .stat-card:hover .stat-filter-hint { opacity: 1; }
+  .stat-num {
+    font-size: 36px;
+    font-weight: 800;
     color: var(--primary);
-  }
-  .mgr-count {
-    text-align: center;
-    flex-shrink: 0;
-  }
-  .mgr-count-num {
-    font-size: 28px;
-    font-weight: 700;
-    color: var(--primary);
+    letter-spacing: -1px;
     line-height: 1;
   }
-  .mgr-count-label {
+  .stat-label {
     font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.6px;
+    font-weight: 700;
     color: var(--text-muted);
-    margin-top: 2px;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    margin-top: 6px;
   }
 
-  /* — Filter Bar — */
+  /* ── Filter Bar ─────────────────────────────────────────── */
   .filter-bar {
     display: flex;
     gap: 8px;
-    margin-top: 14px;
+    margin-top: 16px;
     flex-wrap: wrap;
     align-items: center;
+    animation: fadeIn 0.4s 0.15s ease both;
   }
   .filter-input {
-    padding: 7px 12px;
+    padding: 8px 14px;
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     border: 1.5px solid var(--border);
-    border-radius: 6px;
-    background: #faf9f7;
+    border-radius: 10px;
+    background: var(--surface);
     outline: none;
-    width: 160px;
-    transition: border-color 0.2s;
+    width: 170px;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-xs);
   }
-  .filter-input:focus { border-color: var(--primary-light); background: #fff; }
+  .filter-input:focus {
+    border-color: var(--border-focus);
+    box-shadow: var(--shadow-glow);
+    background: #fff;
+  }
   .filter-select {
-    padding: 7px 10px;
+    padding: 8px 30px 8px 12px;
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
     border: 1.5px solid var(--border);
-    border-radius: 6px;
-    background: #faf9f7;
+    border-radius: 10px;
+    background: var(--surface);
     color: var(--text);
     outline: none;
     cursor: pointer;
     min-width: 130px;
     appearance: none;
     -webkit-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' fill='none' stroke='%2364748b' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' fill='none' stroke='%236b7a9a' stroke-width='1.5' stroke-linecap='round'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
-    background-position: right 8px center;
-    padding-right: 24px;
+    background-position: right 10px center;
+    box-shadow: var(--shadow-xs);
+    transition: all var(--transition);
   }
-  .filter-select:focus { border-color: var(--primary-light); background: #fff; }
+  .filter-select:focus {
+    border-color: var(--border-focus);
+    box-shadow: var(--shadow-glow);
+    background-color: #fff;
+  }
   .btn-clear-filters {
-    padding: 7px 12px;
+    padding: 8px 14px;
     font-family: 'DM Sans', sans-serif;
     font-size: 11px;
-    font-weight: 600;
+    font-weight: 700;
     border: 1.5px solid var(--border);
-    border-radius: 6px;
-    background: none;
+    border-radius: 10px;
+    background: var(--surface);
     color: var(--text-muted);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all var(--transition);
+    letter-spacing: 0.3px;
   }
-  .btn-clear-filters:hover { border-color: var(--error); color: var(--error); }
+  .btn-clear-filters:hover {
+    border-color: var(--error);
+    color: var(--error);
+    background: var(--error-bg);
+  }
 
-  /* — Table (compact) — */
+  /* ── Manager Summary ────────────────────────────────────── */
+  .manager-summary { margin-top: 24px; }
+  .mgr-section-title {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: var(--text-muted);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .mgr-section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border), transparent);
+  }
+  .mgr-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 12px;
+  }
+  .mgr-card {
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    transition: all var(--transition);
+    box-shadow: var(--shadow-xs);
+  }
+  .mgr-card:hover {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+  }
+  .mgr-avatar {
+    width: 44px; height: 44px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-light));
+    color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 800; font-size: 15px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(30,58,110,0.25);
+  }
+  .mgr-info { flex: 1; min-width: 0; }
+  .mgr-name { font-weight: 700; font-size: 14px; color: var(--text); }
+  .mgr-processes { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 5px; }
+  .mgr-tag {
+    font-size: 10px; font-weight: 600;
+    padding: 2px 8px; border-radius: 20px;
+    background: #eef2fb; color: var(--primary);
+  }
+  .mgr-count { text-align: center; flex-shrink: 0; }
+  .mgr-count-num {
+    font-size: 26px; font-weight: 800;
+    color: var(--primary); line-height: 1;
+  }
+  .mgr-count-label {
+    font-size: 9px; text-transform: uppercase;
+    letter-spacing: 0.6px; color: var(--text-muted); margin-top: 2px;
+  }
+
+  /* ── Table ──────────────────────────────────────────────── */
   .table-wrap {
     overflow-x: auto;
     overflow-y: auto;
-    max-height: 70vh;
-    border-radius: 8px;
-    border: 1px solid var(--border);
+    max-height: 65vh;
+    border-radius: var(--radius);
+    border: 1.5px solid var(--border);
+    box-shadow: var(--shadow-sm);
+    animation: fadeSlideUp 0.4s 0.2s ease both;
   }
   .data-table {
-    width: auto;
-    min-width: 100%;
+    width: auto; min-width: 100%;
     border-collapse: collapse;
-    font-size: 11px;
+    font-size: 12px;
     white-space: nowrap;
     table-layout: auto;
   }
   .data-table th {
-    background: var(--primary);
-    color: #fff;
-    font-weight: 600;
-    padding: 7px 10px;
+    background: linear-gradient(180deg, #243c70 0%, #1e3a6e 100%);
+    color: rgba(255,255,255,0.9);
+    font-weight: 700;
+    padding: 11px 14px;
     text-align: left;
     font-size: 10px;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
-    position: sticky;
-    top: 0;
+    letter-spacing: 0.8px;
+    position: sticky; top: 0; z-index: 2;
     white-space: nowrap;
+    border-right: 1px solid rgba(255,255,255,0.06);
+  }
+  .data-table th:first-child,
+  .data-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background: inherit;
+  }
+  .data-table th:first-child {
+    background: linear-gradient(180deg, #243c70 0%, #1e3a6e 100%);
+    z-index: 3;
   }
   .data-table td {
-    padding: 6px 10px;
-    border-bottom: 1px solid var(--border);
+    padding: 10px 14px;
+    border-bottom: 1px solid #f0f2f8;
     color: var(--text);
-    max-width: 180px;
+    max-width: 200px;
     overflow: hidden;
     text-overflow: ellipsis;
+    font-size: 12px;
+    transition: background var(--transition);
   }
-  .data-table tbody tr:hover { background: #faf9f7; }
+  .data-table tbody tr {
+    transition: background var(--transition);
+  }
+  .data-table tbody tr:hover td { background: #f4f7ff !important; }
   .data-table tbody tr:last-child td { border-bottom: none; }
-  .data-table tbody tr.row-cancelled { background: #fff5f5 !important; }
-  .data-table tbody tr.row-cancelled td { color: #c53030; }
+  .data-table tbody tr.row-cancelled { background: #fff8f8 !important; }
+  .data-table tbody tr.row-cancelled td { color: var(--ruby); }
+  .data-table tbody tr:nth-child(even) td { background: #fafbfe; }
+
+  /* Action buttons in table */
   .btn-cancel-admission {
-    padding: 4px 10px;
+    padding: 5px 12px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 10px;
-    font-weight: 600;
-    border: 1.5px solid #c53030;
-    border-radius: 5px;
-    background: none;
-    color: #c53030;
+    font-size: 11px; font-weight: 700;
+    border: 1.5px solid var(--ruby);
+    border-radius: 8px;
+    background: none; color: var(--ruby);
     cursor: pointer;
-    transition: all 0.2s;
+    transition: all var(--transition);
     white-space: nowrap;
   }
-  .btn-cancel-admission:hover { background: #c53030; color: #fff; }
-  .btn-cancel-admission:disabled { opacity: 0.4; cursor: not-allowed; }
-  .btn-cancel-admission:disabled:hover { background: none; color: #c53030; }
+  .btn-cancel-admission:hover {
+    background: var(--ruby); color: #fff;
+    box-shadow: 0 4px 12px rgba(214,59,59,0.3);
+    transform: translateY(-1px);
+  }
+  .btn-cancel-admission:disabled { opacity: 0.35; cursor: not-allowed; transform: none; }
   .cancelled-label {
-    font-size: 10px;
-    font-weight: 700;
-    color: #c53030;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+    font-size: 10px; font-weight: 700;
+    color: var(--ruby); text-transform: uppercase; letter-spacing: 0.5px;
   }
   .btn-reactivate {
-    padding: 3px 8px;
+    padding: 4px 10px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 9px;
-    font-weight: 600;
-    border: 1.5px solid #276749;
-    border-radius: 5px;
-    background: none;
-    color: #276749;
+    font-size: 10px; font-weight: 700;
+    border: 1.5px solid var(--emerald);
+    border-radius: 8px;
+    background: none; color: var(--emerald);
     cursor: pointer;
-    transition: all 0.2s;
-    white-space: nowrap;
-    margin-left: 6px;
+    transition: all var(--transition);
+    white-space: nowrap; margin-left: 6px;
   }
-  .btn-reactivate:hover { background: #276749; color: #fff; }
+  .btn-reactivate:hover {
+    background: var(--emerald); color: #fff;
+    box-shadow: 0 4px 12px rgba(26,140,94,0.3);
+    transform: translateY(-1px);
+  }
   .status-badge {
-    display: inline-block;
-    padding: 3px 10px;
-    border-radius: 20px;
-    font-size: 11px;
-    font-weight: 600;
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px; border-radius: 20px;
+    font-size: 11px; font-weight: 700;
+    letter-spacing: 0.2px;
   }
-  .status-done { background: #f0fff4; color: #276749; }
-  .status-cancelled { background: #fff5f5; color: #c53030; }
-  .status-pending { background: #fffaf0; color: #c05621; }
+  .status-badge::before { content: '●'; font-size: 7px; opacity: 0.7; }
+  .status-done     { background: var(--emerald-light); color: var(--emerald); border: 1px solid #a7e8cc; }
+  .status-cancelled{ background: var(--ruby-light);    color: var(--ruby);    border: 1px solid #f5b8b8; }
+  .status-pending  { background: #fff8e6;              color: #b07800;        border: 1px solid #f5d98a; }
+  .status-active   { background: #e8f0fe;              color: var(--primary-light); border: 1px solid #b8cef5; }
+  .status-active { background: #ebf8ff; color: #2b6cb0; border: 1px solid #bee3f8; }
 
   .dash-empty {
     text-align: center;
@@ -764,122 +904,94 @@
 
   /* — Password Modal — */
   .pwd-overlay {
-    display: none;
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.5);
-    backdrop-filter: blur(4px);
-    z-index: 9999;
-    align-items: center;
-    justify-content: center;
+    display: none; position: fixed; inset: 0;
+    background: rgba(15,25,50,0.55);
+    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+    z-index: 9999; align-items: center; justify-content: center;
   }
   .pwd-modal {
     background: var(--surface);
-    border-radius: 14px;
-    padding: 36px 32px;
-    width: 90%;
-    max-width: 380px;
+    border-radius: 20px; padding: 40px 32px;
+    width: 90%; max-width: 390px;
     text-align: center;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.2);
-    animation: modalIn 0.3s cubic-bezier(0.16,1,0.3,1);
+    box-shadow: 0 24px 80px rgba(0,0,0,0.25);
+    border: 1px solid var(--border);
+    animation: modalIn 0.4s cubic-bezier(0.16,1,0.3,1);
   }
-  @keyframes modalIn { from { transform: scale(0.9) translateY(20px); opacity: 0; } to { transform: scale(1) translateY(0); opacity: 1; } }
-  .pwd-icon { font-size: 40px; margin-bottom: 12px; }
+  @keyframes modalIn {
+    from { transform: scale(0.88) translateY(24px); opacity: 0; }
+    to   { transform: scale(1) translateY(0); opacity: 1; }
+  }
+  .pwd-icon { font-size: 44px; margin-bottom: 14px; }
   .pwd-title {
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    color: var(--primary);
-    margin-bottom: 6px;
+    font-size: 20px; color: var(--primary); margin-bottom: 6px;
   }
-  .pwd-desc {
-    font-size: 13px;
-    color: var(--text-muted);
-    margin-bottom: 20px;
-  }
+  .pwd-desc { font-size: 13px; color: var(--text-muted); margin-bottom: 22px; }
   .pwd-input {
-    width: 100%;
-    padding: 12px 16px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 15px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: #faf9f7;
-    outline: none;
-    text-align: center;
-    letter-spacing: 2px;
-    transition: border-color 0.2s;
+    width: 100%; padding: 13px 16px;
+    font-family: 'DM Sans', sans-serif; font-size: 15px;
+    border: 1.5px solid var(--border); border-radius: 12px;
+    background: var(--surface2); outline: none;
+    text-align: center; letter-spacing: 2px;
+    transition: all var(--transition);
   }
-  .pwd-input:focus { border-color: var(--primary-light); background: #fff; }
-  .pwd-input.invalid { border-color: var(--error); }
+  .pwd-input:focus {
+    border-color: var(--primary-light);
+    box-shadow: var(--shadow-glow); background: #fff;
+  }
+  .pwd-input.invalid { border-color: var(--ruby); }
   .pwd-error {
-    display: none;
-    color: var(--error);
-    font-size: 12px;
-    margin-top: 8px;
-    font-weight: 600;
+    display: none; color: var(--ruby);
+    font-size: 12px; margin-top: 8px; font-weight: 600;
   }
   .pwd-actions {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-    justify-content: center;
+    display: flex; gap: 10px;
+    margin-top: 22px; justify-content: center;
   }
   .login-tabs {
-    display: flex;
-    gap: 0;
-    margin-bottom: 18px;
-    border-radius: 8px;
-    overflow: hidden;
-    border: 1.5px solid var(--border);
+    display: flex; gap: 0;
+    margin-bottom: 20px; border-radius: 10px;
+    overflow: hidden; border: 1.5px solid var(--border);
   }
   .login-tab {
-    flex: 1;
-    padding: 9px 16px;
+    flex: 1; padding: 10px 16px;
     font-family: 'DM Sans', sans-serif;
-    font-size: 13px;
-    font-weight: 600;
-    border: none;
-    background: #faf9f7;
-    color: var(--text-muted);
-    cursor: pointer;
-    transition: all 0.2s;
+    font-size: 13px; font-weight: 700;
+    border: none; background: var(--surface2);
+    color: var(--text-muted); cursor: pointer;
+    transition: all var(--transition);
   }
   .login-tab.active {
-    background: var(--primary);
-    color: #fff;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary));
+    color: #fff; box-shadow: inset 0 0 0 1px rgba(255,255,255,0.1);
   }
   .mgr-badge {
-    display: inline-block;
-    background: var(--accent);
+    display: inline-flex; align-items: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
     color: #fff;
-    font-size: 10px;
-    font-weight: 700;
-    padding: 2px 8px;
-    border-radius: 4px;
-    margin-left: 8px;
-    letter-spacing: 0.5px;
+    font-size: 10px; font-weight: 800;
+    padding: 3px 10px; border-radius: 20px;
+    margin-left: 10px; letter-spacing: 0.8px;
+    text-transform: uppercase;
+    box-shadow: 0 2px 8px rgba(232,160,32,0.35);
   }
 
-  /* — Searchable Dropdown — */
-  .search-select-wrap {
-    position: relative;
-  }
+  /* ── Searchable Dropdown ────────────────────────────────── */
+  .search-select-wrap { position: relative; }
   .search-select-wrap input.ss-search {
-    width: 100%;
-    padding: 10px 36px 10px 14px;
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14px;
-    border: 1.5px solid var(--border);
-    border-radius: 8px;
-    background: #faf9f7;
-    color: var(--text);
-    outline: none;
-    cursor: pointer;
-    transition: border-color 0.2s, box-shadow 0.2s;
-    text-overflow: ellipsis;
+    width: 100%; padding: 10px 36px 10px 14px;
+    font-family: 'DM Sans', sans-serif; font-size: 14px;
+    border: 1.5px solid var(--border); border-radius: 10px;
+    background: var(--surface2); color: var(--text);
+    outline: none; cursor: pointer;
+    transition: all var(--transition); text-overflow: ellipsis;
   }
   .search-select-wrap input.ss-search:focus {
     border-color: var(--primary-light);
+    box-shadow: var(--shadow-glow);
+    background: #fff;
+  }
     box-shadow: 0 0 0 3px rgba(26,54,93,0.1);
     background: #fff;
     cursor: text;
@@ -1022,8 +1134,63 @@
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   }
+  /* — Settings Panel — */
+  .settings-panel { margin: 24px auto; max-width: 1200px; }
+  .settings-header { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:24px; flex-wrap:wrap; gap:12px; }
+  .settings-title { font-size:22px; font-weight:700; color:var(--primary); margin-bottom:4px; }
+  .settings-subtitle { font-size:13px; color:var(--text-muted); }
+  .settings-grid { display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  @media(max-width:700px){ .settings-grid { grid-template-columns:1fr; } }
+  .settings-card { background:#f8f7f4; border:1.5px solid #1a365d22; border-radius:14px; padding:20px; }
+  .settings-card-header { display:flex; align-items:center; gap:8px; margin-bottom:14px; background:#1a365d; border-radius:8px; padding:10px 14px; }
+  .settings-icon { font-size:18px; }
+  .settings-card-title { color:#fff; font-weight:700; font-size:14px; flex:1; }
+  .settings-count { background:#ffffff33; color:#fff; font-size:11px; font-weight:600; padding:2px 9px; border-radius:20px; }
+  .settings-add-row { display:flex; gap:8px; margin-bottom:10px; }
+  .settings-input { flex:1; padding:8px 12px; border:1.5px solid var(--border); border-radius:8px; font-size:13px; font-family:inherit; outline:none; }
+  .settings-input:focus { border-color:var(--primary); }
+  .settings-add-btn { background:var(--primary); color:#fff; border:none; border-radius:8px; padding:8px 16px; font-size:13px; font-weight:600; cursor:pointer; white-space:nowrap; }
+  .settings-add-btn:hover { background:#2a4a7f; }
+  .settings-search-row { display:flex; align-items:center; gap:6px; margin-bottom:10px; background:#fff; border:1.5px solid var(--border); border-radius:8px; padding:6px 10px; }
+  .settings-search { border:none; outline:none; font-size:13px; flex:1; font-family:inherit; }
+  .settings-tags { display:flex; flex-wrap:wrap; gap:7px; max-height:220px; overflow-y:auto; padding:4px 0; }
+  .s-tag { display:inline-flex; align-items:center; gap:5px; background:#fff; border:1.5px solid #d0ccc4; border-radius:20px; padding:4px 10px; font-size:12px; font-weight:500; color:#2d3748; }
+  .s-tag .s-tag-x { cursor:pointer; color:#999; font-size:14px; line-height:1; margin-left:2px; }
+  .s-tag .s-tag-x:hover { color:#e53e3e; }
+
+  /* ── Skeleton Loading ───────────────────────────────────── */
+  @keyframes shimmer {
+    0%   { background-position: -700px 0; }
+    100% { background-position: 700px 0; }
+  }
+  .skeleton {
+    background: linear-gradient(90deg, #dde3f0 25%, #edf0f9 50%, #dde3f0 75%);
+    background-size: 700px 100%;
+    animation: shimmer 1.5s infinite linear;
+    border-radius: 8px; display: block;
+  }
+  .skel-banner  { height: 56px; border-radius: 12px; margin-bottom: 12px; }
+  .skel-avatar  { width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0; }
+  .skel-row     { height: 12px; border-radius: 6px; margin-bottom: 6px; }
+  .skel-tag     { height: 22px; border-radius: 20px; width: 110px; display: inline-block; }
+  .skel-count   { width: 22px; height: 22px; border-radius: 50%; margin-left: auto; }
+  .skel-entry-card {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 0; border-bottom: 1px solid var(--border);
+  }
+  .skel-text-group { flex: 1; }
+  .skel-stats-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 16px; margin-bottom: 20px;
+  }
+  .skel-stat-box {
+    background: var(--surface); border: 1.5px solid var(--border);
+    border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow-xs);
+  }
+  .skel-num   { height: 38px; width: 70px; border-radius: 8px; margin-bottom: 10px; }
+  .skel-label { height: 11px; width: 90px; border-radius: 6px; }
+
 </style>
-</head>
 <body>
 
 <header class="header">
@@ -2435,8 +2602,34 @@
       <div class="card sidebar-card">
         <div class="sidebar-title">Today's Activity</div>
         <div id="sidebarManagerSummary">
-          <div class="dash-loading" id="sidebarLoading">
-            <span class="spinner dark"></span> Loading…
+          <div id="sidebarLoading">
+            <!-- Skeleton: Today's Entries banner -->
+            <span class="skeleton skel-banner"></span>
+            <!-- Skeleton: 3 entry cards -->
+            <div class="skel-entry-card">
+              <span class="skeleton skel-avatar"></span>
+              <div class="skel-text-group">
+                <span class="skeleton skel-row" style="width:60%"></span>
+                <span class="skeleton skel-tag"></span>
+              </div>
+              <span class="skeleton skel-count"></span>
+            </div>
+            <div class="skel-entry-card">
+              <span class="skeleton skel-avatar"></span>
+              <div class="skel-text-group">
+                <span class="skeleton skel-row" style="width:50%"></span>
+                <span class="skeleton skel-tag"></span>
+              </div>
+              <span class="skeleton skel-count"></span>
+            </div>
+            <div class="skel-entry-card" style="border:none">
+              <span class="skeleton skel-avatar"></span>
+              <div class="skel-text-group">
+                <span class="skeleton skel-row" style="width:70%"></span>
+                <span class="skeleton skel-tag"></span>
+              </div>
+              <span class="skeleton skel-count"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -2474,12 +2667,113 @@
     <div class="dash-empty" id="dashEmpty" style="display:none;">
       <p>No admission entries found.</p>
     </div>
-    <div class="dash-loading" id="dashLoading" style="display:none;">
-      <span class="spinner dark"></span> Loading entries…
+    <div id="dashLoading" style="display:none;">
+      <!-- Stat cards skeleton -->
+      <div class="skel-stats-grid">
+        <div class="skel-stat-box">
+          <span class="skeleton skel-num"></span>
+          <span class="skeleton skel-label"></span>
+        </div>
+        <div class="skel-stat-box">
+          <span class="skeleton skel-num"></span>
+          <span class="skeleton skel-label"></span>
+        </div>
+        <div class="skel-stat-box">
+          <span class="skeleton skel-num"></span>
+          <span class="skeleton skel-label"></span>
+        </div>
+      </div>
+      <!-- Table rows skeleton -->
+      <div style="border:1px solid #e8e4dc;border-radius:8px;overflow:hidden;">
+        <div style="background:#1a365d;height:38px;padding:0 12px;display:flex;align-items:center;gap:16px;">
+          ${[90,110,130,100,110,90].map(w=>`<span class="skeleton" style="height:10px;width:${w}px;background:rgba(255,255,255,0.2);animation:shimmer 1.4s infinite linear;background-size:600px 100%;"></span>`).join('')}
+        </div>
+        ${Array(8).fill(0).map((_,i)=>`
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:${i%2===0?'#fff':'#faf9f7'}">
+          ${[90,110,130,100,110,90].map(w=>`<span class="skeleton skel-row" style="width:${w}px;margin:0;"></span>`).join('')}
+        </div>`).join('')}
+      </div>
     </div>
   </div>
 
 </main>
+
+<!-- Settings Panel -->
+<div class="card settings-panel" id="settingsCard" style="display:none;">
+  <div class="settings-header">
+    <div>
+      <h2 class="settings-title">Portal Settings</h2>
+      <p class="settings-subtitle">Add or remove options from portal dropdowns. Click Save Changes to apply.</p>
+    </div>
+    <button class="btn btn-primary" onclick="saveSettings()">💾 Save Changes</button>
+  </div>
+  <div class="settings-grid">
+    <div class="settings-card">
+      <div class="settings-card-header">
+        <span class="settings-icon">👤</span>
+        <span class="settings-card-title">Counsellor Names</span>
+        <span class="settings-count" id="countCounsellor">0 total</span>
+      </div>
+      <div class="settings-add-row">
+        <input type="text" class="settings-input" id="inputCounsellor" placeholder="New counsellor name...">
+        <button class="settings-add-btn" onclick="addTag('counsellor')">+ Add</button>
+      </div>
+      <div class="settings-search-row">
+        <span>🔍</span>
+        <input type="text" class="settings-search" placeholder="Search..." oninput="filterTags('counsellor', this.value)">
+      </div>
+      <div class="settings-tags" id="tagsCounsellor"></div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-card-header">
+        <span class="settings-icon">🏛️</span>
+        <span class="settings-card-title">University Names</span>
+        <span class="settings-count" id="countUniversity">0 total</span>
+      </div>
+      <div class="settings-add-row">
+        <input type="text" class="settings-input" id="inputUniversity" placeholder="New university name...">
+        <button class="settings-add-btn" onclick="addTag('university')">+ Add</button>
+      </div>
+      <div class="settings-search-row">
+        <span>🔍</span>
+        <input type="text" class="settings-search" placeholder="Search..." oninput="filterTags('university', this.value)">
+      </div>
+      <div class="settings-tags" id="tagsUniversity"></div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-card-header">
+        <span class="settings-icon">🏆</span>
+        <span class="settings-card-title">Team Leaders</span>
+        <span class="settings-count" id="countTeamLeader">0 total</span>
+      </div>
+      <div class="settings-add-row">
+        <input type="text" class="settings-input" id="inputTeamLeader" placeholder="New team leader...">
+        <button class="settings-add-btn" onclick="addTag('teamLeader')">+ Add</button>
+      </div>
+      <div class="settings-search-row">
+        <span>🔍</span>
+        <input type="text" class="settings-search" placeholder="Search..." oninput="filterTags('teamLeader', this.value)">
+      </div>
+      <div class="settings-tags" id="tagsTeamLeader"></div>
+    </div>
+    <div class="settings-card">
+      <div class="settings-card-header">
+        <span class="settings-icon">🏢</span>
+        <span class="settings-card-title">Campus Names</span>
+        <span class="settings-count" id="countCampus">0 total</span>
+      </div>
+      <div class="settings-add-row">
+        <input type="text" class="settings-input" id="inputCampus" placeholder="New campus name...">
+        <button class="settings-add-btn" onclick="addTag('campus')">+ Add</button>
+      </div>
+      <div class="settings-search-row">
+        <span>🔍</span>
+        <input type="text" class="settings-search" placeholder="Search..." oninput="filterTags('campus', this.value)">
+      </div>
+      <div class="settings-tags" id="tagsCampus"></div>
+    </div>
+  </div>
+</div>
 
 <!-- Tab Navigation -->
 <nav class="tab-bar">
@@ -2490,6 +2784,10 @@
   <button class="tab" id="tabDash" onclick="switchTab('dashboard')">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
     <span>View All</span>
+  </button>
+  <button class="tab" id="tabSettings" onclick="switchTab('settings')">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+    <span>Settings</span>
   </button>
 </nav>
 
@@ -2535,7 +2833,7 @@
 // ——————————————————————————————————————
 // ⚠️  PASTE YOUR DEPLOYED APPS SCRIPT URL BELOW
 // ——————————————————————————————————————
-const API_URL = "https://script.google.com/macros/s/AKfycbz1AtbFDHOLsBDsh_yRRcOCiqkElbDYQfDW5b1PYga5e78GoXkcIMI3iNbPCWEfloogsA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbwqUnnTxw6OKguugdrtRuP-XNRhDFZljOA-9-omdPfDnt0722TNzQMRiU2bqYJdQvJckQ/exec";
 // ——————————————————————————————————————
 
 const form = document.getElementById("admissionForm");
@@ -3770,6 +4068,7 @@ const MANAGER_PASSWORDS = {
 };
 
 let dashboardUnlocked = false;
+let pendingTab = "dashboard";
 let loggedInRole = ""; // "admin" or manager name
 let loginMode = "admin";
 
@@ -3786,18 +4085,27 @@ function switchLoginTab(mode) {
 }
 
 function switchTab(tab) {
-  if (tab === "dashboard" && !dashboardUnlocked) {
+  if ((tab === "dashboard" || tab === "settings") && !dashboardUnlocked) {
+    pendingTab = tab;
     showPasswordModal();
+    return;
+  }
+
+  // Settings tab only accessible by admin
+  if (tab === "settings" && loggedInRole !== "admin") {
+    toast("Settings are only accessible to admins.", "error");
     return;
   }
 
   document.getElementById("tabForm").classList.toggle("active", tab === "form");
   document.getElementById("tabDash").classList.toggle("active", tab === "dashboard");
+  document.getElementById("tabSettings").classList.toggle("active", tab === "settings");
 
   const main = document.querySelector(".main");
   const header = document.querySelector(".header");
   const entryLayout = document.getElementById("entryLayout");
   const entryRight = document.getElementById("entryRight");
+  const settingsCard = document.getElementById("settingsCard");
 
   if (tab === "form") {
     main.classList.remove("wide");
@@ -3808,15 +4116,25 @@ function switchTab(tab) {
     entryRight.style.display = "";
     formCard.style.display = "";
     dashboardCard.style.display = "none";
+    settingsCard.style.display = "none";
     successScreen.classList.remove("show");
     successScreen.closest(".card").style.display = "none";
     loadSidebar();
+  } else if (tab === "settings") {
+    main.classList.remove("entry-mode");
+    main.classList.add("wide");
+    header.classList.add("wide");
+    entryLayout.style.display = "none";
+    dashboardCard.style.display = "none";
+    settingsCard.style.display = "";
+    loadSettingsPanel();
   } else {
     main.classList.remove("entry-mode");
     main.classList.add("wide");
     header.classList.add("wide");
     entryLayout.style.display = "none";
     dashboardCard.style.display = "";
+    settingsCard.style.display = "none";
     loadDashboard();
   }
   window.scrollTo({ top: 0, behavior: "smooth" });
@@ -3843,7 +4161,7 @@ function checkPassword() {
     dashboardUnlocked = true;
     loggedInRole = "admin";
     closePasswordModal();
-    switchTab("dashboard");
+    switchTab(pendingTab || "dashboard");
   } else {
     const err = document.getElementById("pwdError");
     err.style.display = "block";
@@ -3869,6 +4187,8 @@ function checkManagerLogin() {
     dashboardUnlocked = true;
     loggedInRole = mgrName;
     closePasswordModal();
+    // Hide settings tab for managers
+    document.getElementById("tabSettings").style.display = "none";
     switchTab("dashboard");
   } else {
     document.getElementById("mgrPwdError").textContent = "Incorrect password. Try again.";
@@ -3888,10 +4208,20 @@ async function _fetchAndCache() {
   try {
     const res = await fetch(API_URL + "?action=fetch&t=" + Date.now());
     if (!res.ok) throw new Error("HTTP " + res.status);
-    const json = await res.json();
+    const text = await res.text();
+    let json;
+    try {
+      json = JSON.parse(text);
+    } catch(parseErr) {
+      console.error("Apps Script returned non-JSON:", text.substring(0, 300));
+      toast("⚠️ Apps Script error — check deployment. See console for details.", "error");
+      return null;
+    }
     if (json.status === "success" && json.data) {
       _cache = json.data;
       _cacheTime = Date.now();
+    } else if (json.status === "error") {
+      console.error("Apps Script error:", json.message);
     }
     return json;
   } catch (e) {
@@ -3917,7 +4247,9 @@ async function _getData() {
 function renderTableFast(entries) {
   const columns = ["Process", "Admission Done date", "Application Number", "Candidate Name", "Contact Number", "Campus", "Course Selected", "Admission Done/Cancelled", "Counsellor Name", "Manager", "Team Leader", "Admission Status"];
   const showAction = loggedInRole === "admin";
-  const headerCols = showAction ? [...columns, "Action"] : [...columns];
+
+  // Action column appears FIRST before Process
+  const headerCols = showAction ? ["Action", ...columns] : [...columns];
 
   tableHead.innerHTML = "<tr>" + headerCols.map(c => `<th>${c}</th>`).join("") + "</tr>";
   tableBody.innerHTML = "";
@@ -3940,7 +4272,20 @@ function renderTableFast(entries) {
       if (statusVal === "cancelled") tr.className = "row-cancelled";
       const appNum = (row["Application Number"] || "").toString();
 
-      let cells = columns.map(col => {
+      // ── Action cell FIRST ──
+      if (showAction) {
+        const atd = document.createElement("td");
+        atd.style.whiteSpace = "nowrap";
+        if (statusVal === "cancelled") {
+          atd.innerHTML = `<button class="btn-reactivate" onclick="reactivateAdmission('${appNum.replace(/'/g,"\\'")}')">Reactivate</button>`;
+        } else {
+          atd.innerHTML = `<button class="btn-cancel-admission" onclick="cancelAdmission('${appNum.replace(/'/g,"\\'")}')">Cancel</button>`;
+        }
+        tr.appendChild(atd);
+      }
+
+      // ── Data columns ──
+      columns.forEach(col => {
         const td = document.createElement("td");
         let val = row[col] || "";
         if (col === "Admission Done/Cancelled") {
@@ -3948,9 +4293,10 @@ function renderTableFast(entries) {
           const cls = lower === "done" ? "status-done" : lower === "cancelled" ? "status-cancelled" : "status-pending";
           td.innerHTML = `<span class="status-badge ${cls}">${val}</span>`;
         } else if (col === "Admission Status") {
-          const lower = val.toString().toLowerCase();
-          if (lower === "cancelled") td.innerHTML = `<span class="status-badge status-cancelled">${val}</span>`;
-          else td.textContent = val;
+          const lower = (val || "active").toString().toLowerCase();
+          const display = val ? val : "Active";
+          const cls = lower === "cancelled" ? "status-cancelled" : "status-active";
+          td.innerHTML = `<span class="status-badge ${cls}">${display}</span>`;
         } else if (col === "Admission Done date") {
           const d = new Date(val);
           if (!isNaN(d)) {
@@ -3960,20 +4306,9 @@ function renderTableFast(entries) {
         } else {
           td.textContent = val;
         }
-        return td;
+        tr.appendChild(td);
       });
 
-      cells.forEach(td => tr.appendChild(td));
-
-      if (showAction) {
-        const atd = document.createElement("td");
-        if (statusVal === "cancelled") {
-          atd.innerHTML = `<span class="cancelled-label">Cancelled</span> <button class="btn-reactivate" onclick="reactivateAdmission('${appNum.replace(/'/g,"\\'")}')">Reactivate</button>`;
-        } else {
-          atd.innerHTML = `<button class="btn-cancel-admission" onclick="cancelAdmission('${appNum.replace(/'/g,"\\'")}')">Cancel</button>`;
-        }
-        tr.appendChild(atd);
-      }
       frag.appendChild(tr);
     }
     tableBody.appendChild(frag);
@@ -3989,19 +4324,27 @@ async function loadSidebar() {
 
   // Show stale data instantly if available
   if (_cache && _cache.length > 0) {
-    sidebarLoading.style.display = "none";
+    if (sidebarLoading) sidebarLoading.style.display = "none";
     renderSidebarManager(_cache, container);
-  } else {
-    sidebarLoading.style.display = "";
+    return;
   }
 
-  const json = await _getData();
-  sidebarLoading.style.display = "none";
+  // Show skeleton
+  if (sidebarLoading) sidebarLoading.style.display = "";
 
-  if (json && json.status === "success" && json.data && json.data.length > 0) {
-    renderSidebarManager(json.data, container);
-  } else if (!_cache) {
-    container.innerHTML = '<div class="sidebar-empty">No entries yet today.</div>';
+  const json = await _getData();
+
+  // Hide skeleton
+  if (sidebarLoading) sidebarLoading.style.display = "none";
+
+  if (json && json.status === "success" && Array.isArray(json.data)) {
+    if (json.data.length > 0) {
+      renderSidebarManager(json.data, container);
+    } else {
+      container.innerHTML = '<div class="sidebar-empty">No entries yet today.</div>';
+    }
+  } else {
+    container.innerHTML = '<div class="sidebar-empty" style="color:#c53030;">⚠️ Could not load data.<br><small>Check Apps Script deployment.</small></div>';
   }
 }
 
@@ -4057,35 +4400,40 @@ async function loadDashboard(forceRefresh = false) {
 
 function renderSidebarManager(entries, container) {
   const today = new Date();
-  const todayStr = today.getFullYear() + "-" +
-    String(today.getMonth() + 1).padStart(2, "0") + "-" +
-    String(today.getDate()).padStart(2, "0");
 
-  const yesterday = new Date(today);
-  yesterday.setDate(yesterday.getDate() - 1);
-  const yStr = yesterday.getFullYear() + "-" +
-    String(yesterday.getMonth() + 1).padStart(2, "0") + "-" +
-    String(yesterday.getDate()).padStart(2, "0");
+  // Helper: normalise any date string → "YYYY-MM-DD" for comparison
+  function normDate(raw) {
+    if (!raw) return "";
+    raw = raw.toString().trim();
+    // Already YYYY-MM-DD
+    if (/^\d{4}-\d{2}-\d{2}/.test(raw)) return raw.substring(0, 10);
+    // dd-Mon-yyyy  e.g. "22-May-2026"
+    const months = {Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",
+                    Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12"};
+    const m = raw.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{4})/);
+    if (m) return m[3] + "-" + (months[m[2]] || "00") + "-" + m[1].padStart(2,"0");
+    // dd/mm/yyyy
+    const m2 = raw.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+    if (m2) return m2[3] + "-" + m2[2].padStart(2,"0") + "-" + m2[1].padStart(2,"0");
+    // Fallback: let JS parse it
+    const d = new Date(raw);
+    if (!isNaN(d)) return d.toISOString().substring(0, 10);
+    return "";
+  }
 
-  // Google Sheets dates with IST offset: date stored as previous day in UTC
-  // So also check the day before yesterday for timezone shift
-  const dayBeforeY = new Date(today);
-  dayBeforeY.setDate(dayBeforeY.getDate() - 2);
-  const dbYStr = dayBeforeY.getFullYear() + "-" +
-    String(dayBeforeY.getMonth() + 1).padStart(2, "0") + "-" +
-    String(dayBeforeY.getDate()).padStart(2, "0");
+  function dateStr(d) {
+    return d.getFullYear() + "-" +
+      String(d.getMonth() + 1).padStart(2, "0") + "-" +
+      String(d.getDate()).padStart(2, "0");
+  }
 
-  const todayEntries = entries.filter(e => {
-    const d = (e["Admission Done date"] || "").toString().substring(0, 10);
-    return d === todayStr || d === yStr;
-  });
+  const todayStr = dateStr(today);
+  const yesterdayD = new Date(today); yesterdayD.setDate(today.getDate() - 1);
+  const yStr = dateStr(yesterdayD);
 
-  const yesterdayEntries = entries.filter(e => {
-    const d = (e["Admission Done date"] || "").toString().substring(0, 10);
-    return d === yStr || d === dbYStr;
-  });
+  const todayEntries = entries.filter(e => normDate(e["Admission Done date"]) === todayStr);
+  const yesterdayEntries = entries.filter(e => normDate(e["Admission Done date"]) === yStr);
 
-  // Remove duplicates (entries that appear in both due to timezone)
   const todayIds = new Set(todayEntries.map(e => e["Application Number"]));
   const pureYesterday = yesterdayEntries.filter(e => !todayIds.has(e["Application Number"]));
 
@@ -4309,59 +4657,123 @@ form.addEventListener("reset", () => {
 initSearchableDropdowns();
 
 // Auto-load sidebar on page load
+let activeStatFilter = null;
+
 function renderStats(entries) {
   const total = entries.length;
   const cancelled = entries.filter(e => (e["Admission Status"] || "").toString().toLowerCase() === "cancelled").length;
   const netAdmissions = total - cancelled;
 
   dashStats.innerHTML = `
-    <div class="stat-card"><div class="stat-num">${total}</div><div class="stat-label">Total</div></div>
-    <div class="stat-card"><div class="stat-num" style="color:#276749">${netAdmissions}</div><div class="stat-label">Net Admissions</div></div>
-    <div class="stat-card"><div class="stat-num" style="color:#c53030">${cancelled}</div><div class="stat-label">Cancelled</div></div>
+    <div class="stat-card${activeStatFilter === 'all' ? ' stat-active-filter' : ''}" onclick="applyStatFilter('all')" title="Show all entries">
+      <div class="stat-num" id="statTotal">${total}</div>
+      <div class="stat-label">Total</div>
+      <div class="stat-filter-hint">Click to filter</div>
+    </div>
+    <div class="stat-card stat-green${activeStatFilter === 'active' ? ' stat-active-filter' : ''}" onclick="applyStatFilter('active')" title="Show active admissions only">
+      <div class="stat-num" id="statNet" style="color:#276749">${netAdmissions}</div>
+      <div class="stat-label">Net Admissions</div>
+      <div class="stat-filter-hint">Click to filter</div>
+    </div>
+    <div class="stat-card stat-red${activeStatFilter === 'cancelled' ? ' stat-active-filter' : ''}" onclick="applyStatFilter('cancelled')" title="Show cancelled only">
+      <div class="stat-num" id="statCancelled" style="color:#c53030">${cancelled}</div>
+      <div class="stat-label">Cancelled</div>
+      <div class="stat-filter-hint">Click to filter</div>
+    </div>
   `;
 
   renderManagerSummary(entries);
 }
 
+// ⚡ Lightweight — just updates the numbers, no full re-render
+function updateStatCounts(filteredEntries) {
+  const total = filteredEntries.length;
+  const cancelled = filteredEntries.filter(e => (e["Admission Status"] || "").toString().toLowerCase() === "cancelled").length;
+  const net = total - cancelled;
+
+  const elTotal = document.getElementById("statTotal");
+  const elNet   = document.getElementById("statNet");
+  const elCanc  = document.getElementById("statCancelled");
+
+  if (elTotal) animateCount(elTotal, parseInt(elTotal.textContent) || 0, total);
+  if (elNet)   animateCount(elNet,   parseInt(elNet.textContent)   || 0, net);
+  if (elCanc)  animateCount(elCanc,  parseInt(elCanc.textContent)  || 0, cancelled);
+
+  // Show/hide "filtered" indicator on cards
+  const isFiltered = filteredEntries.length !== allEntries.length;
+  document.querySelectorAll(".stat-card").forEach(c => {
+    c.classList.toggle("stat-is-filtered", isFiltered);
+  });
+}
+
+// Smooth number count-up animation
+function animateCount(el, from, to) {
+  if (from === to) return;
+  const duration = 350;
+  const start = performance.now();
+  function step(now) {
+    const progress = Math.min((now - start) / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    el.textContent = Math.round(from + (to - from) * ease);
+    if (progress < 1) requestAnimationFrame(step);
+    else el.textContent = to;
+  }
+  requestAnimationFrame(step);
+}
+
+function applyStatFilter(type) {
+  if (activeStatFilter === type || type === "all") {
+    activeStatFilter = null;
+  } else {
+    activeStatFilter = type;
+  }
+
+  let filtered;
+  if (!activeStatFilter) {
+    filtered = allEntries;
+  } else if (activeStatFilter === "active") {
+    filtered = allEntries.filter(e => (e["Admission Status"] || "active").toString().toLowerCase() !== "cancelled");
+  } else {
+    filtered = allEntries.filter(e => (e["Admission Status"] || "").toString().toLowerCase() === "cancelled");
+  }
+
+  renderTableFast(filtered);
+  updateStatCounts(filtered);
+  renderStats(allEntries); // re-render cards to update highlight state
+
+  const statusSelect = document.getElementById("filterStatus");
+  if (statusSelect) statusSelect.value = "";
+}
+
 function renderManagerSummary(entries) {
   const managerSummary = document.getElementById("managerSummary");
 
-  // Get today's date string (YYYY-MM-DD)
+  // Reuse normDate helper (defined in renderSidebarManager)
+  function normD(raw) {
+    if (!raw) return "";
+    raw = raw.toString().trim();
+    if (/^\d{4}-\d{2}-\d{2}/.test(raw)) return raw.substring(0, 10);
+    const months = {Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",
+                    Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12"};
+    const m = raw.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{4})/);
+    if (m) return m[3] + "-" + (months[m[2]] || "00") + "-" + m[1].padStart(2,"0");
+    const d = new Date(raw);
+    if (!isNaN(d)) return d.toISOString().substring(0, 10);
+    return "";
+  }
+
   const today = new Date();
   const todayStr = today.getFullYear() + "-" +
     String(today.getMonth() + 1).padStart(2, "0") + "-" +
     String(today.getDate()).padStart(2, "0");
 
-  // Filter today's entries
-  const todayEntries = entries.filter(e => {
-    const dateVal = (e["Admission Done date"] || "").toString();
-    // Handle ISO format (2026-04-03T18:30:00.000Z) or simple date
-    return dateVal.startsWith(todayStr);
-  });
+  const todayEntries = entries.filter(e => normD(e["Admission Done date"]) === todayStr);
 
   if (todayEntries.length === 0) {
-    // Also try matching by checking if date falls on today (for timezone offset)
-    const yesterday = new Date(today);
-    yesterday.setDate(yesterday.getDate() - 1);
-    const yStr = yesterday.getFullYear() + "-" +
-      String(yesterday.getMonth() + 1).padStart(2, "0") + "-" +
-      String(yesterday.getDate()).padStart(2, "0");
-
-    // Re-filter including timezone-shifted dates
-    const adjustedEntries = entries.filter(e => {
-      const dateVal = (e["Admission Done date"] || "").toString();
-      const dateOnly = dateVal.substring(0, 10);
-      return dateOnly === todayStr || dateOnly === yStr;
-    });
-
-    if (adjustedEntries.length === 0) {
-      managerSummary.innerHTML = `
-        <div class="mgr-section-title">Today's Manager Activity</div>
-        <p style="color:var(--text-muted);font-size:13px;text-align:center;padding:16px 0;">No admissions recorded for today yet.</p>
-      `;
-      return;
-    }
-    renderManagerCards(adjustedEntries, managerSummary);
+    managerSummary.innerHTML = `
+      <div class="mgr-section-title">Today's Manager Activity</div>
+      <p style="color:var(--text-muted);font-size:13px;text-align:center;padding:16px 0;">No admissions recorded for today yet.</p>
+    `;
     return;
   }
 
@@ -4442,11 +4854,10 @@ function renderTable(entries) {
         return `<td><span class="status-badge ${cls}">${val}</span></td>`;
       }
       if (col === "Admission Status") {
-        const lower = val.toString().toLowerCase();
-        if (lower === "cancelled") {
-          return `<td><span class="status-badge status-cancelled">${val}</span></td>`;
-        }
-        return `<td>${val}</td>`;
+        const display = val ? val : "Active";
+        const lower = display.toLowerCase();
+        const cls = lower === "cancelled" ? "status-cancelled" : "status-active";
+        return `<td><span class="status-badge ${cls}">${display}</span></td>`;
       }
       if (col === "Admission Done date") {
         const d = new Date(val);
@@ -4474,52 +4885,70 @@ function renderTable(entries) {
 async function cancelAdmission(appNum) {
   if (!confirm(`Are you sure you want to cancel admission for Application Number: ${appNum}?`)) return;
 
+  const btn = document.querySelector(`button[onclick="cancelAdmission('${appNum.replace(/'/g,"\\'")}')"]`);
+  if (btn) { btn.disabled = true; btn.textContent = "Cancelling…"; }
+
   try {
-    toast("Cancelling admission...", "success");
+    toast("Cancelling admission...");
     const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({
         action: "cancelAdmission",
-        applicationNumber: appNum,
+        appNumber: appNum.trim(),         // ← must match Apps Script key
         cancelledBy: loggedInRole
       }),
     });
-    const json = await res.json();
+    const text = await res.text();
+    let json;
+    try { json = JSON.parse(text); } catch(e) {
+      toast("Apps Script returned unexpected response", "error");
+      if (btn) { btn.disabled = false; btn.textContent = "Cancel"; }
+      return;
+    }
 
     if (json.status === "success") {
-      toast("Admission cancelled successfully!", "success");
-      loadDashboard();
+      toast("✅ Admission cancelled successfully!", "success");
+      _cache = null; // bust cache so dashboard reloads fresh
+      loadDashboard(true);
     } else {
-      toast(json.message || "Failed to cancel", "error");
+      toast("❌ " + (json.message || "Failed to cancel"), "error");
+      if (btn) { btn.disabled = false; btn.textContent = "Cancel"; }
     }
   } catch (err) {
     toast("Network error — please try again", "error");
+    if (btn) { btn.disabled = false; btn.textContent = "Cancel"; }
   }
 }
 
 // Reactivate cancelled admission
 async function reactivateAdmission(appNum) {
-  if (!confirm(`Are you sure you want to reactivate admission for Application Number: ${appNum}?\n\nThis will remove the cancellation status.`)) return;
+  if (!confirm(`Are you sure you want to reactivate admission for Application Number: ${appNum}?`)) return;
 
   try {
-    toast("Reactivating admission...", "success");
+    toast("Reactivating admission...");
     const res = await fetch(API_URL, {
       method: "POST",
       headers: { "Content-Type": "text/plain;charset=utf-8" },
       body: JSON.stringify({
         action: "reactivateAdmission",
-        applicationNumber: appNum,
+        appNumber: appNum.trim(),         // ← must match Apps Script key
         reactivatedBy: loggedInRole
       }),
     });
-    const json = await res.json();
+    const text = await res.text();
+    let json;
+    try { json = JSON.parse(text); } catch(e) {
+      toast("Apps Script returned unexpected response", "error");
+      return;
+    }
 
     if (json.status === "success") {
-      toast("Admission reactivated successfully!", "success");
-      loadDashboard();
+      toast("✅ Admission reactivated successfully!", "success");
+      _cache = null;
+      loadDashboard(true);
     } else {
-      toast(json.message || "Failed to reactivate", "error");
+      toast("❌ " + (json.message || "Failed to reactivate"), "error");
     }
   } catch (err) {
     toast("Network error — please try again", "error");
@@ -4569,6 +4998,9 @@ function applyFilters() {
     if (q && !Object.values(row).some(v => v && v.toString().toLowerCase().includes(q))) return false;
     return true;
   });
+
+  // ⚡ Update stat cards to reflect filtered counts
+  updateStatCounts(filtered);
   renderTableFast(filtered);
 }
 
@@ -4580,6 +5012,8 @@ function clearFilters() {
   dashFilterStatus.value = "";
   dashFilterTeamLeader.value = "";
   dashFilterCounsellor.value = "";
+  activeStatFilter = null;
+  renderStats(allEntries);
   renderTableFast(allEntries);
 }
 
@@ -4732,11 +5166,292 @@ function initSearchableDropdowns() {
   });
 }
 
+
+// ========== SETTINGS PANEL — Google Sheets Backed ==========
+// All changes save to Google Sheets and load from it on every page open.
+// This means ALL users on the shared GitHub link see the same dropdown values.
+
+let settingsData = { counsellors: [], universities: [], teamLeaders: [], campuses: [] };
+let settingsLoaded = false;
+
+// ── Helpers ──────────────────────────────────────────────────────────────────
+function _typeKey(type) {
+  return type === "counsellor" ? "counsellors"
+       : type === "university" ? "universities"
+       : type === "teamLeader" ? "teamLeaders"
+       : "campuses";
+}
+function _capFirst(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
+
+// ── Read defaults from the HTML dropdowns (fallback when Sheets returns nothing) ──
+function _getHtmlDefaults() {
+  const counsellorSel = document.querySelector('select[name="Counsellor Name"]');
+  const counsellors = counsellorSel
+    ? Array.from(counsellorSel.options).map(o => o.text.trim()).filter(t => t && t !== "Select counsellor")
+    : [];
+
+  const processSel = document.querySelector('select[name="Process"]');
+  const universities = processSel
+    ? Array.from(processSel.options).map(o => o.text.trim()).filter(t => t && t !== "Select process")
+    : [];
+
+  const tlSel = document.querySelector('select[name="Team Leader"]');
+  const teamLeaders = tlSel
+    ? Array.from(tlSel.options).map(o => o.text.trim()).filter(t => t && t !== "Select team leader")
+    : [];
+
+  const campuses = new Set();
+  document.querySelectorAll('select[name="Campus"] option, #campusCity option, #campusAmity option').forEach(o => {
+    const t = o.text.trim();
+    if (t && !t.startsWith("Select") && !t.startsWith("--")) campuses.add(t);
+  });
+
+  return { counsellors, universities, teamLeaders, campuses: [...campuses] };
+}
+
+// ── Apply settingsData to the live form dropdowns ─────────────────────────────
+function _applyDropdowns() {
+  const counsellorSel = document.querySelector('select[name="Counsellor Name"]');
+  if (counsellorSel && settingsData.counsellors.length) {
+    const cur = counsellorSel.value;
+    counsellorSel.innerHTML = '<option value="">Select counsellor</option>' +
+      settingsData.counsellors.map(n => `<option${n===cur?" selected":""}>${n}</option>`).join("");
+  }
+
+  const processSel = document.querySelector('select[name="Process"]');
+  if (processSel && settingsData.universities.length) {
+    const cur = processSel.value;
+    processSel.innerHTML = '<option value="">Select process</option>' +
+      settingsData.universities.map(n => `<option${n===cur?" selected":""}>${n}</option>`).join("");
+  }
+
+  const tlSel = document.querySelector('select[name="Team Leader"]');
+  if (tlSel && settingsData.teamLeaders.length) {
+    const cur = tlSel.value;
+    tlSel.innerHTML = '<option value="">Select team leader</option>' +
+      settingsData.teamLeaders.map(n => `<option${n===cur?" selected":""}>${n}</option>`).join("");
+  }
+
+  // Also update dashboard filter dropdowns if already rendered
+  const dashTL = document.getElementById("filterTeamLeader");
+  if (dashTL) {
+    const cur = dashTL.value;
+    dashTL.innerHTML = '<option value="">All Team Leaders</option>' +
+      settingsData.teamLeaders.map(n => `<option${n===cur?" selected":""}>${n}</option>`).join("");
+  }
+}
+
+// ── Fetch settings from Google Sheets ────────────────────────────────────────
+async function _fetchSettingsFromSheets() {
+  try {
+    const res = await fetch(API_URL + "?action=getSettings&t=" + Date.now());
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const json = await res.json();
+    if (json.status === "success" && json.settings) {
+      const s = json.settings;
+      // Only override if Sheets has data for that category
+      if (s.counsellors && s.counsellors.length)   settingsData.counsellors  = s.counsellors;
+      if (s.universities && s.universities.length)  settingsData.universities = s.universities;
+      if (s.teamLeaders  && s.teamLeaders.length)   settingsData.teamLeaders  = s.teamLeaders;
+      if (s.campuses     && s.campuses.length)       settingsData.campuses     = s.campuses;
+      return true;
+    }
+  } catch(e) {
+    console.warn("Settings fetch failed:", e);
+  }
+  return false;
+}
+
+// ── Save settings to Google Sheets ───────────────────────────────────────────
+async function _saveSettingsToSheets() {
+  const res = await fetch(API_URL, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify({ action: "saveSettings", settings: settingsData })
+  });
+  const json = await res.json();
+  return json.status === "success";
+}
+
+// ── Boot: load from Sheets on page load, apply to dropdowns ──────────────────
+async function initSettingsFromSheets() {
+  // Start with HTML defaults so form is immediately usable
+  settingsData = _getHtmlDefaults();
+
+  // Then fetch from Sheets and override if data exists
+  const loaded = await _fetchSettingsFromSheets();
+  if (loaded) {
+    _applyDropdowns();
+    console.log("✓ Dropdowns loaded from Google Sheets");
+  }
+  settingsLoaded = true;
+}
+
+// ── Settings Panel UI ─────────────────────────────────────────────────────────
+async function loadSettingsPanel() {
+  // Show loading state
+  ["counsellor","university","teamLeader","campus"].forEach(type => {
+    const el = document.getElementById("tags" + _capFirst(type));
+    if (el) el.innerHTML = '<span style="color:#999;font-size:12px;">Loading from Google Sheets…</span>';
+  });
+
+  // Always fetch fresh from Sheets when opening settings
+  await _fetchSettingsFromSheets();
+
+  renderSettingsTags("counsellor",  settingsData.counsellors);
+  renderSettingsTags("university",  settingsData.universities);
+  renderSettingsTags("teamLeader",  settingsData.teamLeaders);
+  renderSettingsTags("campus",      settingsData.campuses);
+}
+
+function renderSettingsTags(type, items, filter = "") {
+  const container = document.getElementById("tags" + _capFirst(type));
+  const countEl   = document.getElementById("count" + _capFirst(type));
+  if (!container) return;
+  const filtered = filter ? items.filter(i => i.toLowerCase().includes(filter.toLowerCase())) : items;
+  countEl.textContent = items.length + " total";
+  container.innerHTML = filtered.length
+    ? filtered.map(item => {
+        const realIdx = items.indexOf(item);
+        return `<span class="s-tag">${item} <span class="s-tag-x" onclick="removeTag('${type}',${realIdx})">×</span></span>`;
+      }).join("")
+    : '<span style="color:#999;font-size:12px;">No items yet</span>';
+}
+
+function filterTags(type, query) {
+  renderSettingsTags(type, settingsData[_typeKey(type)], query);
+}
+
+function addTag(type) {
+  const inputEl = document.getElementById("input" + _capFirst(type));
+  const val = inputEl.value.trim();
+  if (!val) return;
+  const key = _typeKey(type);
+  if (settingsData[key].includes(val)) { toast("Already exists!", "error"); return; }
+  settingsData[key].push(val);
+  inputEl.value = "";
+  renderSettingsTags(type, settingsData[key]);
+  toast("Added! Click 💾 Save Changes to sync to all users.", "");
+}
+
+function removeTag(type, idx) {
+  const key = _typeKey(type);
+  settingsData[key].splice(idx, 1);
+  renderSettingsTags(type, settingsData[key]);
+  toast("Removed! Click 💾 Save Changes to sync to all users.", "");
+}
+
+async function saveSettings() {
+  const btn = document.querySelector('.settings-header .btn-primary');
+  if (btn) { btn.textContent = "⏳ Saving…"; btn.disabled = true; }
+
+  try {
+    // 1. Apply changes to live dropdowns immediately for this user
+    _applyDropdowns();
+
+    // 2. Save to Google Sheets so ALL users get the update
+    const ok = await _saveSettingsToSheets();
+
+    if (ok) {
+      toast("✅ Saved to Google Sheets! All users will see updated dropdowns.", "success");
+    } else {
+      // Still applied locally; warn that Sheets save failed
+      toast("⚠️ Applied locally but failed to sync to Google Sheets. See Apps Script fix below.", "error");
+      _showAppsScriptInstructions();
+    }
+  } catch(e) {
+    toast("⚠️ Network error — changes applied locally only. Check Apps Script.", "error");
+    _showAppsScriptInstructions();
+  } finally {
+    if (btn) { btn.textContent = "💾 Save Changes"; btn.disabled = false; }
+  }
+}
+
+// ── Show Apps Script setup instructions if Sheets save fails ─────────────────
+function _showAppsScriptInstructions() {
+  const existing = document.getElementById("appsScriptNote");
+  if (existing) return;
+  const note = document.createElement("div");
+  note.id = "appsScriptNote";
+  note.style.cssText = "background:#fff3cd;border:1.5px solid #ffc107;border-radius:10px;padding:16px 20px;margin-top:16px;font-size:13px;line-height:1.7;";
+  note.innerHTML = `
+    <strong>⚙️ One-time Apps Script update needed to enable cross-user sync:</strong><br>
+    Open your <a href="https://script.google.com" target="_blank" style="color:#1a365d;font-weight:600;">Google Apps Script</a>
+    and add these two handlers inside your <code>doPost</code> and <code>doGet</code> functions:<br><br>
+    <code style="background:#f5f5f5;padding:2px 6px;border-radius:4px;display:block;white-space:pre-wrap;">
+// In doGet — add this case:
+if (action === "getSettings") {
+  var sheet = SpreadsheetApp.getActiveSpreadsheet()
+    .getSheetByName("Settings") || SpreadsheetApp.getActiveSpreadsheet().insertSheet("Settings");
+  var data = sheet.getDataRange().getValues();
+  var settings = { counsellors:[], universities:[], teamLeaders:[], campuses:[] };
+  data.forEach(function(row) {
+    if (row[0] && row[1]) {
+      var key = row[0];
+      if (settings[key]) settings[key] = row[1].split("|").filter(Boolean);
+    }
+  });
+  return ContentService.createTextOutput(JSON.stringify({status:"success",settings:settings}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+// In doPost — add this case:
+if (action === "saveSettings") {
+  var settings = payload.settings;
+  var sheet = SpreadsheetApp.getActiveSpreadsheet()
+    .getSheetByName("Settings") || SpreadsheetApp.getActiveSpreadsheet().insertSheet("Settings");
+  sheet.clearContents();
+  Object.keys(settings).forEach(function(key) {
+    sheet.appendRow([key, settings[key].join("|")]);
+  });
+  return ContentService.createTextOutput(JSON.stringify({status:"success"}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+    </code>
+    <br>After adding, click <strong>Deploy → Manage deployments → Create new version</strong> and update the deployment.
+  `;
+  document.querySelector(".settings-panel").appendChild(note);
+}
+
+// ── Enter key support ─────────────────────────────────────────────────────────
+document.addEventListener("DOMContentLoaded", () => {
+  [["inputCounsellor","counsellor"],["inputUniversity","university"],
+   ["inputTeamLeader","teamLeader"],["inputCampus","campus"]].forEach(([id, type]) => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener("keydown", e => { if (e.key === "Enter") addTag(type); });
+  });
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   document.querySelector(".main").classList.add("entry-mode");
   document.querySelector(".header").classList.add("wide");
+
+  // Diagnose connection to Apps Script first
+  (async () => {
+    try {
+      const res = await fetch(API_URL + "?action=fetch&t=" + Date.now());
+      const text = await res.text();
+      let json;
+      try { json = JSON.parse(text); } catch(e) {
+        console.error("⚠️ Apps Script returned HTML (not JSON). This usually means:\n1. Deployment is not set to 'Anyone' access\n2. Apps Script has a syntax error\nResponse:", text.substring(0, 500));
+        toast("⚠️ Apps Script not responding correctly. Check console (F12) for details.", "error");
+        return;
+      }
+      if (json.status === "success") {
+        console.log("✅ Apps Script connected. Rows:", json.data ? json.data.length : 0);
+      } else {
+        console.error("⚠️ Apps Script error:", json.message);
+        toast("⚠️ " + (json.message || "Apps Script error"), "error");
+      }
+    } catch(e) {
+      console.error("⚠️ Cannot reach Apps Script:", e);
+      toast("⚠️ Cannot reach Apps Script. Check network/deployment.", "error");
+    }
+  })();
+
   loadSidebar();
   initSearchableDropdowns();
+  initSettingsFromSheets();
 });
 </script>
 </body>
