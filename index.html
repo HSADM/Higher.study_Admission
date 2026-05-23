@@ -4246,7 +4246,7 @@ async function _getData() {
 // ⚡ Chunked table render — avoids long paint frames
 function renderTableFast(entries) {
   const columns = ["Process", "Admission Done date", "Application Number", "Candidate Name", "Contact Number", "Campus", "Course Selected", "Admission Done/Cancelled", "Counsellor Name", "Manager", "Team Leader", "Admission Status"];
-  const showAction = loggedInRole === "admin";
+  const showAction = loggedInRole === "admin" || loggedInRole !== "";
 
   // Action column appears FIRST before Process
   const headerCols = showAction ? ["Action", ...columns] : [...columns];
@@ -4964,37 +4964,38 @@ const dashFilterTeamLeader = document.getElementById("filterTeamLeader");
 const dashFilterCounsellor = document.getElementById("filterCounsellor");
 
 function populateFilters(entries) {
-  const processes = [...new Set(entries.map(e => (e["Process"] || "").toString()).filter(Boolean))].sort();
-  const campuses = [...new Set(entries.map(e => (e["Campus"] || "").toString()).filter(Boolean))].sort();
-  const managers = [...new Set(entries.map(e => (e["Manager"] || "").toString()).filter(Boolean))].sort();
-  const statuses = [...new Set(entries.map(e => (e["Admission Done/Cancelled"] || "").toString()).filter(Boolean))].sort();
-  const teamLeaders = [...new Set(entries.map(e => (e["Team Leader"] || "").toString()).filter(Boolean))].sort();
-  const counsellors = [...new Set(entries.map(e => (e["Counsellor Name"] || "").toString()).filter(Boolean))].sort();
+  // Use exact values from sheet data for filter options
+  const processes   = [...new Set(entries.map(e => (e["Process"] || "").toString().trim()).filter(Boolean))].sort((a,b) => a.localeCompare(b));
+  const campuses    = [...new Set(entries.map(e => (e["Campus"] || "").toString().trim()).filter(Boolean))].sort((a,b) => a.localeCompare(b));
+  const managers    = [...new Set(entries.map(e => (e["Manager"] || "").toString().trim()).filter(Boolean))].sort((a,b) => a.localeCompare(b));
+  const statuses    = [...new Set(entries.map(e => (e["Admission Done/Cancelled"] || "").toString().trim()).filter(Boolean))].sort();
+  const teamLeaders = [...new Set(entries.map(e => (e["Team Leader"] || "").toString().trim()).filter(Boolean))].sort((a,b) => a.localeCompare(b));
+  const counsellors = [...new Set(entries.map(e => (e["Counsellor Name"] || "").toString().trim()).filter(Boolean))].sort((a,b) => a.localeCompare(b));
 
-  dashFilterProcess.innerHTML = '<option value="">All Processes</option>' + processes.map(p => `<option>${p}</option>`).join("");
-  dashFilterCampus.innerHTML = '<option value="">All Campuses</option>' + campuses.map(c => `<option>${c}</option>`).join("");
-  dashFilterManager.innerHTML = '<option value="">All Managers</option>' + managers.map(m => `<option>${m}</option>`).join("");
-  dashFilterStatus.innerHTML = '<option value="">All Status</option>' + statuses.map(s => `<option>${s}</option>`).join("");
-  dashFilterTeamLeader.innerHTML = '<option value="">All Team Leaders</option>' + teamLeaders.map(t => `<option>${t}</option>`).join("");
-  dashFilterCounsellor.innerHTML = '<option value="">All Counsellors</option>' + counsellors.map(c => `<option>${c}</option>`).join("");
+  dashFilterProcess.innerHTML   = '<option value="">All Processes</option>'   + processes.map(p   => `<option value="${p}">${p}</option>`).join("");
+  dashFilterCampus.innerHTML    = '<option value="">All Campuses</option>'    + campuses.map(c    => `<option value="${c}">${c}</option>`).join("");
+  dashFilterManager.innerHTML   = '<option value="">All Managers</option>'   + managers.map(m    => `<option value="${m}">${m}</option>`).join("");
+  dashFilterStatus.innerHTML    = '<option value="">All Status</option>'     + statuses.map(s    => `<option value="${s}">${s}</option>`).join("");
+  dashFilterTeamLeader.innerHTML= '<option value="">All Team Leaders</option>'+ teamLeaders.map(t => `<option value="${t}">${t}</option>`).join("");
+  dashFilterCounsellor.innerHTML= '<option value="">All Counsellors</option>'+ counsellors.map(c => `<option value="${c}">${c}</option>`).join("");
 }
 
 function applyFilters() {
-  const q = searchBox.value.trim().toLowerCase();
-  const proc = dashFilterProcess.value;
-  const campus = dashFilterCampus.value;
-  const mgr = dashFilterManager.value;
-  const status = dashFilterStatus.value;
-  const tl = dashFilterTeamLeader.value;
-  const counsellor = dashFilterCounsellor.value;
+  const q          = searchBox.value.trim().toLowerCase();
+  const proc       = dashFilterProcess.value.trim().toLowerCase();
+  const campus     = dashFilterCampus.value.trim().toLowerCase();
+  const mgr        = dashFilterManager.value.trim().toLowerCase();
+  const status     = dashFilterStatus.value.trim().toLowerCase();
+  const tl         = dashFilterTeamLeader.value.trim().toLowerCase();
+  const counsellor = dashFilterCounsellor.value.trim().toLowerCase();
 
   const filtered = allEntries.filter(row => {
-    if (proc && (row["Process"] || "").toString() !== proc) return false;
-    if (campus && (row["Campus"] || "").toString() !== campus) return false;
-    if (mgr && (row["Manager"] || "").toString() !== mgr) return false;
-    if (status && (row["Admission Done/Cancelled"] || "").toString() !== status) return false;
-    if (tl && (row["Team Leader"] || "").toString() !== tl) return false;
-    if (counsellor && (row["Counsellor Name"] || "").toString() !== counsellor) return false;
+    if (proc       && (row["Process"]                 || "").toString().trim().toLowerCase() !== proc)       return false;
+    if (campus     && (row["Campus"]                  || "").toString().trim().toLowerCase() !== campus)     return false;
+    if (mgr        && (row["Manager"]                 || "").toString().trim().toLowerCase() !== mgr)        return false;
+    if (status     && (row["Admission Done/Cancelled"]|| "").toString().trim().toLowerCase() !== status)     return false;
+    if (tl         && (row["Team Leader"]             || "").toString().trim().toLowerCase() !== tl)         return false;
+    if (counsellor && (row["Counsellor Name"]         || "").toString().trim().toLowerCase() !== counsellor) return false;
     if (q && !Object.values(row).some(v => v && v.toString().toLowerCase().includes(q))) return false;
     return true;
   });
