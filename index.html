@@ -2833,7 +2833,7 @@
 // ——————————————————————————————————————
 // ⚠️  PASTE YOUR DEPLOYED APPS SCRIPT URL BELOW
 // ——————————————————————————————————————
-const API_URL = "https://script.google.com/macros/s/AKfycbwqUnnTxw6OKguugdrtRuP-XNRhDFZljOA-9-omdPfDnt0722TNzQMRiU2bqYJdQvJckQ/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzsuGQ3KKTo7QJ7wIRchHEJw2JK9CrUwxyESvElztwDS9bMIu42UFjmUJ_Q74puBdfFiA/exec";
 // ——————————————————————————————————————
 
 const form = document.getElementById("admissionForm");
@@ -3968,9 +3968,10 @@ form.addEventListener("submit", async (e) => {
   // Explicitly add grade in case hidden field wasn't captured
   data["Grade"] = document.getElementById("gradeInput").value || "";
 
-  // Frontend duplicate check (within session)
-  const appNum = data["Application Number"];
-  if (submittedAppNumbers.has(appNum)) {
+  // Frontend duplicate check (within session) — skip if NA
+  const appNum = (data["Application Number"] || "").toString().trim();
+  const isNA = appNum.toUpperCase() === "NA" || appNum === "";
+  if (!isNA && submittedAppNumbers.has(appNum)) {
     const appField = form.querySelector('[name="Application Number"]');
     appField.classList.add("invalid");
     appField.closest(".field").querySelector(".field-error").textContent = "This Application Number was already submitted";
@@ -3983,7 +3984,7 @@ form.addEventListener("submit", async (e) => {
   setLoading(true);
 
   // ⚡ OPTIMISTIC UI: show success instantly, confirm in background
-  submittedAppNumbers.add(appNum);
+  if (!isNA) submittedAppNumbers.add(appNum); // only track non-NA numbers
   const capturedData = { ...data };
   showSuccess(capturedData);
   setLoading(false);
