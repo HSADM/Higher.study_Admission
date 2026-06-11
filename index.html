@@ -4463,96 +4463,101 @@ async function loadDashboard(forceRefresh = false) {
 }
 
 function renderSidebarManager(entries, container) {
-  const today = new Date();
+  const now = new Date();
 
-  // Helper: normalise any date string → "YYYY-MM-DD" for comparison
+  // Helper: normalise any date string → "YYYY-MM-DD" using LOCAL time (not UTC)
   function normDate(raw) {
     if (!raw) return "";
     raw = raw.toString().trim();
+
     // Already YYYY-MM-DD
     if (/^\d{4}-\d{2}-\d{2}/.test(raw)) return raw.substring(0, 10);
-    // dd-Mon-yyyy  e.g. "22-May-2026"
-    const months = {Jan:"01",Feb:"02",Mar:"03",Apr:"04",May:"05",Jun:"06",
-                    Jul:"07",Aug:"08",Sep:"09",Oct:"10",Nov:"11",Dec:"12"};
+
+    // dd-Mon-yyyy  e.g. "09-Jun-2026"
+    const months = {jan:"01",feb:"02",mar:"03",apr:"04",may:"05",jun:"06",
+                    jul:"07",aug:"08",sep:"09",oct:"10",nov:"11",dec:"12"};
     const m = raw.match(/^(\d{1,2})-([A-Za-z]{3})-(\d{4})/);
-    if (m) return m[3] + "-" + (months[m[2]] || "00") + "-" + m[1].padStart(2,"0");
+    if (m) return m[3] + "-" + (months[m[2].toLowerCase()] || "00") + "-" + m[1].padStart(2,"0");
+
     // dd/mm/yyyy
     const m2 = raw.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
     if (m2) return m2[3] + "-" + m2[2].padStart(2,"0") + "-" + m2[1].padStart(2,"0");
-    // Fallback: let JS parse it
+
+    // mm/dd/yyyy (US format fallback)
+    const m3 = raw.match(/^(\d{1,2})\/(\d{1,2})\/(\d{4})/);
+    if (m3) return m3[3] + "-" + m3[1].padStart(2,"0") + "-" + m3[2].padStart(2,"0");
+
+    // Let JS parse — use LOCAL date parts to avoid UTC shift
     const d = new Date(raw);
-    if (!isNaN(d)) return d.toISOString().substring(0, 10);
+    if (!isNaN(d)) {
+      return d.getFullYear() + "-" +
+        String(d.getMonth() + 1).padStart(2,"0") + "-" +
+        String(d.getDate()).padStart(2,"0");
+    }
     return "";
   }
 
-  function dateStr(d) {
+  // Always build date strings from LOCAL time
+  function localDateStr(d) {
     return d.getFullYear() + "-" +
       String(d.getMonth() + 1).padStart(2, "0") + "-" +
       String(d.getDate()).padStart(2, "0");
   }
 
-  const todayStr = dateStr(today);
-  const yesterdayD = new Date(today); yesterdayD.setDate(today.getDate() - 1);
-  const yStr = dateStr(yesterdayD);
+  const todayStr = localDateStr(now);
+  const yd = new Date(now); yd.setDate(now.getDate() - 1);
+  const yStr = localDateStr(yd);
 
-  const todayEntries = entries.filter(e => normDate(e["Admission Done date"]) === todayStr);
+  const todayEntries     = entries.filter(e => normDate(e["Admission Done date"]) === todayStr);
   const yesterdayEntries = entries.filter(e => normDate(e["Admission Done date"]) === yStr);
 
-  const todayIds = new Set(todayEntries.map(e => e["Application Number"]));
-  const pureYesterday = yesterdayEntries.filter(e => !todayIds.has(e["Application Number"]));
-
-  const colors = ["#1a365d", "#276749", "#c05621", "#9b2c2c", "#553c9a", "#2b6cb0", "#744210"];
-  const getInitials = (name) => name.split(" ").map(w => w[0]).join("").toUpperCase().substring(0, 2);
+  const colors = ["#1e3a6e","#1a8c5e","#c05621","#9b2c2c","#553c9a","#2b6cb0","#744210","#0e9f8e"];
+  const getInitials = name => name.split(" ").map(w => w[0]).join("").toUpperCase().substring(0, 2);
 
   function buildManagerCards(list) {
-    const managerMap = {};
+    const mgMap = {};
     list.forEach(e => {
-      const mgr = (e["Manager"] || "Unknown").toString().trim();
-      if (!managerMap[mgr]) managerMap[mgr] = { count: 0, processes: {} };
-      managerMap[mgr].count++;
+      const mgr  = (e["Manager"] || "Unknown").toString().trim();
       const proc = (e["Process"] || "").toString().trim();
-      if (proc) {
-        managerMap[mgr].processes[proc] = (managerMap[mgr].processes[proc] || 0) + 1;
-      }
+      if (!mgMap[mgr]) mgMap[mgr] = { count: 0, processes: {} };
+      mgMap[mgr].count++;
+      if (proc) mgMap[mgr].processes[proc] = (mgMap[mgr].processes[proc] || 0) + 1;
     });
-    const sorted = Object.entries(managerMap).sort((a, b) => b[1].count - a[1].count);
-    return sorted.map(([name, data], i) => `
-      <div class="sidebar-mgr-card">
-        <div class="sidebar-mgr-avatar" style="background:${colors[i % colors.length]}">${getInitials(name)}</div>
-        <div class="sidebar-mgr-info">
-          <div class="sidebar-mgr-name">${name}</div>
-          <div class="sidebar-mgr-tags">
-            ${Object.entries(data.processes).map(([p, c]) => `<span class="sidebar-mgr-tag">${p} <strong>${c}</strong></span>`).join("")}
+    return Object.entries(mgMap)
+      .sort((a, b) => b[1].count - a[1].count)
+      .map(([name, d], i) => `
+        <div class="sidebar-mgr-card">
+          <div class="sidebar-mgr-avatar" style="background:${colors[i % colors.length]}">${getInitials(name)}</div>
+          <div class="sidebar-mgr-info">
+            <div class="sidebar-mgr-name">${name}</div>
+            <div class="sidebar-mgr-tags">
+              ${Object.entries(d.processes).map(([p,c]) => `<span class="sidebar-mgr-tag">${p} <strong>${c}</strong></span>`).join("")}
+            </div>
           </div>
+          <div class="sidebar-mgr-count">${d.count}</div>
         </div>
-        <div class="sidebar-mgr-count">${data.count}</div>
-      </div>
-    `).join("");
+      `).join("");
   }
 
   let html = "";
 
-  // Today section
+  // Today
   html += `<div class="sidebar-total">
     <span class="sidebar-total-label">Today's Entries</span>
     <span class="sidebar-total-num">${todayEntries.length}</span>
   </div>`;
-  if (todayEntries.length > 0) {
-    html += buildManagerCards(todayEntries);
-  } else {
-    html += '<div class="sidebar-empty">No admissions recorded for today yet.</div>';
-  }
+  html += todayEntries.length > 0
+    ? buildManagerCards(todayEntries)
+    : '<div class="sidebar-empty">No admissions recorded for today yet.</div>';
 
-  // Yesterday section
-  html += `<div class="sidebar-total" style="background:#4a5568;margin-top:18px;">
+  // Yesterday
+  html += `<div class="sidebar-total" style="background:linear-gradient(135deg,#3d4f6e,#2d3c55);margin-top:14px;">
     <span class="sidebar-total-label">Yesterday's Entries</span>
-    <span class="sidebar-total-num">${pureYesterday.length}</span>
+    <span class="sidebar-total-num">${yesterdayEntries.length}</span>
   </div>`;
-  if (pureYesterday.length > 0) {
-    html += buildManagerCards(pureYesterday);
-  } else {
-    html += '<div class="sidebar-empty">No admissions recorded for yesterday.</div>';
-  }
+  html += yesterdayEntries.length > 0
+    ? buildManagerCards(yesterdayEntries)
+    : '<div class="sidebar-empty">No admissions recorded for yesterday.</div>';
 
   container.innerHTML = html;
 }
