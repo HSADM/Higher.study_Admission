@@ -215,22 +215,7 @@
     transition: all var(--transition);
   }
   .sidebar-retry-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(30,58,110,0.35); }
-  /* ── Sidebar Loading State ───────────────────────────────── */
-  .sidebar-loading-state { padding: 8px 0; }
-  .sidebar-load-spinner {
-    display: flex; justify-content: center; margin: 16px 0 8px;
-  }
-  .sidebar-spin-ring {
-    width: 36px; height: 36px; border-radius: 50%;
-    border: 3px solid var(--border);
-    border-top-color: var(--primary);
-    animation: spin 0.8s linear infinite;
-  }
-  .sidebar-load-text {
-    text-align: center; font-size: 12px; font-weight: 600;
-    color: var(--text-muted); margin-bottom: 4px;
-    letter-spacing: 0.3px;
-  }
+  .sidebar-retry-btn:disabled { opacity: 0.6; cursor: not-allowed; transform: none; }
   .sidebar-empty {
     text-align: center; padding: 28px 8px;
     color: var(--text-muted); font-size: 13px; line-height: 1.6;
@@ -2647,18 +2632,14 @@
       <div class="card sidebar-card">
         <div class="sidebar-title">Today's Activity</div>
         <div id="sidebarManagerSummary">
-          <div id="sidebarLoading" class="sidebar-loading-state">
-            <!-- Animated loading indicator -->
-            <div class="sidebar-load-spinner">
-              <div class="sidebar-spin-ring"></div>
-            </div>
-            <div class="sidebar-load-text">Loading activity…</div>
-            <!-- Skeleton cards -->
-            <div class="skel-banner skeleton" style="margin-top:14px;"></div>
-            <div class="skel-entry-card" style="margin-top:10px;">
+          <div id="sidebarLoading">
+            <!-- Skeleton: Today's Entries banner -->
+            <span class="skeleton skel-banner"></span>
+            <!-- Skeleton: 3 entry cards -->
+            <div class="skel-entry-card">
               <span class="skeleton skel-avatar"></span>
               <div class="skel-text-group">
-                <span class="skeleton skel-row" style="width:65%;margin-bottom:8px;"></span>
+                <span class="skeleton skel-row" style="width:60%"></span>
                 <span class="skeleton skel-tag"></span>
               </div>
               <span class="skeleton skel-count"></span>
@@ -2666,15 +2647,15 @@
             <div class="skel-entry-card">
               <span class="skeleton skel-avatar"></span>
               <div class="skel-text-group">
-                <span class="skeleton skel-row" style="width:50%;margin-bottom:8px;"></span>
+                <span class="skeleton skel-row" style="width:50%"></span>
                 <span class="skeleton skel-tag"></span>
               </div>
               <span class="skeleton skel-count"></span>
             </div>
-            <div class="skel-entry-card" style="border:none;">
+            <div class="skel-entry-card" style="border:none">
               <span class="skeleton skel-avatar"></span>
               <div class="skel-text-group">
-                <span class="skeleton skel-row" style="width:75%;margin-bottom:8px;"></span>
+                <span class="skeleton skel-row" style="width:70%"></span>
                 <span class="skeleton skel-tag"></span>
               </div>
               <span class="skeleton skel-count"></span>
@@ -2930,7 +2911,7 @@
 // ——————————————————————————————————————
 // ⚠️  PASTE YOUR DEPLOYED APPS SCRIPT URL BELOW
 // ——————————————————————————————————————
-const API_URL = "https://script.google.com/macros/s/AKfycbzkfqJ5ZW2ZfeKV2H_TCEe_Ca2CdB3CzgIryYOvWN6rdd-olpVjXycmjX18U9006hyHIA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzsuGQ3KKTo7QJ7wIRchHEJw2JK9CrUwxyESvElztwDS9bMIu42UFjmUJ_Q74puBdfFiA/exec";
 // ——————————————————————————————————————
 
 const form = document.getElementById("admissionForm");
@@ -4103,8 +4084,7 @@ form.addEventListener("submit", async (e) => {
       setLoading(false);
       showSuccess(data);
       toast("✓ Admission saved to Google Sheets!", "success");
-      _bustLS(); // clear localStorage so next load gets fresh data
-      _fetchAndCache(); // refresh cache silently
+      _fetchAndCache(); // refresh sidebar cache silently
     } else {
       // ❌ Server rejected — show error, keep form open
       setLoading(false);
@@ -4308,32 +4288,7 @@ function checkManagerLogin() {
 // ⚡ PERFORMANCE: In-memory cache with stale-while-revalidate
 let _cache = null;
 let _cacheTime = 0;
-const CACHE_TTL = 120000; // 2 minutes in-memory cache
-
-// ── localStorage persistence: survive page refresh ──────────────────────────
-const LS_KEY = "hs_admissions_cache";
-const LS_TTL = 5 * 60 * 1000; // 5 minutes localStorage TTL
-
-function _saveToLS(data) {
-  try {
-    localStorage.setItem(LS_KEY, JSON.stringify({ t: Date.now(), d: data }));
-  } catch(e) {} // quota exceeded — ignore
-}
-
-function _loadFromLS() {
-  try {
-    const raw = localStorage.getItem(LS_KEY);
-    if (!raw) return null;
-    const parsed = JSON.parse(raw);
-    if (Date.now() - parsed.t < LS_TTL) return parsed.d;
-    localStorage.removeItem(LS_KEY);
-  } catch(e) {}
-  return null;
-}
-
-function _bustLS() {
-  try { localStorage.removeItem(LS_KEY); } catch(e) {}
-}
+const CACHE_TTL = 30000; // 30 seconds
 
 async function _fetchAndCache() {
   const MAX_RETRIES = 3;
@@ -4341,7 +4296,7 @@ async function _fetchAndCache() {
   for (let attempt = 0; attempt < MAX_RETRIES; attempt++) {
     try {
       const controller = new AbortController();
-      const timeout = setTimeout(() => controller.abort(), 20000); // 20s timeout
+      const timeout = setTimeout(() => controller.abort(), 15000);
       const res = await fetch(API_URL + "?action=fetch&t=" + Date.now(), { signal: controller.signal });
       clearTimeout(timeout);
       if (!res.ok) throw new Error("HTTP " + res.status);
@@ -4352,7 +4307,6 @@ async function _fetchAndCache() {
       if (json.status === "success" && json.data) {
         _cache = json.data;
         _cacheTime = Date.now();
-        _saveToLS(_cache); // persist for next page load
       }
       return json;
     } catch(e) {
@@ -4366,20 +4320,10 @@ async function _fetchAndCache() {
 
 async function _getData() {
   const now = Date.now();
-  // 1. Fresh in-memory cache
   if (_cache && (now - _cacheTime) < CACHE_TTL) {
-    if ((now - _cacheTime) > 30000) _fetchAndCache(); // background revalidate after 30s
+    if ((now - _cacheTime) > 10000) _fetchAndCache();
     return { status: "success", data: _cache };
   }
-  // 2. localStorage fallback (instant, survives refresh)
-  const lsData = _loadFromLS();
-  if (lsData) {
-    _cache = lsData;
-    _cacheTime = now;
-    _fetchAndCache(); // revalidate in background
-    return { status: "success", data: _cache };
-  }
-  // 3. Full network fetch
   const result = await _fetchAndCache();
   return result || { status: "error", data: [] };
 }
@@ -4447,28 +4391,17 @@ function renderTableFast(entries) {
   requestAnimationFrame(renderChunk);
 }
 
-// ⚡ Load sidebar — instant from localStorage, then refresh from network
+// ⚡ Load sidebar with skeleton + auto-retry + retry button
 async function loadSidebar() {
   const container = document.getElementById("sidebarManagerSummary");
   const sidebarLoading = document.getElementById("sidebarLoading");
 
-  // Try instant load from localStorage first
-  const lsData = _loadFromLS();
-  if (lsData && lsData.length > 0) {
-    _cache = lsData;
-    _cacheTime = Date.now();
+  if (_cache && _cache.length > 0) {
     if (sidebarLoading) sidebarLoading.style.display = "none";
-    renderSidebarManager(lsData, container);
-    // Silently revalidate in background
-    _fetchAndCache().then(json => {
-      if (json && json.status === "success" && json.data && json.data.length > 0) {
-        renderSidebarManager(json.data, container);
-      }
-    });
+    renderSidebarManager(_cache, container);
     return;
   }
 
-  // No cache — show skeleton and fetch
   if (sidebarLoading) sidebarLoading.style.display = "";
   if (container) container.innerHTML = "";
 
@@ -4504,6 +4437,13 @@ async function retrySidebar(btn) {
 
 
 async function loadDashboard(forceRefresh = false) {
+  // Show loading spinner, clear old table
+  dashLoading.style.display = "";
+  dashEmpty.style.display = "none";
+  tableHead.innerHTML = "";
+  tableBody.innerHTML = "";
+  dashStats.innerHTML = "";
+
   const titleEl = document.querySelector(".dash-title");
   if (loggedInRole === "admin") {
     titleEl.innerHTML = 'All Admissions <span class="mgr-badge">ADMIN</span>';
@@ -4511,52 +4451,17 @@ async function loadDashboard(forceRefresh = false) {
     titleEl.innerHTML = 'My Admissions <span class="mgr-badge">' + loggedInRole + '</span>';
   }
 
+  // If force refresh, bust the cache
   if (forceRefresh) {
-    _cache = null; _cacheTime = 0; _bustLS();
+    _cache = null;
+    _cacheTime = 0;
     toast("Refreshing data…");
-    dashLoading.style.display = "";
-    dashEmpty.style.display = "none";
-    tableHead.innerHTML = ""; tableBody.innerHTML = ""; dashStats.innerHTML = "";
-  } else {
-    // ⚡ INSTANT PAINT: Show localStorage data immediately
-    const lsData = _loadFromLS();
-    if (lsData && lsData.length > 0 && !_cache) {
-      _cache = lsData; _cacheTime = Date.now();
-    }
-    if (_cache && _cache.length > 0) {
-      dashLoading.style.display = "none";
-      dashEmpty.style.display = "none";
-      let instant = _cache;
-      if (loggedInRole && loggedInRole !== "admin") {
-        instant = instant.filter(e => (e["Manager"] || "").toString().trim() === loggedInRole);
-      }
-      allEntries = instant;
-      populateFilters(allEntries);
-      renderStats(allEntries);
-      renderTableFast(allEntries);
-      // Silently refresh in background
-      _fetchAndCache().then(json => {
-        if (json && json.status === "success" && json.data && json.data.length > 0) {
-          let fresh = json.data;
-          if (loggedInRole && loggedInRole !== "admin") {
-            fresh = fresh.filter(e => (e["Manager"] || "").toString().trim() === loggedInRole);
-          }
-          allEntries = fresh;
-          populateFilters(allEntries);
-          renderStats(allEntries);
-          renderTableFast(allEntries);
-        }
-      });
-      return;
-    }
-    // No cache — show skeleton
-    dashLoading.style.display = "";
-    dashEmpty.style.display = "none";
-    tableHead.innerHTML = ""; tableBody.innerHTML = ""; dashStats.innerHTML = "";
   }
 
   try {
-    const json = await _getData();
+    // Always fetch fresh on forceRefresh, else use cache
+    const json = forceRefresh ? await _fetchAndCache().then(j => j || { status: "error" }) : await _getData();
+
     dashLoading.style.display = "none";
 
     if (json && json.status === "success" && json.data && json.data.length > 0) {
@@ -5103,7 +5008,7 @@ async function cancelAdmission(appNum) {
 
     if (json.status === "success") {
       toast("✅ Admission cancelled successfully!", "success");
-      _cache = null; _bustLS();
+      _cache = null; // bust cache so dashboard reloads fresh
       loadDashboard(true);
     } else {
       toast("❌ " + (json.message || "Failed to cancel"), "error");
@@ -5139,7 +5044,7 @@ async function reactivateAdmission(appNum) {
 
     if (json.status === "success") {
       toast("✅ Admission reactivated successfully!", "success");
-      _cache = null; _bustLS();
+      _cache = null;
       loadDashboard(true);
     } else {
       toast("❌ " + (json.message || "Failed to reactivate"), "error");
