@@ -2635,6 +2635,12 @@
           <div class="field-error">Student batch is required</div>
         </div>
 
+                <div class="field">
+          <label>First Installment (₹) <span class="req">*</span></label>
+          <input type="text" name="First Installment" inputmode="decimal" pattern="[0-9]+(\.[0-9]{1,2})?" placeholder="e.g. 25000" required>
+          <div class="field-error">Enter a valid amount (numbers only, e.g. 25000)</div>
+        </div>
+
         <div class="btn-row">
           <button type="submit" class="btn btn-primary" id="submitBtn">Submit Entry</button>
           <button type="reset" class="btn btn-secondary" id="resetBtn">Clear</button>
@@ -2776,31 +2782,19 @@
       <p>No admission entries found.</p>
     </div>
     <div id="dashLoading" style="display:none;">
-      <!-- Stat cards skeleton -->
-      <div class="skel-stats-grid">
-        <div class="skel-stat-box">
-          <span class="skeleton skel-num"></span>
-          <span class="skeleton skel-label"></span>
-        </div>
-        <div class="skel-stat-box">
-          <span class="skeleton skel-num"></span>
-          <span class="skeleton skel-label"></span>
-        </div>
-        <div class="skel-stat-box">
-          <span class="skeleton skel-num"></span>
-          <span class="skeleton skel-label"></span>
-        </div>
-      </div>
-      <!-- Table rows skeleton -->
+      <div class="skel-stats-grid"><div class="skel-stat-box"><span class="skeleton skel-num"></span><span class="skeleton skel-label"></span></div><div class="skel-stat-box"><span class="skeleton skel-num"></span><span class="skeleton skel-label"></span></div><div class="skel-stat-box"><span class="skeleton skel-num"></span><span class="skeleton skel-label"></span></div></div>
       <div style="border:1px solid #e8e4dc;border-radius:8px;overflow:hidden;">
-        <div style="background:#1a365d;height:38px;padding:0 12px;display:flex;align-items:center;gap:16px;">
-          ${[90,110,130,100,110,90].map(w=>`<span class="skeleton" style="height:10px;width:${w}px;background:rgba(255,255,255,0.2);animation:shimmer 1.4s infinite linear;background-size:600px 100%;"></span>`).join('')}
-        </div>
-        ${Array(8).fill(0).map((_,i)=>`
-        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:${i%2===0?'#fff':'#faf9f7'}">
-          ${[90,110,130,100,110,90].map(w=>`<span class="skeleton skel-row" style="width:${w}px;margin:0;"></span>`).join('')}
-        </div>`).join('')}
+        <div style="background:#1a365d;height:38px;padding:0 12px;display:flex;align-items:center;gap:16px;"><span class="skeleton" style="height:10px;width:90px;background:rgba(255,255,255,0.2);"></span><span class="skeleton" style="height:10px;width:110px;background:rgba(255,255,255,0.2);"></span><span class="skeleton" style="height:10px;width:130px;background:rgba(255,255,255,0.2);"></span><span class="skeleton" style="height:10px;width:100px;background:rgba(255,255,255,0.2);"></span><span class="skeleton" style="height:10px;width:110px;background:rgba(255,255,255,0.2);"></span><span class="skeleton" style="height:10px;width:90px;background:rgba(255,255,255,0.2);"></span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:#fff"><span class="skeleton skel-row" style="width:90px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:130px;margin:0;"></span><span class="skeleton skel-row" style="width:100px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:90px;margin:0;"></span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:#faf9f7"><span class="skeleton skel-row" style="width:90px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:130px;margin:0;"></span><span class="skeleton skel-row" style="width:100px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:90px;margin:0;"></span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:#fff"><span class="skeleton skel-row" style="width:90px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:130px;margin:0;"></span><span class="skeleton skel-row" style="width:100px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:90px;margin:0;"></span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:#faf9f7"><span class="skeleton skel-row" style="width:90px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:130px;margin:0;"></span><span class="skeleton skel-row" style="width:100px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:90px;margin:0;"></span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:#fff"><span class="skeleton skel-row" style="width:90px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:130px;margin:0;"></span><span class="skeleton skel-row" style="width:100px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:90px;margin:0;"></span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:#faf9f7"><span class="skeleton skel-row" style="width:90px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:130px;margin:0;"></span><span class="skeleton skel-row" style="width:100px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:90px;margin:0;"></span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:#fff"><span class="skeleton skel-row" style="width:90px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:130px;margin:0;"></span><span class="skeleton skel-row" style="width:100px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:90px;margin:0;"></span></div>
+        <div style="display:flex;align-items:center;gap:16px;padding:10px 12px;border-bottom:1px solid #f0ede8;background:#faf9f7"><span class="skeleton skel-row" style="width:90px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:130px;margin:0;"></span><span class="skeleton skel-row" style="width:100px;margin:0;"></span><span class="skeleton skel-row" style="width:110px;margin:0;"></span><span class="skeleton skel-row" style="width:90px;margin:0;"></span></div>
       </div>
+      <div id="dashLoadingNote" style="text-align:center;font-size:12px;color:var(--text-muted);padding:12px 0 4px;">Loading admissions…</div>
     </div>
   </div>
 
@@ -2941,7 +2935,7 @@
 // ——————————————————————————————————————
 // ⚠️  PASTE YOUR DEPLOYED APPS SCRIPT URL BELOW
 // ——————————————————————————————————————
-const API_URL = "https://script.google.com/macros/s/AKfycbx2wTEsc3nrEOD5a1-36Wqh9VqDvJkSrTIg7Di_bBgrgvtztjWKdnF5xqRnJQX4r1n0AA/exec";
+const API_URL = "https://script.google.com/macros/s/AKfycbzDGm5ZgiOZWx2ZeIHI7YvC8z3fsFLV__LMk7-3qT94ktsPk4_NUC_ROhn5dvoBtOsoIQ/exec";
 // ——————————————————————————————————————
 
 const form = document.getElementById("admissionForm");
@@ -4276,7 +4270,7 @@ function checkPassword() {
   const input = document.getElementById("pwdInput");
   if (input.value === DASHBOARD_PASSWORD) {
     dashboardUnlocked = true;
-    loggedInRole = "admin";
+    loggedInRole = "admin"; window.__hsPass = input.value;
     closePasswordModal();
     switchTab(pendingTab || "dashboard");
   } else {
@@ -4302,7 +4296,7 @@ function checkManagerLogin() {
 
   if (MANAGER_PASSWORDS[mgrName] && pwd === MANAGER_PASSWORDS[mgrName]) {
     dashboardUnlocked = true;
-    loggedInRole = mgrName;
+    loggedInRole = mgrName; window.__hsPass = pwd;
     closePasswordModal();
     // Hide settings tab for managers
     document.getElementById("tabSettings").style.display = "none";
@@ -4316,7 +4310,7 @@ function checkManagerLogin() {
   }
 }
 
-// HS-PERF-v2 — optimized data layer, filtering, paginated rendering, fast sidebar
+// HS-PERF-v3 — optimized data layer, filtering, paginated rendering, fast sidebar, installments
 (function () {
   var st = document.createElement("style");
   st.textContent =
@@ -4326,9 +4320,24 @@ function checkManagerLogin() {
     ".pager button{padding:6px 12px;border:1.5px solid var(--border);border-radius:8px;background:var(--surface);color:var(--text);font-family:inherit;font-size:12px;font-weight:700;cursor:pointer}" +
     ".pager button:hover:not(:disabled){border-color:var(--primary);color:var(--primary)}" +
     ".pager button:disabled{opacity:.4;cursor:not-allowed}" +
-    ".pager select{padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:12px;background:var(--surface)}";
+    ".pager select{padding:6px 8px;border:1.5px solid var(--border);border-radius:8px;font-family:inherit;font-size:12px;background:var(--surface)}" +
+    ".btn-edit{padding:5px 12px;font-family:inherit;font-size:11px;font-weight:700;border:1.5px solid var(--primary-light);border-radius:8px;background:none;color:var(--primary-light);cursor:pointer;margin-right:6px;white-space:nowrap}" +
+    ".btn-edit:hover{background:var(--primary-light);color:#fff}" +
+    ".inst-overlay{position:fixed;inset:0;background:rgba(15,25,50,.55);display:none;align-items:center;justify-content:center;z-index:9999;padding:16px}" +
+    ".inst-modal{background:var(--surface);border-radius:16px;padding:26px 24px;width:100%;max-width:460px;max-height:92vh;overflow:auto;box-shadow:0 24px 80px rgba(0,0,0,.25);border:1px solid var(--border)}" +
+    ".inst-title{font-family:'Playfair Display',serif;font-size:19px;color:var(--primary);margin-bottom:2px}" +
+    ".inst-sub{font-size:12px;color:var(--text-muted);margin-bottom:16px}" +
+    ".inst-row{margin-bottom:12px}" +
+    ".inst-row label{display:block;font-size:11px;font-weight:700;color:var(--text-muted);text-transform:uppercase;letter-spacing:.4px;margin-bottom:4px}" +
+    ".inst-row input{width:100%;padding:9px 12px;border:1.5px solid var(--border);border-radius:9px;font-family:inherit;font-size:14px;background:var(--surface2);outline:none}" +
+    ".inst-row input:focus{border-color:var(--primary-light);background:#fff}" +
+    ".inst-row input[readonly]{background:#eceff6;color:var(--text-muted)}" +
+    ".inst-row input.invalid{border-color:var(--ruby)}" +
+    ".inst-hint{font-size:11px;color:var(--text-light);margin-top:3px}" +
+    ".inst-err{color:var(--ruby);font-size:12px;font-weight:600;min-height:16px;margin:4px 0 8px}" +
+    ".inst-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:6px}";
   document.head.appendChild(st);
-  try { localStorage.removeItem("hs_cache_v3"); } catch (e) {}
+  try { localStorage.removeItem("hs_cache_v3"); localStorage.removeItem("hs_cache_v4"); localStorage.removeItem("hs_cache_v4_ver"); } catch (e) {}
 
   // Every POST to Apps Script gets a 45 s timeout so the UI can never hang forever
   var origFetch = window.fetch.bind(window);
@@ -4347,7 +4356,7 @@ function checkManagerLogin() {
 //  DATA LAYER — versioned cache: memory → localStorage → network
 // ════════════════════════════════════════════════════════════
 const CACHE_TTL = 180000;               // 3 min in memory
-const LS_KEY    = "hs_cache_v4";
+const LS_KEY    = "hs_cache_v5";
 const LS_TTL    = 24 * 60 * 60 * 1000;  // 24 h (always revalidated in the background)
 
 let _mem = null;          // { data:[], ver:"", ts:number }
@@ -4553,7 +4562,46 @@ const dashFilterTeamLeader = document.getElementById("filterTeamLeader");
 const dashFilterCounsellor = document.getElementById("filterCounsellor");
 const ALL_FILTERS = [dashFilterProcess, dashFilterCampus, dashFilterManager, dashFilterStatus, dashFilterTeamLeader, dashFilterCounsellor];
 
-const TABLE_COLUMNS = ["Process","Admission Done date","Application Number","Candidate Name","Contact Number","Campus","Course Selected","Admission Done/Cancelled","Counsellor Name","Manager","Team Leader","Source","Student Batch","Admission Status"];
+// ── Installments: the 1st is entered on the form; 2nd–5th can be edited by permitted users ──
+const MANAGERS_CAN_EDIT = true;     // false = only Admin can edit installments (must match Code.gs)
+const INSTALLMENTS = [
+  { k: "First Installment",  d: "First Installment Date",  label: "First Installment" },
+  { k: "Second Installment", d: "Second Installment Date", label: "Second Installment" },
+  { k: "Third Installment",  d: "Third Installment Date",  label: "Third Installment" },
+  { k: "Fourth Installment", d: "Fourth Installment Date", label: "Fourth Installment" },
+  { k: "Fifth Installment",  d: "Fifth Installment Date",  label: "Fifth Installment" }
+];
+const EDITABLE_INST = INSTALLMENTS.slice(1);
+const AMOUNT_COLS = new Set(INSTALLMENTS.map(x => x.k));
+const DATE_COLS = new Set(INSTALLMENTS.map(x => x.d));
+
+const TABLE_COLUMNS = ["Process","Admission Done date","Application Number","Candidate Name","Contact Number","Campus","Course Selected","Admission Done/Cancelled","Counsellor Name","Manager","Team Leader","Source","Student Batch","Admission Status"]
+  .concat(INSTALLMENTS.reduce((a, x) => a.concat([x.k, x.d]), []));
+
+// null = blank, NaN = invalid, otherwise a number (max 2 decimals)
+function _parseAmt(v) {
+  const s = String(v == null ? "" : v).replace(/[₹,\s]/g, "");
+  if (s === "") return null;
+  if (!/^\d+(\.\d{1,2})?$/.test(s)) return NaN;
+  const n = parseFloat(s);
+  return isFinite(n) ? n : NaN;
+}
+function _fmtAmt(v) {
+  if (v === "" || v == null) return "";
+  const n = Number(v);
+  return isFinite(n) ? "₹" + n.toLocaleString("en-IN", { maximumFractionDigits: 2 }) : String(v);
+}
+function _fmtDate(v) {
+  const d = normDateStr(v);
+  if (!d) return String(v || "");
+  const p = d.split("-");
+  return (+p[2]) + "-" + (_MON[+p[1] - 1] || p[1]) + "-" + p[0];
+}
+function _canEdit(row) {
+  if (!loggedInRole) return false;
+  if (loggedInRole === "admin") return true;
+  return MANAGERS_CAN_EDIT && _lc(row["Manager"]) === _lc(loggedInRole);
+}
 
 let allMeta = [];          // lowercase search/filter data, aligned with allEntries
 let filteredIdx = [];      // indices (into allEntries) that pass the current filters
@@ -4598,7 +4646,7 @@ async function loadDashboard(forceRefresh = false) {
 function _meta(rows) {
   return rows.map(r => {
     let s = "";
-    for (const k in r) { const v = r[k]; if (v) s += String(v).toLowerCase() + "\u0001"; }
+    for (const k in r) { if (k.charAt(0) === "_") continue; const v = r[k]; if (v) s += String(v).toLowerCase() + "\u0001"; }
     return { d: _rowDate(r), s: s, c: _lc(r["Admission Status"]) === "cancelled",
       p: _lc(r["Process"]), ca: _lc(r["Campus"]), m: _lc(r["Manager"]),
       st: _lc(r["Admission Done/Cancelled"]), t: _lc(r["Team Leader"]), co: _lc(r["Counsellor Name"]) };
@@ -4776,16 +4824,20 @@ function _cell(col, r, m) {
   }
   if (col === "Admission Status") return '<td><span class="status-badge ' + (m.c ? "status-cancelled" : "status-active") + '">' + _esc(v || "Active") + '</span></td>';
   if (col === "Admission Done date") {
-    if (m.d) { const p = m.d.split("-"); return '<td>' + p[2] + "-" + (_MON[+p[1] - 1] || p[1]) + "-" + p[0] + '</td>'; }
+    if (m.d) { const p = m.d.split("-"); return '<td>' + (+p[2]) + "-" + (_MON[+p[1] - 1] || p[1]) + "-" + p[0] + '</td>'; }
     return '<td>' + _esc(v) + '</td>';
   }
+  if (AMOUNT_COLS.has(col)) return '<td style="text-align:right">' + _esc(_fmtAmt(v)) + '</td>';
+  if (DATE_COLS.has(col)) return '<td>' + _esc(v ? _fmtDate(v) : "") + '</td>';
   return '<td' + (v.length > 24 ? ' title="' + _esc(v) + '"' : "") + '>' + _esc(v) + '</td>';
 }
 function _rowHTML(i, showAction) {
   const r = allEntries[i], m = allMeta[i];
   let h = '<tr' + (m.c ? ' class="row-cancelled"' : "") + '>';
   if (showAction) {
-    h += '<td style="white-space:nowrap"><button class="' + (m.c ? "btn-reactivate" : "btn-cancel-admission") +
+    h += '<td style="white-space:nowrap">';
+    if (_canEdit(r)) h += '<button class="btn-edit" data-i="' + i + '" data-act="ed">Edit</button>';
+    h += '<button class="' + (m.c ? "btn-reactivate" : "btn-cancel-admission") +
       '" data-i="' + i + '" data-act="' + (m.c ? "re" : "ca") + '">' + (m.c ? "Reactivate" : "Cancel") + '</button></td>';
   }
   for (let k = 0; k < TABLE_COLUMNS.length; k++) h += _cell(TABLE_COLUMNS[k], r, m);
@@ -4843,6 +4895,7 @@ function renderPager(start, end, total, pages) {
 tableBody.addEventListener("click", e => {
   const b = e.target.closest("button[data-act]"); if (!b) return;
   const row = allEntries[+b.dataset.i]; if (!row) return;
+  if (b.dataset.act === "ed") { openInstallmentModal(row, +b.dataset.i); return; }
   const app = (row["Application Number"] || "").toString();
   if (b.dataset.act === "ca") cancelAdmission(app, b, row); else reactivateAdmission(app, b, row);
 });
@@ -4883,6 +4936,122 @@ async function reactivateAdmission(appNum, btn, row) {
   if (await _postAction({ action: "reactivateAdmission", appNumber: appNum.trim(), reactivatedBy: loggedInRole }, btn, "Reactivating…", "Reactivate")) {
     toast("✅ Admission reactivated", "success"); _patchStatus(row, appNum, "Active"); _syncSoon();
   }
+}
+
+// ════════════════════════════════════════════════════════════
+//  EDIT INSTALLMENTS (2nd–5th amounts only; dates are stamped automatically by the server)
+// ════════════════════════════════════════════════════════════
+let _inst = null;
+function _el(tag, cls, text) {
+  const e = document.createElement(tag);
+  if (cls) e.className = cls;
+  if (text != null) e.textContent = text;
+  return e;
+}
+function _buildInstModal() {
+  if (_inst) return _inst;
+  const overlay = _el("div", "inst-overlay"), box = _el("div", "inst-modal");
+  const title = _el("div", "inst-title", "Edit Installments"), sub = _el("div", "inst-sub");
+  box.appendChild(title); box.appendChild(sub);
+  const inputs = {}, hints = {};
+  INSTALLMENTS.forEach((it, n) => {
+    const wrap = _el("div", "inst-row");
+    const lab = _el("label", "", it.label + (n === 0 ? " (entered on the form — read only)" : " (₹)"));
+    const inp = _el("input"); inp.type = "text"; inp.autocomplete = "off";
+    inp.setAttribute("inputmode", "decimal");
+    if (n === 0) inp.readOnly = true; else inp.placeholder = "Enter amount";
+    const hint = _el("div", "inst-hint");
+    wrap.appendChild(lab); wrap.appendChild(inp); wrap.appendChild(hint); box.appendChild(wrap);
+    inputs[it.k] = inp; hints[it.k] = hint;
+    inp.addEventListener("input", () => inp.classList.remove("invalid"));
+  });
+  const err = _el("div", "inst-err"); box.appendChild(err);
+  const actions = _el("div", "inst-actions");
+  const cancel = _el("button", "btn btn-secondary btn-sm", "Cancel"), save = _el("button", "btn btn-primary btn-sm", "Save");
+  cancel.type = "button"; save.type = "button";
+  actions.appendChild(cancel); actions.appendChild(save); box.appendChild(actions);
+  overlay.appendChild(box);
+  document.body.appendChild(overlay);
+  cancel.addEventListener("click", _closeInst);
+  save.addEventListener("click", _saveInst);
+  overlay.addEventListener("mousedown", e => { if (e.target === overlay) _closeInst(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") _closeInst(); });
+  _inst = { overlay, title, sub, inputs, hints, err, save, row: null };
+  return _inst;
+}
+function _closeInst() { if (_inst) _inst.overlay.style.display = "none"; }
+
+function openInstallmentModal(row, idx) {
+  if (!_canEdit(row)) { toast("You don't have permission to edit this entry", "error"); return; }
+  if (!row._row) { toast("The Google Apps Script is outdated — deploy the latest Code.gs (new version), then press Refresh.", "error"); return; }
+  const m = _buildInstModal();
+  m.row = row; m.idx = idx;
+  m.sub.textContent = (row["Candidate Name"] || "") + " · " + (row["Application Number"] || "");
+  INSTALLMENTS.forEach((it, n) => {
+    const v = row[it.k], inp = m.inputs[it.k];
+    inp.value = (v === "" || v == null) ? "" : String(v).trim();
+    inp.classList.remove("invalid");
+    m.hints[it.k].textContent = row[it.d] ? "Recorded on " + _fmtDate(row[it.d]) : (n === 0 ? "" : "Not entered yet");
+  });
+  m.err.textContent = ""; m.save.disabled = false; m.save.textContent = "Save";
+  m.overlay.style.display = "flex";
+  m.inputs[EDITABLE_INST[0].k].focus();
+}
+
+// Collects the typed amounts. Returns { amounts, bad, changed }.
+function _collectInst(m) {
+  const amounts = {}; let bad = false, changed = false;
+  EDITABLE_INST.forEach(it => {
+    const inp = m.inputs[it.k], v = _parseAmt(inp.value);
+    if (v !== null && Number.isNaN(v)) { inp.classList.add("invalid"); bad = true; return; }
+    const old = _parseAmt(m.row[it.k]);
+    amounts[it.k] = v === null ? "" : String(v);
+    if (v !== old) changed = true;
+  });
+  return { amounts, bad, changed };
+}
+
+async function _saveInst() {
+  const m = _inst; if (!m || !m.row) return;
+  const c = _collectInst(m);
+  if (c.bad) { m.err.textContent = "Enter valid amounts — numbers only, up to 2 decimals."; return; }
+  if (!c.changed) { m.err.textContent = "No changes to save."; return; }
+  if (!window.__hsPass) { m.err.textContent = "Session expired — please refresh the page and log in again."; return; }
+  const row = m.row;
+  m.err.textContent = ""; m.save.disabled = true; m.save.textContent = "Saving…";
+  try {
+    const res = await fetch(API_URL, { method: "POST", headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify({ action: "updateInstallments", row: row._row, appNumber: row["Application Number"] || "",
+        candidate: row["Candidate Name"] || "", amounts: c.amounts, auth: { role: loggedInRole, password: window.__hsPass } }) });
+    const json = JSON.parse(await res.text());
+    if (json.status === "success" && !json.updated) {
+      m.err.textContent = "The Google Apps Script is outdated — deploy the latest Code.gs (new version) and try again.";
+    } else if (json.status === "success") {
+      _applyInstUpdate(row, json.updated);
+      _closeInst();
+      toast("✅ Installments saved", "success");
+      _syncSoon();
+      return;
+    } else {
+      m.err.textContent = json.message || "Update failed";
+    }
+  } catch (e) { m.err.textContent = "Network error — please try again."; }
+  m.save.disabled = false; m.save.textContent = "Save";
+}
+
+// Updates the on-screen row with exactly what the server saved (amount + auto date)
+function _applyInstUpdate(row, updated) {
+  let i = allEntries.indexOf(row);
+  if (i < 0 && row._row) i = allEntries.findIndex(e => e._row === row._row);
+  const target = i >= 0 ? allEntries[i] : row;
+  EDITABLE_INST.forEach(it => {
+    const u = updated[it.k]; if (!u) return;
+    target[it.k] = u.amount == null ? "" : String(u.amount);
+    target[it.d] = u.date || "";
+  });
+  if (i >= 0) allMeta[i] = _meta([target])[0];
+  applyFilters(true);
+  if (_mem) _lsSet(_mem);
 }
 
 // ════════════════════════════════════════════════════════════
